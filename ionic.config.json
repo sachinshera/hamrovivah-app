@@ -1,0 +1,7 @@
+{
+  "name": "hamrovivah",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
