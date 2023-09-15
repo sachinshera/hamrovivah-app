@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- logo box -->
+  <div class="ion-text-center ion-padding">
+    <img src="assets/logo.png" alt="HamroVivah" />
+  </div>
+  <!-- title text -->
+  <div class="ion-text-center">
+    <h1>Log In</h1>
+  </div>
+
+  <!-- login box emial and password -->
+
+  <div class="ion-padding">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block">Sign Up</ion-button>
+
+    <div class="ion-text-center">
+      <p>
+        Already have an account? <a routerLink="/login">Login</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- social login -->
+
+  <div class="ion-padding">
+    <!-- use utton group and heading -->
+    <h5 class="ion-text-center">
+      Log In with
+    </h5>
+
+    <ion-button expand="block" color="danger">
+      <ion-icon name="logo-google"></ion-icon>
+      Google
+
+    </ion-button>
+
+    <ion-button expand="block" color="primary">
+      <ion-icon name="logo-facebook"></ion-icon>
+      Facebook
+
+    </ion-button>
+  </div>
+
+</ion-content>
