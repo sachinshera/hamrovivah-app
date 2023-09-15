@@ -1,5 +1,10 @@
-<ion-header [translucent]="true">
-
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Signup</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -9,26 +14,33 @@
   </div>
   <!-- title text -->
   <div class="ion-text-center">
-    <h1>Log In</h1>
+    <h5>
+      Signup and get started
+    </h5>
   </div>
 
   <!-- login box emial and password -->
 
   <div class="ion-padding">
     <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item [button]="true" [detail]="false" id="select-fruits">
+      <ion-label>Country</ion-label>
+      <div slot="end" id="selected-fruits">{{ selectedFruitsText }}</div>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-label position="floating">Mobile Number</ion-label>
+      <ion-input type="text"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Confirm Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
 
     <ion-button expand="block">Sign Up</ion-button>
 
@@ -44,7 +56,7 @@
   <div class="ion-padding">
     <!-- use utton group and heading -->
     <h5 class="ion-text-center">
-      Log In with
+      Signup with
     </h5>
 
     <ion-button expand="block" color="danger">
@@ -61,3 +73,10 @@
   </div>
 
 </ion-content>
+
+<ion-modal trigger="select-fruits" #modal>
+  <ng-template>
+    <app-countryselect class="ion-page" title="" [items]="countries" [selectedItems]="selectedFruits"
+      (selectionChange)="countrySelectionChange($event)" (selectionCancel)="modal.dismiss()"></app-countryselect>
+  </ng-template>
+</ion-modal>

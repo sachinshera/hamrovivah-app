@@ -1,0 +1,12 @@
+/* Target the Ion Grid element */
+ion-grid {
+    /* Remove padding to remove the gap between columns */
+    --ion-grid-padding: 0 !important;
+}
+
+/* Optional: If you want to remove the gap between rows as well */
+ion-row,
+ion-card {
+    /* Remove margin to remove the gap between rows */
+    margin: 0 !important;
+}

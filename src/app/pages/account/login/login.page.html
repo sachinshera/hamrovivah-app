@@ -1,5 +1,10 @@
-<ion-header [translucent]="true">
-
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Login</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -7,32 +12,15 @@
   <div class="ion-text-center ion-padding">
     <img src="assets/logo.png" alt="HamroVivah" />
   </div>
-  <!-- title text -->
-  <div class="ion-text-center">
-    <h1>Log In</h1>
-  </div>
-
   <!-- login box emial and password -->
 
   <div class="ion-padding">
     <ion-item>
-      <ion-label position="floating">Email</ion-label>
+      <ion-label position="floating">Mobile</ion-label>
       <ion-input type="email"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-
-    <ion-button expand="block">Log In</ion-button>
-
-    <div class="ion-text-center">
-      <p>
-        <a href="#">Forgot Password?</a>
-      </p>
-    </div>
-
+    <ion-button expand="block" style="margin-top: 10px;">Log In</ion-button>
     <div class="ion-text-center">
       <p>
         Don't have an account? <a routerLink="/signup">Sign Up</a>

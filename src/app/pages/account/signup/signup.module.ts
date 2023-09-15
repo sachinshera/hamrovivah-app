@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SignupPageRoutingModule } from './signup-routing.module';
 
 import { SignupPage } from './signup.page';
+import { CountryselectComponent } from 'src/app/components/actions/countryselect/countryselect.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { SignupPage } from './signup.page';
     IonicModule,
     SignupPageRoutingModule
   ],
-  declarations: [SignupPage]
+  declarations: [SignupPage, CountryselectComponent]
 })
-export class SignupPageModule {}
+export class SignupPageModule { }
