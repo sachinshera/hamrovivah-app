@@ -1,0 +1,62 @@
+<!-- create sliding onboarding slider -->
+
+
+<ion-content>
+
+    <!--Brand Logo  -->
+
+    <div class="brand-logo">
+        <img src="assets/logo.png" alt="">
+    </div>
+
+    <swiper-container pager="true" autoplay [loop]="true" (slidechange)="onSlideChange()" #swiper>
+        <swiper-slide>
+            <div class="onboard-cont">
+                <img src="assets/svg/cooking.svg" alt="">
+                <h2>
+                    Cook with your Love
+                </h2>
+                <p>
+                    Love is the most important ingredient, so cook with your love.
+                </p>
+                <!-- continue button -->
+                <ion-button expand="icon-only" fill="icon-only" class="continue-btn" (click)="continue()">
+                    Continue <ion-icon name="chevron-forward-outline"></ion-icon>
+                </ion-button>
+            </div>
+        </swiper-slide>
+        <swiper-slide>
+            <div class="onboard-cont">
+                <img src="assets/svg/in_love.svg" alt="">
+                <h2>
+                    Live with your Love
+                </h2>
+                <p>
+                    Do not live with your love, live for your love.
+                </p>
+                <ion-button expand="icon-only" fill="icon-only" class="continue-btn" (click)="continue()">
+                    Continue <ion-icon name="chevron-forward-outline"></ion-icon>
+                </ion-button>
+            </div>
+
+        </swiper-slide>
+        <swiper-slide>
+
+            <div class="onboard-cont">
+                <img src="assets/svg/undraw_walking_together.svg" alt="">
+                <h2>
+                    Walk with your Love
+                </h2>
+                <p>
+                    Walk with your love, walk for your love.
+                </p>
+
+                <ion-button expand="solid" fill="icon-only" class="continue-btn" (click)="start()">
+                    Get Started <ion-icon name="chevron-forward-outline"></ion-icon>
+                </ion-button>
+            </div>
+
+
+        </swiper-slide>
+    </swiper-container>
+</ion-content>

@@ -9,6 +9,7 @@ import { HomelayoutPageRoutingModule } from './homelayout-routing.module';
 import { HomelayoutPage } from './homelayout.page';
 import { ProfilelistComponent } from 'src/app/components/profilelist/profilelist.component';
 import { ProfilesearchComponent } from 'src/app/components/profilesearch/profilesearch.component';
+import { HomemenuComponent } from 'src/app/components/homemenu/homemenu.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { ProfilesearchComponent } from 'src/app/components/profilesearch/profile
     IonicModule,
     HomelayoutPageRoutingModule
   ],
-  declarations: [HomelayoutPage, ProfilelistComponent, ProfilesearchComponent]
+  declarations: [HomelayoutPage, ProfilelistComponent, ProfilesearchComponent, HomemenuComponent]
 })
 export class HomelayoutPageModule { }

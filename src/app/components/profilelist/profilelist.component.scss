@@ -10,3 +10,9 @@ ion-card {
     /* Remove margin to remove the gap between rows */
     margin: 0 !important;
 }
+
+.heading-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

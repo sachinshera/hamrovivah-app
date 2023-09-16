@@ -1,0 +1,49 @@
+swiper-container {
+    --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #cccccc);
+    --swiper-pagination-color: var(--ion-color-primary, #3880ff);
+    --swiper-pagination-progressbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.25);
+    --swiper-scrollbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1);
+    --swiper-scrollbar-drag-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.5);
+}
+
+swiper-slide {
+    display: flex;
+    position: relative;
+
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    font-size: 18px;
+
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.onboard-cont {
+    // width: 100%;
+    padding: 10px;
+}
+
+.onboard-cont img {
+    width: 80%;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.brand-logo {
+    width: 100%;
+    padding: 15px;
+    position: relative;
+    background-color: rgba($color: #000000, $alpha: 1.0)
+}
+
+.brand-logo img {
+    width: 70%;
+    margin: 0 auto !important;
+    display: block;
+}

@@ -40,10 +40,9 @@ ion-menu {
 }
 
 .heading-text {
-    font-size: 40px;
+    font-size: 30px;
     width: 80%;
-    margin: 10% 5%;
-    line-height: 50px;
+    margin-left: 5%;
 }
 
 
@@ -61,9 +60,6 @@ ion-item {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
-    border: none !important;
-
-    --border: none;
 }
 
 .menu-content ion-item {
@@ -77,7 +73,6 @@ ion-item {
 ion-toolbar {
     --background: transparent;
     outline: none !important;
-    border: none !important;
     box-shadow: none !important;
     z-index: 10;
 }
@@ -85,14 +80,6 @@ ion-toolbar {
 ion-header {
     --background: transparent;
     outline: none !important;
-    border: none !important;
     box-shadow: none !important;
     z-index: 10;
 }
-
-// ion-header {
-//     position: sticky;
-//     top: 0;
-//     z-index: 999;
-//     /* Adjust z-index as needed */
-// }
