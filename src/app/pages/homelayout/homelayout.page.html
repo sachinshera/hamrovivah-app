@@ -23,11 +23,13 @@
     </ion-item>
 
     <ion-item lines="none">
-      <h1 class="heading-text">Find The Perfect Partner for you and your family</h1>
+
+      <h1 class="heading-text ion-text-center">Find The Perfect Partner for you and your family</h1>
     </ion-item>
     <ion-item-divider sticky lines="none" class="ion-no-padding">
       <app-profilesearch style="width: 100%;"></app-profilesearch>
     </ion-item-divider>
+    <app-noticebox></app-noticebox>
     <ion-item lines="none">
       <ion-chip color="primary">
         <ion-label>Age</ion-label>
@@ -58,12 +60,9 @@
     </ion-item>
 
     <ion-item lines="none">
-      <div>
-        <h2>
-          People Near You
-        </h2>
-        <app-profilelist></app-profilelist>
-      </div>
+
+      <app-profilelist></app-profilelist>
+
     </ion-item>
   </ion-item-group>
 </ion-content>

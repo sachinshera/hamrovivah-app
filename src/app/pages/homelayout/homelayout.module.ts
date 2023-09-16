@@ -10,6 +10,7 @@ import { HomelayoutPage } from './homelayout.page';
 import { ProfilelistComponent } from 'src/app/components/profilelist/profilelist.component';
 import { ProfilesearchComponent } from 'src/app/components/profilesearch/profilesearch.component';
 import { HomemenuComponent } from 'src/app/components/homemenu/homemenu.component';
+import { NoticeboxComponent } from 'src/app/components/noticebox/noticebox.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { HomemenuComponent } from 'src/app/components/homemenu/homemenu.componen
     IonicModule,
     HomelayoutPageRoutingModule
   ],
-  declarations: [HomelayoutPage, ProfilelistComponent, ProfilesearchComponent, HomemenuComponent]
+  declarations: [HomelayoutPage, NoticeboxComponent, ProfilelistComponent, ProfilesearchComponent, HomemenuComponent]
 })
 export class HomelayoutPageModule { }

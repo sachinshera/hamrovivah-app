@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'onboarding',
     loadChildren: () => import('./pages/onboarding/onboarding.module').then(m => m.OnboardingPageModule)
   },
+  {
+    path: 'profilestup',
+    loadChildren: () => import('./pages/profilestup/profilestup.module').then( m => m.ProfilestupPageModule)
+  },
 ];
 
 @NgModule({
