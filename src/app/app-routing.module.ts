@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'profile/:id',
     loadChildren: () => import('./pages/userprofile/userprofile.module').then(m => m.UserprofilePageModule)
   },
+  {
+    path: 'partner-prefrences',
+    loadChildren: () => import('./pages/settings/partnerprefrences/partnerprefrences.module').then(m => m.PartnerprefrencesPageModule)
+  },
 ];
 
 @NgModule({

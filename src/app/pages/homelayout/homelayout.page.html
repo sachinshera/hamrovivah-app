@@ -1,26 +1,3 @@
-<ion-header translucent="true">
-  <ion-toolbar>
-    <ion-title>
-      Hamrovivah
-    </ion-title>
-    <ion-buttons slot="start">
-      <ion-menu-button>
-      </ion-menu-button>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button><ion-icon name="notifications-outline"></ion-icon>
-
-      </ion-button>
-
-      <!-- <ion-button><ion-icon name="search-outline"></ion-icon></ion-button> -->
-    </ion-buttons>
-  </ion-toolbar>
-
-</ion-header>
-
-
-
 <ion-menu side="start" contentId="main-content" class="menu-content">
   <ion-header>
     <ion-toolbar>
@@ -48,20 +25,20 @@
 
 
 
-        <ion-item [routerDirection]="'root'" routerLink="/home">
+        <ion-item routerLink="/myprofile">
           <ion-icon name="person-outline"></ion-icon>
           <ion-label>
             My Profile
           </ion-label>
         </ion-item>
-        <ion-item [routerDirection]="'root'" routerLink="/home">
+        <ion-item routerLink="/partner-prefrences">
           <ion-icon name="construct-outline"></ion-icon>
           <ion-label>
             Partner Prefrences
           </ion-label>
         </ion-item>
 
-        <ion-item [routerDirection]="'root'" routerLink="/home">
+        <ion-item routerLink="/home">
           <ion-icon name="settings-outline"></ion-icon>
           <ion-label>
             Settings
@@ -70,14 +47,14 @@
 
 
 
-        <ion-item [routerDirection]="'root'" routerLink="/invite">
+        <ion-item routerLink="/invite">
           <ion-icon name="person-add-outline"></ion-icon>
           <ion-label>
             Invite Friends
           </ion-label>
         </ion-item>
 
-        <ion-item [routerDirection]="'root'" routerLink="/home">
+        <ion-item routerLink="/home">
           <ion-icon name="help-circle-outline"></ion-icon>
           <ion-label>
             Help
@@ -85,7 +62,7 @@
         </ion-item>
 
 
-        <ion-item [routerDirection]="'root'" routerLink="/home">
+        <ion-item routerLink="/home">
           <ion-icon name="log-in-outline"></ion-icon>
           <ion-label>
             Logout
@@ -112,53 +89,72 @@
 
 <ion-content [fullscreen]="true">
   <!-- info container -->
-  <div class="ion-padding">
-    <h1 class="heading-text">Find The Perfect Partner for you and your family</h1>
-    <app-profilesearch></app-profilesearch>
-  </div>
 
-  <div class="ion-text-center">
-    <!-- chips  -->
+  <ion-item-group>
+    <ion-item>
+      <ion-header translucent="true">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button>
+            </ion-menu-button>
+          </ion-buttons>
 
-    <ion-chip color="primary">
-      <ion-label>Age</ion-label>
-      <ion-icon name="close-circle"></ion-icon>
-    </ion-chip>
+          <ion-buttons slot="end">
+            <ion-button><ion-icon name="notifications-outline"></ion-icon>
 
-    <ion-chip color="primary">
-      <ion-label>Height</ion-label>
+            </ion-button>
 
-    </ion-chip>
+            <!-- <ion-button><ion-icon name="search-outline"></ion-icon></ion-button> -->
+          </ion-buttons>
+        </ion-toolbar>
 
-    <ion-chip color="primary">
-      <ion-label>Religion</ion-label>
+      </ion-header>
+    </ion-item>
 
-    </ion-chip>
+    <ion-item>
+      <h1 class="heading-text">Find The Perfect Partner for you and your family</h1>
+    </ion-item>
+    <ion-item-divider sticky style="padding: 0px;">
+      <app-profilesearch style="width: 100%;margin: 0px;"></app-profilesearch>
+    </ion-item-divider>
+    <ion-item>
+      <div class="ion-text-center">
+        <ion-chip color="primary">
+          <ion-label>Age</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
 
-    <ion-chip color="primary">
-      <ion-label>City</ion-label>
+        <ion-chip color="primary">
+          <ion-label>Height</ion-label>
 
-    </ion-chip>
+        </ion-chip>
 
-    <ion-chip color="primary">
-      <ion-label>Profession</ion-label>
+        <ion-chip color="primary">
+          <ion-label>Religion</ion-label>
 
-    </ion-chip>
+        </ion-chip>
 
-  </div>
-  <app-profilelist></app-profilelist>
+        <ion-chip color="primary">
+          <ion-label>City</ion-label>
 
-  <div>
-    <h2 class="ion-padding">
-      People Near You
-    </h2>
-    <app-profilelist></app-profilelist>
-  </div>
+        </ion-chip>
 
-  <div>
-    <h2 class="ion-padding">
-      People You May Like
-    </h2>
-    <app-profilelist></app-profilelist>
-  </div>
+        <ion-chip color="primary">
+          <ion-label>Profession</ion-label>
+
+        </ion-chip>
+
+      </div>
+
+
+    </ion-item>
+    <ion-item>
+      <div>
+        <h2 class="ion-padding">
+          People You May Like
+        </h2>
+        <app-profilelist></app-profilelist>
+      </div>
+    </ion-item>
+  </ion-item-group>
 </ion-content>

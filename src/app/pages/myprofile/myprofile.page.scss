@@ -1,0 +1,42 @@
+.profile-cont {
+    position: relative;
+    // top: 5%;
+    margin: 10px auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profile-cont img {
+    position: absolute;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.swiper-slide {
+    text-align: center;
+    padding: 20px;
+}
+
+.sweeper {
+    position: absolute;
+    bottom: 10px;
+    height: 4px;
+    width: 30px;
+    background-color: #007bff;
+    border-radius: 2px;
+    transition: left 0.3s ease-in-out;
+}
+
+
+
+.profile-cont ion-icon {
+    position: absolute;
+    bottom: 1%;
+    right: 10%;
+    font-size: 30px;
+}

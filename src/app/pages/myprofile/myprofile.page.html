@@ -1,13 +1,603 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>myprofile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Sachin Kumar</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">myprofile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <!-- card with profile pic  -->
+
+  <div class="ion-text-center ion-padding profile-cont">
+    <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="HamroVivah" />
+    <ion-icon name="camera-outline"></ion-icon>
+  </div>
+
+  <!-- personal information Edits -->
+
+  <!-- full name , address , date of birth , nationality , gender ,  maritial ststus , phone number , citizenship number, citizenship issue date, Name of relatives,  -->
+
+  <div class="ion-padding">
+    <h2>
+      Personal Information
+    </h2>
+    <form>
+      <!-- Full Name -->
+      <ion-item>
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input type="text" name="full-name" placeholder="Your Full Name" required></ion-input>
+      </ion-item>
+
+      <!-- Address -->
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-textarea name="address" placeholder="Your Address"></ion-textarea>
+      </ion-item>
+
+      <!-- Date of Birth -->
+      <ion-item>
+        <ion-label position="floating">Date of Birth</ion-label>
+        <ion-input type="date" name="date-of-birth" required></ion-input>
+      </ion-item>
+
+      <!-- Nationality -->
+      <ion-item>
+        <ion-label position="floating">Nationality</ion-label>
+        <ion-input type="text" name="nationality" placeholder="Your Nationality"></ion-input>
+      </ion-item>
+
+      <!-- Gender -->
+
+
+      <ion-item>
+        <ion-label position="floating">Gender</ion-label>
+        <ion-select name="gender">
+          <ion-select-option value="single">Male</ion-select-option>
+          <ion-select-option value="married">Female</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+      <!-- Marital Status -->
+      <ion-item>
+        <ion-label position="floating">Marital Status</ion-label>
+        <ion-select name="marital-status">
+          <ion-select-option value="single">Single</ion-select-option>
+          <ion-select-option value="married">Married</ion-select-option>
+          <ion-select-option value="divorced">Divorced</ion-select-option>
+          <ion-select-option value="widowed">Widowed</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Phone Number -->
+      <ion-item>
+        <ion-label position="floating">Phone Number</ion-label>
+        <ion-input type="tel" name="phone-number" placeholder="Your Phone Number"></ion-input>
+      </ion-item>
+
+      <!-- Citizenship Number -->
+      <ion-item>
+        <ion-label position="floating">Citizenship Number</ion-label>
+        <ion-input type="text" name="citizenship-number" placeholder="Your Citizenship Number"></ion-input>
+      </ion-item>
+
+      <!-- Citizenship Issue Date -->
+      <ion-item>
+        <ion-label position="floating">Citizenship Issue Date</ion-label>
+        <ion-input type="date" name="citizenship-issue-date"></ion-input>
+      </ion-item>
+
+      <!-- save  -->
+
+      <ion-button expand="block" style="margin-top: 10px;">Save</ion-button>
+    </form>
+  </div>
+
+  <!-- temporary address -->
+
+  <!-- state, local area, city/town , ward number , house number, familiar place,  -->
+
+  <div class="ion-padding">
+    <h2>
+      Temporary Address
+    </h2>
+    <form>
+      <!-- State -->
+      <ion-item>
+        <ion-label position="floating">State</ion-label>
+        <ion-input type="text" name="state" placeholder="Your State"></ion-input>
+      </ion-item>
+
+      <!-- Local Area -->
+      <ion-item>
+        <ion-label position="floating">Local Area</ion-label>
+        <ion-input type="text" name="local-area" placeholder="Your Local Area"></ion-input>
+      </ion-item>
+
+      <!-- City/Town -->
+      <ion-item>
+        <ion-label position="floating">City/Town</ion-label>
+        <ion-input type="text" name="city-town" placeholder="Your City/Town"></ion-input>
+      </ion-item>
+
+      <!-- Ward Number -->
+      <ion-item>
+        <ion-label position="floating">Ward Number</ion-label>
+        <ion-input type="text" name="ward-number" placeholder="Your Ward Number"></ion-input>
+      </ion-item>
+
+      <!-- House Number -->
+      <ion-item>
+        <ion-label position="floating">House Number</ion-label>
+        <ion-input type="text" name="house-number" placeholder="Your House Number"></ion-input>
+      </ion-item>
+
+      <!-- Familiar Place -->
+      <ion-item>
+        <ion-label position="floating">Familiar Place</ion-label>
+        <ion-input type="text" name="familiar-place" placeholder="Your Familiar Place"></ion-input>
+      </ion-item>
+
+      <!-- save  -->
+
+      <ion-button expand="block" style="margin-top: 10px;">Save</ion-button>
+    </form>
+  </div>
+
+  <!-- Education Details -->
+
+  <!-- digree, school /college, start from, end , description -->
+
+  <div class="ion-padding">
+    <h2>
+      Education Details
+    </h2>
+    <form>
+      <!-- Digree -->
+      <ion-item>
+        <ion-label position="floating">Digree</ion-label>
+        <ion-input type="text" name="digree" placeholder="Your Digree"></ion-input>
+      </ion-item>
+
+      <!-- School/College -->
+      <ion-item>
+        <ion-label position="floating">School/College</ion-label>
+        <ion-input type="text" name="school-college" placeholder="Your School/College"></ion-input>
+      </ion-item>
+
+      <!-- Start From -->
+      <ion-item>
+        <ion-label position="floating">Start From</ion-label>
+        <ion-input type="date" name="start-from"></ion-input>
+      </ion-item>
+
+      <!-- End -->
+      <ion-item>
+        <ion-label position="floating">End</ion-label>
+        <ion-input type="date" name="end"></ion-input>
+      </ion-item>
+
+      <!-- Description -->
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea name="description" placeholder="Your Description"></ion-textarea>
+      </ion-item>
+
+      <!-- save  -->
+
+      <ion-button expand="block" style="margin-top: 10px;">Save</ion-button>
+    </form>
+  </div>
+
+  <!-- physical properties -->
+
+  <!-- height (in feet), weight , eye color , hair coluor , skin colour , disability -->
+
+  <div class="ion-padding">
+    <h2>
+      Physical Properties
+    </h2>
+
+    <ion-item>
+      <ion-label position="floating">Height (in feet)</ion-label>
+      <ion-input type="text" name="height" placeholder="Your Height"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Weight (in Kg)</ion-label>
+      <ion-input type="text" name="weight" placeholder="Your Weight"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Eye Color</ion-label>
+      <ion-input type="text" name="eye-color" placeholder="Your Eye Color"></ion-input>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Hair Color</ion-label>
+      <ion-input type="text" name="hair-color" placeholder="Your Hair Color"></ion-input>
+
+    </ion-item>
+
+    <!-- save -->
+
+    <ion-button expand="block" style="margin-top: 10px;">Save</ion-button>
+  </div>
+
+  <!-- lifestyle -->
+
+  <!-- drinking habits - sometimes , regular, no -->
+
+  <!-- eating habits  -  vevetrian , no-vegertrian , ocassionaly ,  -->
+  <!-- bring glasses - yes , no  -->
+
+  <!-- live with - family, relatives, hostel, single  -->
+
+  <!-- smoking habits - yes , no , ocassionaly -->
+
+  <!-- save -->
+
+  <div class="ion-padding">
+    <h2>
+      Lifestyle
+    </h2>
+
+    <ion-item>
+      <ion-label position="floating">Drinking Habits</ion-label>
+      <ion-select name="drinking-habits">
+        <ion-select-option value="sometimes">Sometimes</ion-select-option>
+        <ion-select-option value="regular">Regular</ion-select-option>
+        <ion-select-option value="no">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Eating Habits</ion-label>
+      <ion-select name="eating-habits">
+        <ion-select-option value="veg">Vegetarian</ion-select-option>
+        <ion-select-option value="non-veg">Non-Vegetarian</ion-select-option>
+        <ion-select-option value="occasionaly">Occasionaly</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Wear Glasses</ion-label>
+      <ion-select name="wear-glasses">
+        <ion-select-option value="yes">Yes</ion-select-option>
+        <ion-select-option value="no">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Live With</ion-label>
+      <ion-select name="live-with">
+        <ion-select-option value="family">Family</ion-select-option>
+        <ion-select-option value="relatives">Relatives</ion-select-option>
+        <ion-select-option value="hostel">Hostel</ion-select-option>
+        <ion-select-option value="single">Single</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Smoking Habits</ion-label>
+      <ion-select name="smoking-habits">
+        <ion-select-option value="yes">Yes</ion-select-option>
+        <ion-select-option value="no">No</ion-select-option>
+        <ion-select-option value="occasionaly">Occasionaly</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- save -->
+
+    <ion-button expand="block" style="margin-top: 10px;">
+      Save
+    </ion-button>
+  </div>
+
+  <!-- Family information -->
+  <!-- Grandfather's name, father's name,father occpations, mother name , mother occupations , siblings - married , unmarried  . Property details (description ) -->
+
+
+  <div class="ion-padding">
+    <h2>
+      Family Information
+    </h2>
+
+    <form>
+      <!-- Grandfather's name -->
+      <ion-item>
+        <ion-label position="floating">Grandfather's Name</ion-label>
+        <ion-input type="text" name="grandfather-name" placeholder="Your Grandfather's Name"></ion-input>
+      </ion-item>
+
+      <!-- Father's Name -->
+      <ion-item>
+        <ion-label position="floating">Father's Name</ion-label>
+        <ion-input type="text" name="father-name" placeholder="Your Father's Name"></ion-input>
+      </ion-item>
+
+      <!-- Father's Occupation -->
+      <ion-item>
+        <ion-label position="floating">Father's Occupation</ion-label>
+        <ion-input type="text" name="father-occupation" placeholder="Your Father's Occupation"></ion-input>
+      </ion-item>
+
+      <!-- Mother's Name -->
+      <ion-item>
+        <ion-label position="floating">Mother's Name</ion-label>
+        <ion-input type="text" name="mother-name" placeholder="Your Mother's Name"></ion-input>
+      </ion-item>
+
+      <!-- Mother's Occupation -->
+      <ion-item>
+        <ion-label position="floating">Mother's Occupation</ion-label>
+        <ion-input type="text" name="mother-occupation" placeholder="Your Mother's Occupation"></ion-input>
+      </ion-item>
+
+      <!-- Siblings - Married -->
+      <ion-item>
+        <ion-label position="floating">Siblings - Married</ion-label>
+        <ion-input type="text" name="siblings-married" placeholder="Your Siblings - Married"></ion-input>
+      </ion-item>
+
+      <!-- Siblings - Unmarried -->
+      <ion-item>
+        <ion-label position="floating">Siblings - Unmarried</ion-label>
+        <ion-input type="text" name="siblings-unmarried" placeholder="Your Siblings - Unmarried"></ion-input>
+      </ion-item>
+
+      <!-- Property Details -->
+      <ion-item>
+        <ion-label position="floating">Property Details</ion-label>
+        <ion-textarea name="property-details" placeholder="Your Property Details"></ion-textarea>
+      </ion-item>
+
+      <!-- save -->
+
+      <ion-button expand="block" style="margin-top: 10px;">Save</ion-button>
+    </form>
+
+  </div>
+
+  <!-- Spiritual and social background -->
+
+  <!-- religion -Hindu ,Muslim, Buddhism -->
+
+  <!-- family values - normal, rich , businessman, professional -->
+
+  <!-- caste - brahmin , chhetri , newar , gurung , magar , rai , limbu , tamang , thakuri , others -->
+
+  <!-- sub caste - brahmin , chhetri , newar , gurung , magar , rai , limbu , tamang , thakuri , others -->
+
+  <!-- gothra -  -->
+
+  <!-- save -->
+
+  <div class="ion-padding">
+    <h2>
+      Spiritual and Social Background
+    </h2>
+
+    <form>
+      <!-- Religion -->
+      <ion-item>
+        <ion-label position="floating">Religion</ion-label>
+        <ion-select name="religion">
+          <ion-select-option value="hindu">Hindu</ion-select-option>
+          <ion-select-option value="muslim">Muslim</ion-select-option>
+          <ion-select-option value="buddhism">Buddhism</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Family Values -->
+      <ion-item>
+        <ion-label position="floating">Family Values</ion-label>
+        <ion-select name="family-values">
+          <ion-select-option value="normal">Normal</ion-select-option>
+          <ion-select-option value="rich">Rich</ion-select-option>
+          <ion-select-option value="businessman">Businessman</ion-select-option>
+          <ion-select-option value="professional">Professional</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Caste -->
+      <ion-item>
+        <ion-label position="floating">Caste</ion-label>
+        <ion-select name="caste">
+          <ion-select-option value="brahmin">Brahmin</ion-select-option>
+          <ion-select-option value="chhetri">Chhetri</ion-select-option>
+          <ion-select-option value="newar">Newar</ion-select-option>
+          <ion-select-option value="gurung">Gurung</ion-select-option>
+          <ion-select-option value="magar">Magar</ion-select-option>
+          <ion-select-option value="rai">Rai</ion-select-option>
+          <ion-select-option value="limbu">Limbu</ion-select-option>
+          <ion-select-option value="tamang">Tamang</ion-select-option>
+          <ion-select-option value="thakuri">Thakuri</ion-select-option>
+          <ion-select-option value="others">Others</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Sub Caste -->
+      <ion-item>
+        <ion-label position="floating">Sub Caste</ion-label>
+        <ion-select name="sub-caste">
+          <ion-select-option value="brahmin">Brahmin</ion-select-option>
+          <ion-select-option value="chhetri">Chhetri</ion-select-option>
+          <ion-select-option value="newar">Newar</ion-select-option>
+          <ion-select-option value="gurung">Gurung</ion-select-option>
+          <ion-select-option value="magar">Magar</ion-select-option>
+          <ion-select-option value="rai">Rai</ion-select-option>
+          <ion-select-option value="limbu">Limbu</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- save  -->
+
+      <ion-button expand="block" style="margin-top: 10px;">Save</ion-button>
+    </form>
+  </div>
+
+  <!-- hobby information -->
+
+  <!-- checkbox -->
+  <!-- watch tv , Shopping,Hosting guests, Socialization, Watching movies,cooking or eating,reading,reading book -->
+
+
+  <div class="ion-padding">
+    <h2>
+      Hobby Information
+    </h2>
+
+    <form>
+      <!-- Watch TV -->
+      <ion-item>
+        <ion-label>Watch TV</ion-label>
+        <ion-checkbox slot="start" name="watch-tv"></ion-checkbox>
+      </ion-item>
+
+      <!-- Shopping -->
+      <ion-item>
+        <ion-label>Shopping</ion-label>
+        <ion-checkbox slot="start" name="shopping"></ion-checkbox>
+      </ion-item>
+
+      <!-- Hosting Guests -->
+      <ion-item>
+        <ion-label>Hosting Guests</ion-label>
+        <ion-checkbox slot="start" name="hosting-guests"></ion-checkbox>
+      </ion-item>
+
+      <!-- Socialization -->
+      <ion-item>
+        <ion-label>Socialization</ion-label>
+        <ion-checkbox slot="start" name="socialization"></ion-checkbox>
+      </ion-item>
+
+      <!-- Watching Movies -->
+      <ion-item>
+        <ion-label>Watching Movies</ion-label>
+        <ion-checkbox slot="start" name="watching-movies"></ion-checkbox>
+      </ion-item>
+
+      <!-- Cooking or Eating -->
+      <ion-item>
+        <ion-label>Cooking or Eating</ion-label>
+        <ion-checkbox slot="start" name="cooking-eating"></ion-checkbox>
+      </ion-item>
+
+      <!-- Reading -->
+      <ion-item>
+        <ion-label>Reading</ion-label>
+        <ion-checkbox slot="start" name="reading"></ion-checkbox>
+      </ion-item>
+
+      <!-- Reading Book -->
+      <ion-item>
+        <ion-label>Reading Book</ion-label>
+        <ion-checkbox slot="start" name="reading-book"></ion-checkbox>
+      </ion-item>
+
+      <!-- save  -->
+
+      <ion-button expand="block" style="margin-top: 10px;">Save</ion-button>
+    </form>
+
+  </div>
+
+  <!-- Expectations of partners -->
+
+  <!-- Minimum Height (ft) : range with point  -->
+
+  <!-- Maximum Height (ft) : range with point  -->
+
+  <!-- married status - unmarried , break up -->
+
+  <!-- children acceptable :text -->
+  <!-- religin : select - hindu , musim , budhism -->
+
+  <!-- caste  -->
+
+  <!-- gotra  -->
+
+  <!-- educations  -->
+
+  <!-- occupations  -->
+
+  <!-- Magalik :select - yes,no -->
+  <!-- body types : select - thin , normal , fat -->
+
+  <!-- country of interest -->
+
+  <!-- family values -->
+
+  <!-- place of intrest  -->
+
+  <!-- skin color  -->
+
+  <!-- simple need :select - yes,no -->
+
+
+  <div class="ion-padding">
+    <h2>
+      Expectations of Partners
+    </h2>
+
+    <form>
+      <!-- Minimum Height -->
+      <ion-item>
+        <ion-label position="floating">Minimum Height (ft)</ion-label>
+        <ion-input type="text" name="minimum-height" placeholder="Your Minimum Height"></ion-input>
+      </ion-item>
+
+      <!-- Maximum Height -->
+      <ion-item>
+        <ion-label position="floating">Maximum Height (ft)</ion-label>
+        <ion-input type="text" name="maximum-height" placeholder="Your Maximum Height"></ion-input>
+      </ion-item>
+
+      <!-- Marital Status -->
+      <ion-item>
+        <ion-label position="floating">Marital Status</ion-label>
+        <ion-select name="marital-status">
+          <ion-select-option value="unmarried">Unmarried</ion-select-option>
+          <ion-select-option value="break-up">Break Up</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Children Acceptable -->
+      <ion-item>
+        <ion-label position="floating">Children Acceptable</ion-label>
+        <ion-input type="text" name="children-acceptable" placeholder="Your Children Acceptable"></ion-input>
+      </ion-item>
+
+      <!-- Religion -->
+      <ion-item>
+        <ion-label position="floating">Religion</ion-label>
+        <ion-select name="religion">
+          <ion-select-option value="hindu">Hindu</ion-select-option>
+          <ion-select-option value="muslim">Muslim</ion-select-option>
+          <ion-select-option value="buddhism">Buddhism</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Caste -->
+      <ion-item>
+        <ion-label position="floating">Caste</ion-label>
+        <ion-select name="caste">
+          <ion-select-option value="brahmin">Brahmin</ion-select-option>
+          <ion-select-option value="chhetri">Chhetri</ion-select-option>
+          <ion-select-option value="newar">Newar</ion-select-option>
+          <ion-select-option value="gurung">Gurung</ion-select-option>
+          <ion-select-option value="magar">Magar</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </form>
+  </div>
+
+
+
 </ion-content>
