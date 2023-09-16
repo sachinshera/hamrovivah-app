@@ -96,3 +96,12 @@ ion-header {
 //     z-index: 999;
 //     /* Adjust z-index as needed */
 // }
+
+.divider {
+    --inner-padding-bottom: 0px;
+    --inner-padding-top: 0px;
+    --padding-bottom: 0px;
+    --color: #fff;
+    --padding-start: 0px;
+    --padding-end: 0px;
+}

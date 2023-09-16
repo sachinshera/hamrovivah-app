@@ -4,4 +4,7 @@
     <string name="title_activity_main">hamrovivah</string>
     <string name="package_name">io.ionic.starter</string>
     <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="facebook_app_id">280034274792025</string>
+<string name="facebook_client_token">118a27df496dc6c4b1e708d13d56c0e7</string>
+<string name="server_client_id">458774791962-al95v5jospkdn2j42brol8m6kitb00p7.apps.googleusercontent.com</string>
 </resources>

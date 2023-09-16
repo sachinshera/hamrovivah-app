@@ -45,5 +45,43 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+
+
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb280034274792025</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>280034274792025</string>
+	<key>FacebookClientToken</key>
+	<string>118a27df496dc6c4b1e708d13d56c0e7</string>
+	<key>FacebookDisplayName</key>
+	<string>hamrovivah</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fbapi20130214</string>
+		<string>fbapi20130410</string>
+		<string>fbapi20130702</string>
+		<string>fbapi20131010</string>
+		<string>fbapi20131219</string>
+		<string>fbapi20140410</string>
+		<string>fbapi20140116</string>
+		<string>fbapi20150313</string>
+		<string>fbapi20150629</string>
+		<string>fbapi20160328</string>
+		<string>fbauth</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
+
+	<key>REVERSED_CLIENT_ID</key>
+	<string>458774791962-al95v5jospkdn2j42brol8m6kitb00p7.apps.googleusercontent.com</string>
 </dict>
 </plist>

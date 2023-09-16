@@ -1,68 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button><ion-icon name="notifications-outline"></ion-icon>
+
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
 <app-homemenu></app-homemenu>
 
 <ion-content [fullscreen]="true">
-  <!-- info container -->
 
-  <ion-item-group>
-    <ion-item lines="none">
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-menu-button>
-            </ion-menu-button>
-          </ion-buttons>
 
-          <ion-buttons slot="end">
-            <ion-button><ion-icon name="notifications-outline"></ion-icon>
+  <div>
+    <h1 class="heading-text ion-text-center">Find The Perfect Partner for you and your family</h1>
+    <app-profilesearch style="width: 100%;" sticky></app-profilesearch>
+  </div>
 
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
 
-      </ion-header>
-    </ion-item>
+  <app-noticebox></app-noticebox>
+  <div class="ion-text-center">
+    <ion-chip color="primary">
+      <ion-label>Age</ion-label>
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-chip>
 
-    <ion-item lines="none">
+    <ion-chip color="primary">
+      <ion-label>Height</ion-label>
 
-      <h1 class="heading-text ion-text-center">Find The Perfect Partner for you and your family</h1>
-    </ion-item>
-    <ion-item-divider sticky lines="none" class="ion-no-padding">
-      <app-profilesearch style="width: 100%;"></app-profilesearch>
-    </ion-item-divider>
-    <app-noticebox></app-noticebox>
-    <ion-item lines="none">
-      <ion-chip color="primary">
-        <ion-label>Age</ion-label>
-        <ion-icon name="close-circle"></ion-icon>
-      </ion-chip>
+    </ion-chip>
 
-      <ion-chip color="primary">
-        <ion-label>Height</ion-label>
+    <ion-chip color="primary">
+      <ion-label>Religion</ion-label>
 
-      </ion-chip>
+    </ion-chip>
 
-      <ion-chip color="primary">
-        <ion-label>Religion</ion-label>
+    <ion-chip color="primary">
+      <ion-label>City</ion-label>
 
-      </ion-chip>
+    </ion-chip>
 
-      <ion-chip color="primary">
-        <ion-label>City</ion-label>
+    <ion-chip color="primary">
+      <ion-label>Work</ion-label>
+    </ion-chip>
+  </div>
 
-      </ion-chip>
+  <div class="main-content" class="ion-padding">
+    <app-profilelist></app-profilelist>
 
-      <ion-chip color="primary">
-        <ion-label>Work</ion-label>
-      </ion-chip>
-    </ion-item>
-    <ion-item lines="none">
-      <app-profilelist></app-profilelist>
-    </ion-item>
+    <app-profilelist></app-profilelist>
+  </div>
 
-    <ion-item lines="none">
-
-      <app-profilelist></app-profilelist>
-
-    </ion-item>
-  </ion-item-group>
 </ion-content>
