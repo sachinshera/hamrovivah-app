@@ -15,7 +15,7 @@ const routes: Routes = [
         component: ProfilestartComponent
       },
       {
-        path: 'questions/:id',
+        path: 'form/:id',
         component: ProfilequestionComponent
       }
     ]
