@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { register } from 'swiper/element/bundle';
+import { StorageService } from './services/storage.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private storageService: StorageService
+  ) {
     register();
+  };
+
+  async ngOnInit() {
+
   }
 }

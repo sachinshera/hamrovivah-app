@@ -6,16 +6,30 @@
     <ion-title class="">{{form.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content>
 
-<ion-content class="ion-padding">
   <ion-item-group>
-    <ion-item *ngFor="let item of form.Inputs">
-      <ion-label position="floating">{{item.inputName}}</ion-label>
-      <ion-input type="{{item.inputType}}"></ion-input>
-    </ion-item>
+    <form [formGroup]="dynamicForm" (ngsubmit)="submit()" *ngIf="dynamicForm">
+      <ion-item *ngFor="let item of form.Inputs" class="ion-margin">
+        <div [formGroup]="dynamicForm">
+          <!-- form group -->
+          <ion-label position="floating">{{item.inputName}}</ion-label>
+          <ion-input formControlName="{{item.id}}" type="{{item.inputType}}" required="{{item.inputRequired}}"
+            *ngIf="item.inputType != 'select'"></ion-input>
+          <!-- select -->
+          <ion-select formControlName="{{item.id}}" *ngIf="item.inputType == 'select'">
+            <ion-select-option *ngFor="let option of item.inputOptions"
+              value="{{option.value}}">{{option.label}}</ion-select-option>
+          </ion-select>
+        </div>
+
+      </ion-item>
+    </form>
   </ion-item-group>
-
-
-  <!-- next    -->
-  <ion-button expand="block" routerLink="/profilestup/form/{{nextFormId}}">Next</ion-button>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" (click)="submit()">{{btnText}}</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 @Component({
   selector: 'app-onboarding',
   templateUrl: './onboarding.page.html',
@@ -9,10 +10,12 @@ export class OnboardingPage implements OnInit {
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
   constructor(
-    private router: Router
+    private router: Router,
+    private storageService: StorageService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+
   }
 
   continue() {
@@ -24,6 +27,8 @@ export class OnboardingPage implements OnInit {
   }
 
   start() {
+    // set the onboarding flag to true
+    this.storageService.set('onboardingComplete', true);
     this.router.navigate(['/login']);
   }
 }

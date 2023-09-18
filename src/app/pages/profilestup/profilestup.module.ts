@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ProfilestupPageRoutingModule } from './profilestup-routing.module';
@@ -9,14 +8,14 @@ import { ProfilestupPageRoutingModule } from './profilestup-routing.module';
 import { ProfilestupPage } from './profilestup.page';
 import { ProfilestartComponent } from 'src/app/components/profilestart/profilestart.component';
 import { ProfilequestionComponent } from 'src/app/components/profilequestion/profilequestion.component';
-
-@NgModule({
+import { FormsuccessComponent } from 'src/app/components/formsuccess/formsuccess.component'; @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilestupPageRoutingModule
+    ProfilestupPageRoutingModule,
+    ReactiveFormsModule
   ],
-  declarations: [ProfilestupPage, ProfilestartComponent, ProfilequestionComponent]
+  declarations: [ProfilestupPage, ProfilestartComponent, ProfilequestionComponent, FormsuccessComponent]
 })
 export class ProfilestupPageModule { }
