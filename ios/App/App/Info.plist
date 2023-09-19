@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>hamrovivah</string>
+	<string>Hamrovivah</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -45,8 +45,6 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-
-
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -80,8 +78,7 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
-
 	<key>REVERSED_CLIENT_ID</key>
-	<string>458774791962-al95v5jospkdn2j42brol8m6kitb00p7.apps.googleusercontent.com</string>
+	<string>712518121703-sp5t3febjcq462fq40ck5e5m39rgjq5u.apps.googleusercontent.com</string>
 </dict>
 </plist>

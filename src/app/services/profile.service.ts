@@ -9,10 +9,12 @@ export class ProfileService {
 
   }
 
+  public api = "http://localhost:3000";
+
   // get all form categiory
   getFormCategory() {
     return new Promise((resolve, reject) => {
-      fetch(environment.api + '/formcategory/order')
+      fetch(this.api + '/formcategory/order')
         .then(res => res.json())
         .then(data => {
           resolve(data);
@@ -25,7 +27,7 @@ export class ProfileService {
 
   getFormCategoryById(id: string) {
     return new Promise((resolve, reject) => {
-      fetch(environment.api + '/formcategory/' + id)
+      fetch(this.api + '/formcategory/' + id)
         .then(res => res.json())
         .then(data => {
           resolve(data);

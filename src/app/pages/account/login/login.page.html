@@ -1,52 +1,46 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title class="">Login</ion-title>
+    <ion-title class="ion-text-center">
+      Start your journey
+    </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <!-- logo box -->
-  <div class="ion-text-center ion-padding">
-    <img src="assets/logo.png" alt="HamroVivah" />
-  </div>
-  <!-- login box emial and password -->
-
-  <div class="ion-padding">
-    <ion-item>
-      <ion-label position="floating">Mobile</ion-label>
-      <ion-input type="email"></ion-input>
-    </ion-item>
-
-    <ion-button expand="block" style="margin-top: 10px;" routerLink="/home">Log In</ion-button>
+  <div class="main-content">
     <div class="ion-text-center">
-      <p>
-        Don't have an account? <a routerLink="/signup">Sign Up</a>
-      </p>
+      <img src="assets/logo.png" alt="HamroVivah" />
     </div>
+    <!-- login box emial and password -->
+
+    <!-- <div style="width: 90%;" class="ion-margin">
+      <ion-item>
+        <ion-label position="floating">Mobile</ion-label>
+        <ion-input type="number" [(ngModel)]="userMobileNumber"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" style="margin-top: 10px;" (click)="loginwithmobile()">Continue</ion-button>
+    </div> -->
   </div>
-
-  <!-- social login -->
-
-  <div class="ion-padding">
-    <!-- use utton group and heading -->
-    <h5 class="ion-text-center">
-      Log In with
-    </h5>
-
-    <ion-button expand="block" color="danger" (click)="Googlelogin()">
-      <ion-icon name="logo-google"></ion-icon>
-      Google
-
-    </ion-button>
-
-    <ion-button expand="block" color="primary" (click)="facebookLogin()">
-      <ion-icon name="logo-facebook"></ion-icon>
-      Facebook
-
-    </ion-button>
-  </div>
-
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="ion-padding">
+      <!-- use utton group and heading -->
+      <ion-title class="ion-text-center ion-margin">
+        Continue with
+      </ion-title>
+
+      <ion-button expand="block" color="danger" (click)="loginwithgoogle()">
+        <ion-icon name="logo-google"></ion-icon>
+        Google
+      </ion-button>
+
+      <ion-button expand="block" color="primary" (click)="loginwithfacebook()">
+        <ion-icon name="logo-facebook"></ion-icon>
+        Facebook
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

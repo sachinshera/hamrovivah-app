@@ -1,19 +1,26 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'hamrovivah',
+  appId: 'com.hamrovivah.app',
+  appName: 'Hamro Vivah',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
+    iosScheme: 'https',
+
   },
   plugins: {
-    GoogleAuth: {
-      "scopes": ["profile", "email"],
-      "serverClientId": "458774791962-al95v5jospkdn2j42brol8m6kitb00p7.apps.googleusercontent.com",
+    "SplashScreen": {
+      "launchShowDuration": 0
+    },
+    "GoogleAuth": {
+      "scopes": [
+        "profile",
+        "email"
+      ],
+      "serverClientId": "712518121703-ccecdguj89jr051f33bt3p40bqq0uflb.apps.googleusercontent.com",
       "forceCodeForRefreshToken": true
     }
   }
-};
-
+}
 export default config;

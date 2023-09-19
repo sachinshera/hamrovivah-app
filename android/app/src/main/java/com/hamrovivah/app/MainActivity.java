@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.hamrovivah.app;
 
 import com.getcapacitor.BridgeActivity;
 
