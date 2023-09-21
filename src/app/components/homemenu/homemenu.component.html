@@ -5,10 +5,10 @@
       <div class="menu-toolbar">
         <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="" class="menu-user">
         <div>
-          <span>Sachin Kumar </span>
-          <small>
-            +91 8200000000
-          </small>
+          <span>{{name}}</span>
+          <p>
+            {{mobile}}
+          </p>
         </div>
       </div>
     </ion-toolbar>
@@ -62,7 +62,7 @@
         </ion-item>
 
 
-        <ion-item routerLink="/home" lines="none">
+        <ion-item (click)="logout()" lines="none">
           <ion-icon name="log-in-outline"></ion-icon>
           <ion-label>
             Logout

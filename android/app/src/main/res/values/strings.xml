@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Hamrovivah</string>
-    <string name="title_activity_main">Hamrovivah</string>
+    <string name="app_name">Hamro Vivah</string>
+    <string name="title_activity_main">Hamro Vivah</string>
     <string name="package_name">com.hamrovivah.app</string>
     <string name="custom_url_scheme">com.hamrovivah.app</string>
 

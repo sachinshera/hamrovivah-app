@@ -6,10 +6,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <!-- <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/280034274792025" />
-        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/118a27df496dc6c4b1e708d13d56c0e7"/> -->
-
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
             android:name=".MainActivity"

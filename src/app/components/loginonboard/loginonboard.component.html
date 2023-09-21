@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true">
+  <div class="main-content">
+    <div class="ion-margin inputcont">
+      <div style="margin: 50px 0px;">
+        <h2 class="ion-text-center">
+          Welcome to Hamro Vivah
+        </h2>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <ion-button expand="block" class="ion-margin" size="medium" (click)="updateName()">
+        Finish
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

@@ -1,14 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-homemenu',
   templateUrl: './homemenu.component.html',
   styleUrls: ['./homemenu.component.scss'],
 })
-export class HomemenuComponent  implements OnInit {
+export class HomemenuComponent implements OnInit {
+  public name: string = "";
+  public mobile: string = "";
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) { }
 
-  constructor() { }
+  ngOnInit() {
+    this.loginService.getUserData().then((userdata) => {
+      userdata = JSON.parse(userdata);
+      this.name = userdata.name;
+      this.mobile = userdata.mobile;
+    }).catch((err) => { });
+  };
 
-  ngOnInit() {}
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/login']);
+
+  }
 
 }

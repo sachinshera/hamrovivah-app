@@ -7,8 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { SignupPageRoutingModule } from './signup-routing.module';
 
 import { SignupPage } from './signup.page';
-import { CountryselectComponent } from 'src/app/components/actions/countryselect/countryselect.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +14,6 @@ import { CountryselectComponent } from 'src/app/components/actions/countryselect
     IonicModule,
     SignupPageRoutingModule
   ],
-  declarations: [SignupPage, CountryselectComponent]
+  declarations: [SignupPage]
 })
 export class SignupPageModule { }

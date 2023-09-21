@@ -5,13 +5,13 @@ const config: CapacitorConfig = {
   appName: 'Hamro Vivah',
   webDir: 'www',
   server: {
-    androidScheme: 'https',
-    iosScheme: 'https',
-
+    androidScheme: 'http',
+    iosScheme: 'http',
   },
   plugins: {
     "SplashScreen": {
-      "launchShowDuration": 0
+      "launchShowDuration": 3000,
+      "launchAutoHide": true,
     },
     "GoogleAuth": {
       "scopes": [

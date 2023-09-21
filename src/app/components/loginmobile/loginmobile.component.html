@@ -1,0 +1,59 @@
+<ion-content [fullscreen]="true">
+  <div class="main-content">
+    <div class="ion-text-center">
+      <img src="assets/logo.png" alt="HamroVivah" />
+    </div>
+    <!-- login box emial and password -->
+
+    <div class="ion-margin inputcont">
+      <div style="margin: 50px 0px;">
+        <h2 class="ion-text-center">
+          Welcome to Hamro Vivah
+        </h2>
+        <!-- <h6 class="ion-text-center">
+          Enter your mobile number to get started
+        </h6> -->
+      </div>
+
+      <ion-item lines="inset" *ngIf="!showOtpBox">
+        <ion-button (click)="OpenSelectCountryModel()" size="medium" color="icon-only"
+          class="ion-no-padding country-select-btn">
+          {{ selectedCountriesText }}
+        </ion-button>
+        <ion-input type="text" [(ngModel)]="userMobileNumber" placeholder="XXX XXX XXX X"></ion-input>
+        <ion-button expand="block" size="medium" (click)="loginwithmobile()">
+          <ion-icon name="send-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <!-- otp box -->
+
+      <div class="otpcont" *ngIf="showOtpBox">
+        <div style="padding: 10px;">
+          <ion-text slot="end" color="success" class="ion-margin ion-padding">
+            Enter the OTP sent to your mobile number
+          </ion-text>
+        </div>
+        <ion-item lines="inset">
+          <ion-input type="text" [(ngModel)]="userOtp" placeholder="Enter OTP"></ion-input>
+          <ion-button expand="block" size="medium" (click)="loginwithotp()">
+            <ion-icon name="send-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <!-- resend otp -->
+        <ion-button size="small" fill="icon-only" class="ion-margin" (click)="resend()">
+          Re-Send OTP
+        </ion-button>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-modal trigger="select-country" #modal>
+  <ng-template>
+    <app-countryselect class="ion-page" title="" [items]="countries" [selectedItems]="selectedCountries"
+      (selectionChange)="countrySelectionChange($event)" (selectionCancel)="modal.dismiss()"></app-countryselect>
+  </ng-template>
+</ion-modal>
