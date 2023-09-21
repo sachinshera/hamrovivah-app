@@ -34,18 +34,18 @@ export class AuthguardGuard implements CanActivate {
 
     // get user data
 
-    try {
-      let userdata = await this.loginService.getUserData();
-      userdata = JSON.parse(userdata);
-      if (userdata.name == null || userdata.name == undefined || userdata.name == "") {
-        this.router.navigate(['/login/onboard']);
-        return false;
-      }
-      return true;
-    } catch (err) {
-      this.router.navigate(['/login']);
-      return false;
-    }
+    // try {
+    //   let userdata = await this.loginService.getUserData();
+    //   userdata = JSON.parse(userdata);
+    //   if (userdata.name == null || userdata.name == undefined || userdata.name == "") {
+    //     this.router.navigate(['/login/onboard']);
+    //     return false;
+    //   }
+    //   return true;
+    // } catch (err) {
+    //   this.router.navigate(['/login']);
+    //   return false;
+    // }
 
     return true;
   }
