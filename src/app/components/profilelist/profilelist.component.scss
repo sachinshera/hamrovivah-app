@@ -16,3 +16,11 @@ ion-card {
     justify-content: space-between;
     align-items: center;
 }
+
+// change for ios devices
+
+@media only screen and (max-width: 768px) {
+    .profile-name-text {
+        font-size: 1.5rem;
+    }
+}

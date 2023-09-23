@@ -148,5 +148,14 @@ export class LoginService {
         reject(err);
       });
     });
+  };
+
+  // get token
+
+  getToken(): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      let token = await this.storageService.get("session");
+      resolve(token);
+    });
   }
 }

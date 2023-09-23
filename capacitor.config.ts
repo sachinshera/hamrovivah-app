@@ -6,13 +6,9 @@ const config: CapacitorConfig = {
   webDir: 'www',
   server: {
     androidScheme: 'http',
-    iosScheme: 'http',
+    iosScheme: 'https',
   },
   plugins: {
-    "SplashScreen": {
-      "launchShowDuration": 3000,
-      "launchAutoHide": true,
-    },
     "GoogleAuth": {
       "scopes": [
         "profile",

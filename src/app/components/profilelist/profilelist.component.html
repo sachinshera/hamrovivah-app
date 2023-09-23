@@ -6,7 +6,7 @@
       People You May Like
     </h5>
 
-    <ion-button fill="outline" size="small">View More<ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+    <ion-button fill="icon-only" size="small"><ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
   </div>
   <ion-grid>
     <ion-row>
@@ -15,29 +15,14 @@
           <ion-card>
             <img alt="Silhouette of mountains" style="width: 100%;" src="{{item.ProfilePic}}" />
             <ion-card-header>
-              <ion-card-title>{{item.Fullname}}</ion-card-title>
+              <ion-card-title class="profile-name-text">{{item.Fullname}}</ion-card-title>
               <ion-card-subtitle>{{item.Profession}}</ion-card-subtitle>
-              <ion-card-subtitle>{{item.Age}}, {{item.Height}}</ion-card-subtitle>
+              <ion-card-subtitle>{{item.Age}}</ion-card-subtitle>
             </ion-card-header>
 
             <ion-card-content>
               {{item.Religion}}, {{item.Address}}
             </ion-card-content>
-            <!-- <ion-card-content>
-              <ion-grid>
-                <ion-row class="ion-text-center">
-                  <ion-col size="6">
-                    <ion-icon name="heart-outline" style="color: pink;font-size: 20px;"></ion-icon>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-icon name="information-circle-outline" style="color: blue;font-size: 20px;"></ion-icon>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-  
-  
-            </ion-card-content> -->
-
           </ion-card>
         </div>
       </ion-col>

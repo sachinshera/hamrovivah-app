@@ -17,9 +17,6 @@ export class AppComponent implements OnInit {
   };
 
   async ngOnInit() {
-    await SplashScreen.show({
-      showDuration: 2000,
-      autoHide: true,
-    });
+
   }
 }

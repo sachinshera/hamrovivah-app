@@ -4,20 +4,35 @@
       <ion-back-button defaultHref="/profilestup"></ion-back-button>
     </ion-buttons>
     <ion-title class="">{{form.name}}</ion-title>
+    <ion-progress-bar [value]="getPercentage()"></ion-progress-bar>
   </ion-toolbar>
 </ion-header>
 <ion-content>
 
   <ion-item-group>
     <form [formGroup]="dynamicForm" (ngsubmit)="submit()" *ngIf="dynamicForm">
+      <ion-card *ngIf="formId=='unfilled'" color="medium">
+        <ion-card-content>
+          <p class="ion-text-center" style="font-size: 12px;">
+            <ion-text>
+              You are very close to complete your profile setup.
+              <br>
+              Please fill the following details to complete your
+              profile
+            </ion-text>
+          </p>
+        </ion-card-content>
+
+      </ion-card>
       <ion-item *ngFor="let item of form.Inputs" class="ion-margin">
         <div [formGroup]="dynamicForm">
           <!-- form group -->
           <ion-label position="floating">{{item.inputName}}</ion-label>
           <ion-input formControlName="{{item.id}}" type="{{item.inputType}}" required="{{item.inputRequired}}"
-            *ngIf="item.inputType != 'select'"></ion-input>
+            *ngIf="item.inputType != 'select'" value="{{item.Values?.inputValue}}"></ion-input>
           <!-- select -->
-          <ion-select formControlName="{{item.id}}" *ngIf="item.inputType == 'select'">
+          <ion-select value="{{item.Values?.inputValue}}" formControlName="{{item.id}}"
+            *ngIf="item.inputType == 'select'">
             <ion-select-option *ngFor="let option of item.inputOptions"
               value="{{option.value}}">{{option.label}}</ion-select-option>
           </ion-select>
@@ -30,6 +45,9 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button expand="block" (click)="submit()">{{btnText}}</ion-button>
+    <ion-button expand="block" color="icon-only" *ngIf="!isLastForm && formId!='unfilled'"
+      (click)="skip()">{{skipText}}</ion-button>
+    <ion-button expand="block" color="success" (click)="submit()">{{btnText}}</ion-button>
+
   </ion-toolbar>
 </ion-footer>
