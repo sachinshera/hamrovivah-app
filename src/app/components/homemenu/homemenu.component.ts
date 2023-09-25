@@ -9,6 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class HomemenuComponent implements OnInit {
   public name: string = "";
   public mobile: string = "";
+  public profilePic: string = "";
   constructor(
     private loginService: LoginService,
     private router: Router
@@ -16,10 +17,14 @@ export class HomemenuComponent implements OnInit {
 
   ngOnInit() {
     this.loginService.getUserData().then((userdata) => {
-      userdata = JSON.parse(userdata);
+      // userdata = JSON.parse(userdata);
       this.name = userdata.name;
       this.mobile = userdata.mobile;
-    }).catch((err) => { });
+      this.profilePic = userdata.proifleImage;
+      console.log(userdata);
+    }).catch((err) => {
+      console.log(err)
+    });
   };
 
   logout() {

@@ -3,12 +3,10 @@
     <ion-toolbar>
       <!-- align both img and name a same line  -->
       <div class="menu-toolbar">
-        <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="" class="menu-user">
+        <img src="{{profilePic}}" alt="" class="menu-user" *ngIf="profilePic != ''">
+        <img src="/assets/user.png" alt="" *ngIf="profilePic == ''">
         <div>
-          <span>{{name}}</span>
-          <p>
-            {{mobile}}
-          </p>
+          <span>{{mobile}}</span>
         </div>
       </div>
     </ion-toolbar>
@@ -25,16 +23,16 @@
 
 
 
-        <ion-item routerLink="/myprofile" lines="none">
+        <ion-item routerLink="/profilestup/form/0" lines="none">
           <ion-icon name="person-outline"></ion-icon>
           <ion-label>
             My Profile
           </ion-label>
         </ion-item>
         <ion-item routerLink="/partner-prefrences" lines="none">
-          <ion-icon name="construct-outline"></ion-icon>
+          <ion-icon name="heart-outline"></ion-icon>
           <ion-label>
-            Partner Prefrences
+            My Photos
           </ion-label>
         </ion-item>
 

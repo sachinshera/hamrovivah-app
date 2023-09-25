@@ -18,7 +18,6 @@ export class LoginService {
   verifySessionToken(): Promise<any> {
     return new Promise(async (resolve, reject) => {
       this.storageService.get("session").then((token) => {
-        console.log(token)
         // check if token is not null or undefined
         if (token != null || token != undefined) {
           // veryfy token from server side in header Authorization
@@ -107,8 +106,16 @@ export class LoginService {
 
   getUserData(): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      const userData: any = await this.storageService.get("user");
-      resolve(userData);
+      let session = await this.storageService.get("session");
+      this.http.get(environment.api + "/users", {
+        headers: {
+          "Authorization": session
+        }
+      }).subscribe((res: any) => {
+        resolve(res);
+      }, err => {
+        reject(err);
+      })
     });
   };
 

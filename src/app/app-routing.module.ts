@@ -47,13 +47,17 @@ const routes: Routes = [
         path: 'profilestup',
         loadChildren: () => import('./pages/profilestup/profilestup.module').then(m => m.ProfilestupPageModule)
       },
+      {
+        canActivate: [AuthguardGuard],
+        "path": "photos",
+        "loadChildren": () => import("./pages/photos/photos.module").then(m => m.PhotosPageModule)
+      }
     ]
   },
   {
     path: "**",
     redirectTo: "home"
   }
-
 ];
 
 @NgModule({

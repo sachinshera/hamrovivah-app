@@ -11,7 +11,7 @@
 
   <ion-item-group>
     <form [formGroup]="dynamicForm" (ngsubmit)="submit()" *ngIf="dynamicForm">
-      <ion-card *ngIf="formId=='unfilled'" color="medium">
+      <ion-card *ngIf="formId=='unfilled' && form.Inputs.length>0" color="medium">
         <ion-card-content>
           <p class="ion-text-center" style="font-size: 12px;">
             <ion-text>
@@ -24,6 +24,42 @@
         </ion-card-content>
 
       </ion-card>
+      <ion-card *ngIf="formId=='unfilled' && form.Inputs.length==0" color="medium">
+        <ion-card-content>
+          <p class="ion-text-center" style="font-size: 12px;">
+            <ion-text>
+              You have completed your profile setup.
+              <br>
+              Please click on the button below to Finish
+            </ion-text>
+          </p>
+        </ion-card-content>
+
+      </ion-card>
+
+
+      <!-- Upload Profile Pic -->
+      <ion-card class="ion-text-center" *ngIf="formId== 0">
+        <ion-card-header>
+          <ion-card-title>Upload Profile Pic</ion-card-title>
+          <p>
+            Please upload your profile picture
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+
+          <ion-avatar style="margin: 0 auto;width: 100px; height: 100px;">
+            <img src="{{userProfilePic}}" alt="" *ngIf="userProfilePic != ''">
+            <img src="/assets/user.png" alt="" *ngIf="userProfilePic == ''">
+          </ion-avatar>
+          <ion-button color="icon-only" (click)="changeProfilePic()">
+            Change
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+      <!-- change btn -->
+
+
       <ion-item *ngFor="let item of form.Inputs" class="ion-margin">
         <div [formGroup]="dynamicForm">
           <!-- form group -->
@@ -45,7 +81,7 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button expand="block" color="icon-only" *ngIf="!isLastForm && formId!='unfilled'"
+    <ion-button expand="block" color="icon-only" *ngIf="!isLastForm && formId!='unfilled' && formId!=0"
       (click)="skip()">{{skipText}}</ion-button>
     <ion-button expand="block" color="success" (click)="submit()">{{btnText}}</ion-button>
 

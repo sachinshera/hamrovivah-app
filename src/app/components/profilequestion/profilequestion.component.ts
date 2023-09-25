@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { UserService } from 'src/app/services/user.service';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-profilequestion',
   templateUrl: './profilequestion.component.html',
@@ -16,7 +18,9 @@ export class ProfilequestionComponent implements OnInit {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public toastController: ToastController,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public userService: UserService,
+    public loadingController: LoadingController
   ) { }
 
   public form: any = [];
@@ -29,6 +33,10 @@ export class ProfilequestionComponent implements OnInit {
   public alertButtons = ['OK'];
   public skipText = "Skip";
   public isLastForm = false;
+  public isProfilpicUpload = false;
+  public userProfilePic = "";
+  public userUploadedPic: any;
+  public loading: any;
 
 
   ngOnInit() {
@@ -36,6 +44,7 @@ export class ProfilequestionComponent implements OnInit {
       this.getform();
     }
     this.formId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.getUserData();
   }
 
   // get form
@@ -72,7 +81,7 @@ export class ProfilequestionComponent implements OnInit {
       else {
         let formData = this.allForm[0];
         formData = data.data[Number(this.formId)];
-        this.nextFormId = Number(this.formId + 1);
+        this.nextFormId = Number(this.formId) + 1;
         this.form = formData;
       }
       this.getFormControlsFields();
@@ -150,7 +159,28 @@ export class ProfilequestionComponent implements OnInit {
         });
       } else {
         this.profileService.updateValues(bindedFormValue).then((data: any) => {
-          this.router.navigate(['profilestup/form/', this.nextFormId]);
+          // check if form is unfilled form
+          if (this.formId == "unfilled") {
+            this.router.navigate(['/profilestup/form/success']);
+          }
+
+          // check form id is 0 and profile pic is not uploaded
+          else if (this.formId == 0 && this.isProfilpicUpload == false) {
+            this.alertController.create({
+              header: "Profile Pic",
+              message: "Please upload profile pic",
+              buttons: this.alertButtons
+            }).then((alert) => {
+              alert.present();
+            });
+          }
+
+          else if (this.formId == this.allForm.length - 1) {
+            this.router.navigate(['/profilestup/form/success']);
+          } else {
+            this.router.navigate(['profilestup/form/', this.nextFormId]);
+          }
+
         }).catch((err) => {
           let toast = this.toastController.create({
             message: err,
@@ -209,6 +239,56 @@ export class ProfilequestionComponent implements OnInit {
     };
 
     return unfilledFields;
+  }
+
+  // get user data
+
+  getUserData() {
+    this.userService.getUserDetails().then((data: any) => {
+      if (data.proifleImage != null) {
+        this.userProfilePic = data.proifleImage;
+        this.isProfilpicUpload = true;
+      }
+    }).catch((err) => {
+      console.log(err);
+      this.userProfilePic = "";
+    });
+  };
+
+  changeProfilePic() {
+    let input = document.createElement("input");
+    input.type = "file";
+    input.click();
+    input.onchange = (e: any) => {
+      this.userUploadedPic = e.target.files[0];
+      let formData = new FormData();
+      formData.append("file", this.userUploadedPic);
+      this.loading = this.loadingController.create({
+        message: "Uploading profile pic..."
+      });
+      this.loading.then((load: any) => {
+        load.present();
+      });
+      this.userService.uploadProfilePic(formData).then((data: any) => {
+        this.userProfilePic = data.proifleImage;
+        let toast = this.toastController.create({
+          message: "Profile pic uploaded successfully",
+          duration: 2000,
+          position: "bottom",
+          color: "success",
+          icon: "checkmark-circle-outline"
+        });
+        toast.then((toast) => {
+          toast.present();
+        });
+        this.loading.then((load: any) => {
+          load.dismiss();
+        });
+        this.isProfilpicUpload = true;
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
   }
 
 

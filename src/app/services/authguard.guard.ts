@@ -17,7 +17,7 @@ export class AuthguardGuard implements CanActivate {
     state: any
   ): Promise<boolean> => {
     var onboardingComplete: any = await this.storageService.get('onboardingComplete');
-    if (onboardingComplete == null && onboardingComplete == 'false') {
+    if (onboardingComplete == null || onboardingComplete == 'false') {
       this.router.navigate(['/onboarding']);
       return false;
     };
