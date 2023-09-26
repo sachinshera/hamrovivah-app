@@ -103,19 +103,23 @@ export class LoginPage implements OnInit {
 
   loginwithotp() {
     this.LoginService.verifyLoginOtpRequest(this.otpToken, this.userOtp).then((res: any) => {
-      this.LoginService.setSessionToken(res.token);
-      this.LoginService.setUserData(JSON.stringify(res.user));
-      let successToast = this.toastController.create({
-        message: 'Login success',
-        duration: 2000,
-        color: 'success',
-        position: 'bottom'
+      let toast = this.toastController.create({
+        message: "Login successfully",
+        duration: 1500,
+        color: "success",
+        position: "bottom",
+        cssClass: "toast",
       });
-      successToast.then((toast) => {
+
+      toast.then((toast) => {
         toast.present();
       });
-      // refirect to home page
+
+      this.LoginService.setSessionToken(res.token);
+      this.LoginService.setUserData(JSON.stringify(res.user));
       this.router.navigate(['/']);
+      this.showOtpBox = false;
+      // refirect to home page
     }).catch((err: any) => {
       const toast = this.toastController.create({
         message: err.error.message,

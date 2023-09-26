@@ -7,20 +7,31 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
 
   <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
   <!-- ionic list with image thumbnails -->
   <ion-list>
     <ion-grid>
       <ion-row>
         <ion-col size="6" *ngFor="let photo of userPhotos" class="ion-no-padding" (click)="viewPhoto(photo.file)"
           (contextmenu)="photosActions(photo.id)">
-          <ion-img [src]="photo.file" class="preview-img ion-no-margin" />
+          <ion-img [src]="photo.file" class="preview-img ion-no-margin prev-{{photo.id}}"
+            (ionImgDidLoad)="logingImg(photo.id)" (ionError)="imgLoadError(photo.id)"
+            (ionImgDidLoad)="imageLoaded(photo.id)" />
+
+          <ion-skeleton-text animated style="width: 100%; height: 100%;" class="preview-img"
+            class="ske-{{photo.id}}"></ion-skeleton-text>
         </ion-col>
+
+        <ng-template *ngIf="isloading">
+          <ion-col size="6" *ngFor="let photo of skeletonPhotos" class="ion-no-padding">
+            <ion-skeleton-text animated style="width: 100%; height: 100%;" class="preview-img"></ion-skeleton-text>
+          </ion-col>
+        </ng-template>
       </ion-row>
     </ion-grid>
     <!-- <ion-item *ngFor="let photo of userPhotos">
@@ -31,35 +42,37 @@
   <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
     <ion-infinite-scroll-content loadingText="Please wait..." loadingSpinner="bubbles"></ion-infinite-scroll-content>
   </ion-infinite-scroll>
+</ion-content>
 
-  <ion-fab slot="fixed" vertical="bottom" horizontal="center">
-    <ion-fab-button (click)="uploadPhoto()">
-      <!-- upload button -->
-      <ion-icon name="cloud-upload-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 
-  <!-- view modal -->
+<ion-fab slot="fixed" vertical="bottom" horizontal="center">
+  <ion-fab-button (click)="uploadPhoto()">
+    <ion-icon name="cloud-upload-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 
-  <ion-modal trigger="open-modal" #viewModal>
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>{{viewCurrentFilename}}</ion-title>
-          <ion-buttons slot="end">
+<!-- view modal -->
 
-            <ion-button (click)="closeModalView()" [strong]="true">
-              <ion-icon name="close-outline"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-no-padding">
-        <div class="view-img-modal-cont">
-          <ion-img src="{{viewCurrentPhoto}}"></ion-img>
-        </div>
-      </ion-content>
-      <ion-footer class="ion-padding ion-text-center" slot="primary">
+<ion-modal trigger="open-modal" #viewModal>
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>{{viewCurrentFilename}}</ion-title>
+        <ion-buttons slot="end">
+
+          <ion-button (click)="closeModalView()" [strong]="true">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-no-padding">
+      <div class="view-img-modal-cont">
+        <ion-img src="{{viewCurrentPhoto}}"></ion-img>
+      </div>
+    </ion-content>
+    <ion-footer class="ion-padding img-view-footer">
+      <ion-buttons>
         <ion-button size="small" (click)="deleteCurrent()">
           <ion-icon name="trash-outline"></ion-icon> Delete
         </ion-button>
@@ -71,8 +84,7 @@
         <ion-button size="small" (click)="shareCurrent()">
           <ion-icon name="share-social-outline"></ion-icon> Share
         </ion-button>
-      </ion-footer>
-    </ng-template>
-  </ion-modal>
-
-</ion-content>
+      </ion-buttons>
+    </ion-footer>
+  </ng-template>
+</ion-modal>

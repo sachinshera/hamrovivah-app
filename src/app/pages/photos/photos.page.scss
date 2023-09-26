@@ -2,10 +2,11 @@
     width: 100% !important;
     height: 150px !important;
     object-fit: cover;
-    border-radius: 10px !important;
 }
 
-;
+.hide {
+    display: none;
+}
 
 .view-img-modal-cont {
     width: 100%;
@@ -14,4 +15,20 @@
     justify-content: center !important;
     align-items: center !important;
     flex-direction: column !important;
+}
+
+.img-view-footer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.img-view-footer ion-buttons {
+    --background: transparent !important;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-homemenu',
@@ -12,7 +13,8 @@ export class HomemenuComponent implements OnInit {
   public profilePic: string = "";
   constructor(
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -30,7 +32,17 @@ export class HomemenuComponent implements OnInit {
   logout() {
     this.loginService.logout();
     this.router.navigate(['/login']);
+    let toast = this.toastController.create({
+      message: "Logged out successfully",
+      duration: 2000,
+      color: "success",
+      position: "top",
+      cssClass: "toast",
+    });
 
+    toast.then((toast) => {
+      toast.present();
+    });
   }
 
 }

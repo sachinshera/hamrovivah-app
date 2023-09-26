@@ -4,7 +4,6 @@ import { ActionSheetController, AlertController, ModalController, ToastControlle
 import { LoadingController } from '@ionic/angular';
 import { IonModal } from '@ionic/angular';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
-import { Share } from '@capacitor/share';
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.page.html',
@@ -28,6 +27,8 @@ export class PhotosPage implements OnInit {
   public viewCurrentPhoto = "";
   public viewCurrentFilename = "";
   public viewCurrentid = "";
+  public skeletonPhotos = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  public isloading = true;
 
   ngOnInit() {
     this.getUserPhotos();
@@ -247,17 +248,6 @@ export class PhotosPage implements OnInit {
   shareCurrent() {
     let url = this.viewCurrentPhoto;
     let filename = this.viewCurrentFilename;
-
-    Share.share({
-      title: filename,
-      text: filename,
-      url: url,
-      dialogTitle: filename
-    }).then((res: any) => {
-      console.log(res);
-    }).catch(err => {
-      console.error(err);
-    });
   };
 
   // delete current
@@ -265,5 +255,59 @@ export class PhotosPage implements OnInit {
   deleteCurrent() {
     this.deletePhoto(this.viewCurrentid);
     this.viewModal.dismiss();
+  };
+
+  logingImg($id: any) {
+    // show skeleton
+    console.log("loading", $id);
+
+    // select img class prev-{{id}}
+
+    let img = document.querySelector(".prev-" + $id);
+
+    // select skeleton class ske-{{id}}
+
+    let ske = document.querySelector(".ske-" + $id);
+
+    // show skeleton and hide img
+
+    img?.classList.add("hide");
+    ske?.classList.remove("hide");
+  }
+
+  imgLoadError($id: any) {
+    console.log("error load", $id);
+
+    // select img class prev-{{id}}
+
+    let img = document.querySelector(".prev-" + $id);
+
+    // select skeleton class ske-{{id}}
+
+    let ske = document.querySelector(".ske-" + $id);
+
+    // show skeleton and hide img
+
+    img?.classList.add("hide");
+
+    ske?.classList.remove("hide");
+  };
+
+  imageLoaded($id: any) {
+    console.log("loaded", $id);
+
+    // select img class prev-{{id}}
+
+    let img = document.querySelector(".prev-" + $id);
+
+    // select skeleton class ske-{{id}}
+
+    let ske = document.querySelector(".ske-" + $id);
+
+    // show skeleton and hide img
+
+    img?.classList.remove("hide");
+
+    ske?.classList.add("hide");
   }
 }
