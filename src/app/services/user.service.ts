@@ -48,5 +48,59 @@ export class UserService {
           reject(err);
         });
     });
+  };
+
+  // get users photos
+
+  getUsersPhotos(page: number) {
+    return new Promise(async (resolve, reject) => {
+      var session = await this.storageService.get("session");
+      this.http.get(environment.api + "/users/files/images/" + page, {
+        headers: {
+          "Authorization": session
+        }
+      })
+        .subscribe((res: any) => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  };
+
+  // delete photo
+
+  deletePhoto(id: any) {
+    return new Promise(async (resolve, reject) => {
+      var session = await this.storageService.get("session");
+      this.http.delete(environment.api + "/users/files/" + id, {
+        headers: {
+          "Authorization": session
+        }
+      })
+        .subscribe((res: any) => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  };
+
+  // upload file
+
+  uploadFile(formData: any) {
+    return new Promise(async (resolve, reject) => {
+      var session = await this.storageService.get("session");
+      this.http.post(environment.api + "/users/files", formData, {
+        headers: {
+          "Authorization": session
+        }
+      })
+        .subscribe((res: any) => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
   }
 }
