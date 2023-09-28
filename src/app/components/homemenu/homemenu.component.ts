@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class HomemenuComponent implements OnInit {
   public name: string = "";
   public mobile: string = "";
-  public profilePic: string = "";
+  public profilePic: any = null;
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -27,6 +27,8 @@ export class HomemenuComponent implements OnInit {
     }).catch((err) => {
       console.log(err)
     });
+
+    console.log(this.profilePic);
   };
 
   logout() {

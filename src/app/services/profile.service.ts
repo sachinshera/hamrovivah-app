@@ -11,6 +11,24 @@ export class ProfileService {
   }
 
   public api = environment.api;
+  // get all profiles
+
+  getProfiles(page: number) {
+    return new Promise(async (resolve, reject) => {
+      let token = await this.LoginService.getToken();
+      fetch(this.api + '/profile?page' + page, {
+        method: 'GET',
+        headers: {
+          'Authorization': token
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => reject(err));
+    })
+  };
 
   // get all form categiory
   getFormCategory() {

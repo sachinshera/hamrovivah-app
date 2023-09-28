@@ -1,27 +1,36 @@
-<ion-header>
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button>
       </ion-menu-button>
     </ion-buttons>
-
     <ion-buttons slot="end">
       <ion-button><ion-icon name="notifications-outline"></ion-icon>
-
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-
 </ion-header>
 <app-homemenu></app-homemenu>
 
 <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button>
+        </ion-menu-button>
+      </ion-buttons>
 
+      <ion-buttons slot="end">
+        <ion-button><ion-icon name="notifications-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-  <div>
+  <!-- <div>
     <h1 class="heading-text ion-text-center">Find The Perfect Partner for you and your family</h1>
     <app-profilesearch style="width: 100%;" sticky></app-profilesearch>
-  </div>
+  </div> -->
 
 
   <app-noticebox></app-noticebox>

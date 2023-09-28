@@ -4,6 +4,7 @@ import { ActionSheetController, AlertController, ModalController, ToastControlle
 import { LoadingController } from '@ionic/angular';
 import { IonModal } from '@ionic/angular';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { Share } from '@capacitor/share';
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.page.html',
@@ -24,11 +25,22 @@ export class PhotosPage implements OnInit {
   public userPhotos: any = [];
   public endLoading = false;
   @ViewChild("viewModal") viewModal!: IonModal;
+  @ViewChild("imgSlider") imgSlider!: ElementRef;
   public viewCurrentPhoto = "";
   public viewCurrentFilename = "";
   public viewCurrentid = "";
   public skeletonPhotos = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   public isloading = true;
+  public sliderOpts = {
+    zoom: false,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    centeredSlides: true,
+    loop: true,
+    navigation: true,
+    pagination: true,
+  };
+  public sliderData: any = [];
 
   ngOnInit() {
     this.getUserPhotos();
@@ -123,7 +135,13 @@ export class PhotosPage implements OnInit {
         return item.id !== photo;
       });
     }).catch(err => {
-      console.error(err);
+      this.toastController.create({
+        message: "Unable to delete photo, please try again later",
+        duration: 2000,
+        position: 'bottom',
+        color: 'danger',
+        icon: 'close-circle-outline'
+      }).then(toast => toast.present());
     });
   };
 
@@ -160,13 +178,15 @@ export class PhotosPage implements OnInit {
 
         toast.then(toast => toast.present());
         loading.then(loading => loading.dismiss());
-
-        // add photo to array
         this.userPhotos.unshift(res);
-        console.log(res);
-        console.log(this.userPhotos);
       }).catch(err => {
-        console.error(err);
+        this.toastController.create({
+          message: "Unable to upload photo, please try again later",
+          duration: 2000,
+          position: 'bottom',
+          color: 'danger',
+          icon: 'close-circle-outline'
+        }).then(toast => toast.present());
       });
     };
   };
@@ -174,6 +194,8 @@ export class PhotosPage implements OnInit {
   // view photo
 
   async viewPhoto(photo: any) {
+    this.sliderData.push(...this.userPhotos);
+
     // show modal with element ref
     this.viewModal.present();
     this.viewCurrentPhoto = photo;
@@ -185,12 +207,26 @@ export class PhotosPage implements OnInit {
 
     this.viewCurrentFilename = current[0].filename;
     this.viewCurrentid = current[0].id;
+
+    // remove current photo from slider data
+
+    this.sliderData = this.sliderData.filter((item: any) => {
+      return item.file !== photo;
+    });
+
+    //  add current photo to slider data at first position
+    this.sliderData.unshift({
+      file: photo,
+      filename: this.viewCurrentFilename,
+      id: this.viewCurrentid
+    });
   };
 
   // close modal view
 
   closeModalView() {
     this.viewModal.dismiss();
+    this.sliderData = [];
   };
 
   // download 
@@ -204,50 +240,113 @@ export class PhotosPage implements OnInit {
     Filesystem.checkPermissions().then((res: any) => {
       console.log(res);
       if (res.publicStorage == "granted") {
-        console.log("permission granted");
+
       } else {
         console.log("permission not granted");
         Filesystem.requestPermissions().then((res: any) => {
           console.log(res);
           if (res.publicStorage == "granted") {
-            console.log("permission granted");
+
           } else {
-            console.log("permission not granted");
+            this.AlertController.create({
+              header: "Permission required",
+              message: "Please allow permission to download photos",
+              buttons: ["OK"]
+            }).then((alert) => {
+              alert.present();
+            });
           }
         }).catch(err => {
-          console.error(err);
+          this.AlertController.create({
+            header: "Permission required",
+            message: "Please allow permission to download photos",
+            buttons: ["OK"]
+          }).then((alert) => {
+            alert.present();
+          });
         });
       }
-    })
+    });
 
-    // download in user system
-
-    Filesystem.writeFile({
-      path: filename,
-      data: url,
-      directory: Directory.Documents,
-      encoding: Encoding.UTF8
-    }).then((res: any) => {
+    this.UserService.downloadFile(url).then((res: any) => {
       console.log(res);
-      const toast = this.toastController.create({
-        message: "Photo downloaded successfully",
-        duration: 2000,
-        position: 'bottom'
+      let base64 = res.data;
+      let base64Data = base64.split(',')[1];
+      Filesystem.writeFile({
+        path: filename,
+        data: base64Data,
+        directory: Directory.Documents,
+        encoding: Encoding.UTF8
+      }).then((res: any) => {
+        console.log(res);
+        this.AlertController.create({
+          header: "Success",
+          message: "Photo downloaded successfully",
+          buttons: ["OK"]
+        }).then((alert) => {
+          alert.present();
+        })
+      }).catch(err => {
+        this.AlertController.create({
+          header: "Error",
+          message: "Unable to download photo, please try again later",
+          buttons: ["OK"]
+        }).then((alert) => {
+          alert.present();
+        })
       });
-
-      toast.then(toast => toast.present());
     }).catch(err => {
-      console.error(err);
-    }).catch(err => {
-      console.error(err);
+      this.AlertController.create({
+        header: "Error",
+        message: "Unable to download photo, please try again later",
+        buttons: ["OK"]
+      }).then((alert) => {
+        alert.present();
+      })
     })
   };
 
   // share
 
-  shareCurrent() {
+  async shareCurrent() {
     let url = this.viewCurrentPhoto;
     let filename = this.viewCurrentFilename;
+    // check share api available 
+
+    if (await Share.canShare()) {
+      Share.share({
+        title: filename,
+        text: filename,
+        url: url,
+      }).then((res: any) => {
+        console.log(res);
+        this.AlertController.create({
+          header: "Success",
+          message: "Photo shared successfully",
+          buttons: ["OK"]
+        }).then((alert) => {
+          alert.present();
+        })
+      }).catch(err => {
+        console.log(err.message)
+        this.AlertController.create({
+          header: "Error",
+          message: err.message ? err.message : "Unable to share photo, please try again later",
+          buttons: ["OK"]
+        }).then((alert) => {
+          alert.present();
+        })
+      });
+
+    } else {
+      this.AlertController.create({
+        header: "Error",
+        message: "Unable to share photo, please try again later",
+        buttons: ["OK"]
+      }).then((alert) => {
+        alert.present();
+      })
+    }
   };
 
   // delete current
@@ -310,4 +409,24 @@ export class PhotosPage implements OnInit {
 
     ske?.classList.add("hide");
   }
+
+  // next slide
+
+  nextSlide() {
+    this.imgSlider.nativeElement.swiper.slideNext();
+  };
+
+  // prev slide
+
+  prevSlide() {
+    this.imgSlider.nativeElement.swiper.slidePrev();
+  };
+  onSlideChange() {
+    console.log("slide change");
+    let currentIndexSliderData = this.sliderData[this.imgSlider.nativeElement.swiper.realIndex];
+    this.viewCurrentFilename = currentIndexSliderData.filename;
+    this.viewCurrentid = currentIndexSliderData.id;
+    this.viewCurrentPhoto = currentIndexSliderData.file;
+  }
+
 }

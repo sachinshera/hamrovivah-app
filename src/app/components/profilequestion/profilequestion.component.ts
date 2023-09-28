@@ -37,6 +37,8 @@ export class ProfilequestionComponent implements OnInit {
   public userProfilePic = "";
   public userUploadedPic: any;
   public loading: any;
+  public skeletons = [0, 1, 3, 4, 5, 6, 7, 8, 9, 7, 8, 9];
+  public isLoading = true;
 
 
   ngOnInit() {
@@ -50,11 +52,31 @@ export class ProfilequestionComponent implements OnInit {
   // get form
 
   getform() {
+    this.isLoading = true;
     this.profileService.getFormCategory().then((data: any) => {
       // check if any form has not any inputs then remove from all form
       this.allForm = data.data.filter((form: any) => {
         return form.Inputs.length > 0;
       });
+      if (data.data.length > 0) {
+        this.isLoading = false;
+      } else {
+        let alert = this.alertController.create({
+          header: "No Form",
+          message: "No form available, please contact to hamrovivah team",
+          buttons: [
+            {
+              text: "OK",
+              handler: () => {
+                this.router.navigate(['/']);
+              }
+            }
+          ]
+        });
+        alert.then((alert) => {
+          alert.present();
+        });
+      }
       if (this.formId == "unfilled") {
         let formData: any = {};
         formData.name = "Unfilled Data";

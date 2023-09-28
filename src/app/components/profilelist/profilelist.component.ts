@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ToastController, AlertController } from '@ionic/angular';
+import { ProfileService } from 'src/app/services/profile.service';
 @Component({
   selector: 'app-profilelist',
   templateUrl: './profilelist.component.html',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilelistComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public profileService: ProfileService,
+    public toastController: ToastController,
+    public alertController: AlertController
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getProfiles();
+  }
 
   profileList: any[] = [
     {
@@ -47,6 +55,16 @@ export class ProfilelistComponent implements OnInit {
       "ProfilePic": "https://randomuser.me/api/portraits/men/80.jpg",
       "Height": "5 Ft 5 Inch"
     }
-  ]
+  ];
 
+  public profiles: any = [];
+  public currentPage: number = 0;
+
+  getProfiles() {
+    this.profileService.getProfiles(this.currentPage).then((data: any) => {
+      this.profiles = data.data;
+    }).catch((err: any) => {
+      console.log(err)
+    });
+  };
 }

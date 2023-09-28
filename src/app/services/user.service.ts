@@ -102,5 +102,20 @@ export class UserService {
           reject(err);
         });
     });
-  }
+  };
+
+  // download file
+
+
+  downloadFile(url: string) {
+    return new Promise(async (resolve, reject) => {
+      var session = await this.storageService.get("session");
+      this.http.get(url)
+        .subscribe((res: any) => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  };
 }

@@ -19,9 +19,12 @@
       <ion-row>
         <ion-col size="6" *ngFor="let photo of userPhotos" class="ion-no-padding" (click)="viewPhoto(photo.file)"
           (contextmenu)="photosActions(photo.id)">
-          <ion-img [src]="photo.file" class="preview-img ion-no-margin prev-{{photo.id}}"
-            (ionImgDidLoad)="logingImg(photo.id)" (ionError)="imgLoadError(photo.id)"
-            (ionImgDidLoad)="imageLoaded(photo.id)" />
+          <ion-scroll zooming="true" style="width:100%;height: 100%;">
+            <ion-img tappable style="width:100%;height: 100%;" [src]="photo.file"
+              class="preview-img ion-no-margin prev-{{photo.id}}" (ionImgDidLoad)="logingImg(photo.id)"
+              (ionError)="imgLoadError(photo.id)" (ionImgDidLoad)="imageLoaded(photo.id)" />
+          </ion-scroll>
+
 
           <ion-skeleton-text animated style="width: 100%; height: 100%;" class="preview-img"
             class="ske-{{photo.id}}"></ion-skeleton-text>
@@ -57,9 +60,12 @@
   <ng-template>
     <ion-header>
       <ion-toolbar>
-        <ion-title>{{viewCurrentFilename}}</ion-title>
+        <ion-title>
+          <ion-label>
+            {{viewCurrentFilename}}
+          </ion-label>
+        </ion-title>
         <ion-buttons slot="end">
-
           <ion-button (click)="closeModalView()" [strong]="true">
             <ion-icon name="close-outline"></ion-icon>
           </ion-button>
@@ -67,8 +73,20 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-no-padding">
-      <div class="view-img-modal-cont">
-        <ion-img src="{{viewCurrentPhoto}}"></ion-img>
+      <swiper-container [loop]="true" [zoom]="true" #imgSlider (slidechange)="onSlideChange()">
+        <swiper-slide *ngFor="let slide of sliderData">
+          <ion-img [src]="slide.file" class="view-img-modal"></ion-img>
+        </swiper-slide>
+      </swiper-container>
+      <div class="swiper-button-prev">
+        <ion-button size="small" color="icon-only" (click)="prevSlide()">
+          <ion-icon name="chevron-back-outline" color="primary"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="swiper-button-next" (click)="nextSlide()">
+        <ion-button size="small" color="icon-only">
+          <ion-icon name="chevron-forward-outline" color="primary"></ion-icon>
+        </ion-button>
       </div>
     </ion-content>
     <ion-footer class="ion-padding img-view-footer">

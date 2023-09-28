@@ -3,7 +3,10 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/profilestup"></ion-back-button>
     </ion-buttons>
-    <ion-title class="">{{form.name}}</ion-title>
+    <ion-title class="" *ngIf="!isLoading">{{form.name}}</ion-title>
+    <ion-title *ngIf="isLoading">
+      <ion-skeleton-text [animated]="true" style="width:100%;height: 25px;"></ion-skeleton-text>
+    </ion-title>
     <ion-progress-bar [value]="getPercentage()"></ion-progress-bar>
   </ion-toolbar>
 </ion-header>
@@ -59,23 +62,49 @@
       </ion-card>
       <!-- change btn -->
 
-
       <ion-item *ngFor="let item of form.Inputs" class="ion-margin">
         <div [formGroup]="dynamicForm">
-          <!-- form group -->
           <ion-label position="floating">{{item.inputName}}</ion-label>
           <ion-input formControlName="{{item.id}}" type="{{item.inputType}}" required="{{item.inputRequired}}"
-            *ngIf="item.inputType != 'select'" value="{{item.Values?.inputValue}}"></ion-input>
-          <!-- select -->
+            *ngIf="item.inputType == 'text' || item.inputType == 'number' || item.inputType == 'email' || item.inputType == 'date'"
+            value="{{item.Values?.inputValue}}"></ion-input>
           <ion-select value="{{item.Values?.inputValue}}" formControlName="{{item.id}}"
             *ngIf="item.inputType == 'select'">
             <ion-select-option *ngFor="let option of item.inputOptions"
               value="{{option.value}}">{{option.label}}</ion-select-option>
           </ion-select>
         </div>
-
       </ion-item>
+      <!-- skeletons -->
+
     </form>
+    <div *ngIf="isLoading">
+      <ion-card class="ion-text-center" *ngIf="formId== 0 && isLoading">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-skeleton-text [animated]="true" style="width:100%;height: 30px;"></ion-skeleton-text>
+          </ion-card-title>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width:100%;height: 10px;"></ion-skeleton-text>
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+
+          <ion-avatar style="margin: 0 auto;width: 100px; height: 100px;">
+            <!-- <img src="{{userProfilePic}}" alt="" *ngIf="userProfilePic != ''">
+            <img src="/assets/user.png" alt="" *ngIf="userProfilePic == ''"> -->
+            <ion-skeleton-text [animated]="true" style="width:100%;height: 100px;"></ion-skeleton-text>
+          </ion-avatar>
+          <ion-button color="icon-only">
+            <ion-skeleton-text [animated]="true" style="width:100px;height: 30px;"></ion-skeleton-text>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+      <ion-item *ngFor="let ske of skeletons">
+        <ion-skeleton-text [animated]="true" style="width:100%;height: 30px;margin-bottom: 10px;"></ion-skeleton-text>
+      </ion-item>
+
+    </div>
   </ion-item-group>
 </ion-content>
 

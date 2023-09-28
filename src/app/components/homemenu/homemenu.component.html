@@ -3,8 +3,8 @@
     <ion-toolbar>
       <!-- align both img and name a same line  -->
       <div class="menu-toolbar">
-        <img src="{{profilePic}}" alt="" class="menu-user" *ngIf="profilePic != ''">
-        <img src="/assets/user.png" alt="" *ngIf="profilePic == ''">
+        <img src="{{profilePic}}" alt="" class="menu-user" *ngIf="profilePic != null ">
+        <img src="/assets/user.png" alt="" class="menu-user" *ngIf="profilePic == null">
         <div>
           <span>{{mobile}}</span>
         </div>
