@@ -68,6 +68,24 @@ export class UserService {
     });
   };
 
+  // get photos by user id
+
+  getPhotosByUserId(id: string, page: number) {
+    return new Promise(async (resolve, reject) => {
+      var session = await this.storageService.get("session");
+      this.http.get(environment.api + "/users/files/images/" + id + "/page/" + page, {
+        headers: {
+          "Authorization": session
+        }
+      })
+        .subscribe((res: any) => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  };
+
   // delete photo
 
   deletePhoto(id: any) {

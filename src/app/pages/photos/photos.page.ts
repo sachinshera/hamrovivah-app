@@ -5,6 +5,7 @@ import { LoadingController } from '@ionic/angular';
 import { IonModal } from '@ionic/angular';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.page.html',
@@ -18,7 +19,9 @@ export class PhotosPage implements OnInit {
     private toastController: ToastController,
     private AlertController: AlertController,
     private loadingController: LoadingController,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   public currentPageNumber = 0;
@@ -41,9 +44,39 @@ export class PhotosPage implements OnInit {
     pagination: true,
   };
   public sliderData: any = [];
+  public userId: string = "";
+  public backUrl = "/";
+  public name = " My Photos";
+  public isMyProfile = false;
 
   ngOnInit() {
-    this.getUserPhotos();
+    this.route.params.subscribe(params => {
+      this.userId = params['id'];
+      if (this.userId) {
+        this.backUrl = "/profile/" + this.userId;
+        this.name = params['name'] + " Photos";
+      }
+    });
+    if (this.userId) {
+      this.getPhotosByUserId();
+    } else {
+      this.isMyProfile = true;
+      this.getUserPhotos();
+    }
+    // this.getPhotosByUserId();
+    // this.getUserPhotos();
+  };
+
+  getPhotosByUserId() {
+    this.UserService.getPhotosByUserId(this.userId, this.currentPageNumber).then((res: any) => {
+      this.userPhotos = this.userPhotos.concat(res);
+      console.log(this.userPhotos);
+      if (res.length == 0) {
+        this.endLoading = true;
+      }
+    }).catch(err => {
+      console.error(err);
+    });
   }
 
   getUserPhotos() {

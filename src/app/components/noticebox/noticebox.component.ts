@@ -20,22 +20,6 @@ export class NoticeboxComponent implements OnInit {
   ngOnInit() {
     this.profileService.getFormCategory().then((data: any) => {
       this.form = data.data;
-      // this.form.forEach((form: any) => {
-      //   form.Inputs.forEach((input: any) => {
-      //     console.log("input: " + input);
-      //     if (input.inputRequired) {
-      //       if (input.Values != undefined && input.Values != null) {
-      //         this.totalFilled = Number(this.totalFilled) + 1;
-      //       };
-      //       this.totalInputs = Number(this.totalInputs) + 1;
-      //     };
-
-      //   })
-      // });
-
-      for (let form of this.form) {
-        console.log("form: " + form);
-      }
       var percentage = Math.round((this.totalFilled / this.totalInputs) * 100);
       this.percentage = percentage;
       console.log(this.percentage);

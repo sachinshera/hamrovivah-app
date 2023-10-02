@@ -63,8 +63,27 @@ export class ProfilelistComponent implements OnInit {
   getProfiles() {
     this.profileService.getProfiles(this.currentPage).then((data: any) => {
       this.profiles = data.data;
+      console.log(this.profiles);
     }).catch((err: any) => {
       console.log(err)
     });
   };
+
+  // find input value
+
+  findInputByProfile(id: string, name: string) {
+    // find name in profiles.input
+    let profle = this.profiles.filter((item: any) => item.id == id);
+
+    let profileData = profle[0]?.Data ? profle[0].Data : [];
+    // find name in profileData
+
+    let input = profileData.filter((item: any) => item.Input.inputName == name);
+    if (input.length == 0) {
+      return ' ';
+    }
+    return input[0].inputValue;
+  }
+
+
 }

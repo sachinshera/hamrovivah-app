@@ -125,11 +125,11 @@ export class ProfilequestionComponent implements OnInit {
       let inputName = this.form.Inputs[i].id;
       let inputType = this.form.Inputs[i].inputType;
       let required = this.form.Inputs[i].inputRequired;
-      let value = this.form.Inputs[i].Values?.inputValue || "";
-      formGroupFields[inputName] = new FormControl("");
+      let value = this.form.Inputs[i].Values?.inputValue;
+      formGroupFields[inputName] = new FormControl(value);
       if (required == true) {
         formGroupFields[inputName].setValidators(Validators.required);
-        formGroupFields[inputName].setValue(value)
+        // formGroupFields[inputName].setValue(value)
         this.fields.push(inputName);
       }
     };

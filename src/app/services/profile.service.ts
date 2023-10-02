@@ -30,6 +30,25 @@ export class ProfileService {
     })
   };
 
+  // get profile by id
+
+  getProfileById(id: string) {
+    return new Promise(async (resolve, reject) => {
+      let token = await this.LoginService.getToken();
+      fetch(this.api + '/profile/' + id, {
+        method: 'GET',
+        headers: {
+          'Authorization': token
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => reject(err));
+    })
+  };
+
   // get all form categiory
   getFormCategory() {
     return new Promise(async (resolve, reject) => {
