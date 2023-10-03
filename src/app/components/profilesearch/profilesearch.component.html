@@ -1,1 +1,2 @@
-<ion-searchbar placeholder="Name, City , Profession..."></ion-searchbar>
+<ion-searchbar placeholder="Name, City , Profession..." [(ngModel)]="searchText"
+    (search)="searchProfiles()"></ion-searchbar>

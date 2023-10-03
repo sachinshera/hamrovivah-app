@@ -49,6 +49,25 @@ export class ProfileService {
     })
   };
 
+  // search profile by name
+
+  searchProfileBytext(text: string, page: number) {
+    return new Promise(async (resolve, reject) => {
+      let token = await this.LoginService.getToken();
+      fetch(this.api + `/profile/search?search=${text}&page=${page}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': token
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => reject(err));
+    })
+  };
+
   // get all form categiory
   getFormCategory() {
     return new Promise(async (resolve, reject) => {

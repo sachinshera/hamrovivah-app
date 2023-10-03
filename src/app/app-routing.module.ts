@@ -56,6 +56,10 @@ const routes: Routes = [
         canActivate: [AuthguardGuard],
         "path": "photos/:id/name/:name",
         "loadChildren": () => import("./pages/photos/photos.module").then(m => m.PhotosPageModule)
+      },
+      {
+        path: 'search/:search',
+        loadChildren: () => import('./pages/searchresult/searchresult.module').then(m => m.SearchresultPageModule)
       }
     ]
   },
