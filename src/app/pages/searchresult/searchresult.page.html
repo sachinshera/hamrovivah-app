@@ -1,9 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <!-- <ion-buttons slot="start">
+    <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons> -->
-
+    </ion-buttons>
     <ion-searchbar [(ngModel)]="searchText" (search)="searchNewProfiles()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -17,7 +16,7 @@
   <div *ngIf="!loading">
     <ion-card *ngFor="let profile of profiles" class="ion-no-padding" routerLink="/profile/{{profile.User.id}}">
       <ion-card-content class="ion-no-padding">
-        <ion-img [src]="profile.User.proifleImage" class="user_img" />
+        <ion-img [src]="api+profile.User.proifleImage" class="user_img" />
         <div class="ion-padding">
           <ion-card-title>{{profile.User.Data[0].inputValue}}</ion-card-title>
           <ion-card-subtitle>{{profile.User.Data[1].inputValue}} ,{{profile.User.Data[2].inputValue}}

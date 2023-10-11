@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-homemenu',
   templateUrl: './homemenu.component.html',
@@ -11,6 +12,7 @@ export class HomemenuComponent implements OnInit {
   public name: string = "";
   public mobile: string = "";
   public profilePic: any = null;
+  public api = environment.api;
   constructor(
     private loginService: LoginService,
     private router: Router,

@@ -6,13 +6,14 @@ import { IonModal } from '@ionic/angular';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
 import { Router, ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.page.html',
   styleUrls: ['./photos.page.scss'],
 })
 export class PhotosPage implements OnInit {
-
+  public api = environment.api;
   constructor(
     private UserService: UserService,
     private actionSheetController: ActionSheetController,
@@ -220,6 +221,7 @@ export class PhotosPage implements OnInit {
           color: 'danger',
           icon: 'close-circle-outline'
         }).then(toast => toast.present());
+        loading.then(loading => loading.dismiss());
       });
     };
   };

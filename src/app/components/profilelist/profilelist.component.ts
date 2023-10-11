@@ -1,13 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ToastController, AlertController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-profilelist',
   templateUrl: './profilelist.component.html',
   styleUrls: ['./profilelist.component.scss'],
 })
 export class ProfilelistComponent implements OnInit {
-
+  public api = environment.api;
   constructor(
     public profileService: ProfileService,
     public toastController: ToastController,
@@ -78,7 +80,7 @@ export class ProfilelistComponent implements OnInit {
     let profileData = profle[0]?.Data ? profle[0].Data : [];
     // find name in profileData
 
-    let input = profileData.filter((item: any) => item.Input.inputName == name);
+    let input = profileData.filter((item: any) => item.Input.tag == name);
     if (input.length == 0) {
       return ' ';
     }

@@ -3,8 +3,8 @@
     <ion-toolbar>
       <!-- align both img and name a same line  -->
       <div class="menu-toolbar">
-        <img src="{{profilePic}}" alt="" class="menu-user" *ngIf="profilePic != null ">
-        <img src="/assets/user.png" alt="" class="menu-user" *ngIf="profilePic == null">
+        <img src="{{api+profilePic}}" alt="" class="menu-user" *ngIf="profilePic != null " />
+        <img src="/assets/user.png" alt="" class="menu-user" *ngIf="profilePic == null" />
         <div>
           <span>{{mobile}}</span>
         </div>
@@ -36,7 +36,7 @@
           </ion-label>
         </ion-item>
 
-        <ion-item routerLink="/home" lines="none">
+        <ion-item routerLink="/profilestup/form/partner" lines="none">
           <ion-icon name="settings-outline"></ion-icon>
           <ion-label>
             Partner Prefrences

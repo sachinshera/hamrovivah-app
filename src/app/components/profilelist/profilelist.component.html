@@ -14,9 +14,9 @@
         <div routerLink="/profile/{{item.id}}">
           <ion-card>
             <ion-img alt="Silhouette of mountains" style="width: 100%;height: 150px;object-fit: cover;"
-              src="{{item.proifleImage}}" />
+              src="{{item.proifleImage !== null ? api+item.proifleImage: '/assets/user.png' }}" />
             <ion-card-header>
-              <ion-card-title class="profile-name-text">{{findInputByProfile(item.id,'Full Name')}}</ion-card-title>
+              <ion-card-title class="profile-name-text">{{findInputByProfile(item.id,'Fullname')}}</ion-card-title>
               <ion-card-subtitle>{{findInputByProfile(item.id,'Age')}}</ion-card-subtitle>
               <ion-card-subtitle>
                 {{findInputByProfile(item.id,'Country')}} {{findInputByProfile(item.id,'City')}}

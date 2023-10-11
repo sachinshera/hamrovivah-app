@@ -4,13 +4,14 @@ import { AlertController, ToastController, LoadingController, ModalController } 
 import { ProfileService } from 'src/app/services/profile.service';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-userprofile',
   templateUrl: './userprofile.page.html',
   styleUrls: ['./userprofile.page.scss'],
 })
 export class UserprofilePage implements OnInit {
-
+  public api = environment.api;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -63,5 +64,15 @@ export class UserprofilePage implements OnInit {
 
   openPhotoModal() {
     this.modal.present();
+  }
+
+  findInputByTag(tag: string) {
+    for (let i = 0; i < this.profileData.forms.length; i++) {
+      for (let j = 0; j < this.profileData.forms[i].Inputs.length; j++) {
+        if (this.profileData.forms[i].Inputs[j].tag == tag) {
+          return this.profileData.forms[i].Inputs[j].Values.inputValue;
+        }
+      }
+    }
   }
 }

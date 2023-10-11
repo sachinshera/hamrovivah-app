@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/profilestup"></ion-back-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title class="" *ngIf="!isLoading">{{form.name}}</ion-title>
     <ion-title *ngIf="isLoading">
@@ -52,7 +52,7 @@
         <ion-card-content>
 
           <ion-avatar style="margin: 0 auto;width: 100px; height: 100px;">
-            <img src="{{userProfilePic}}" alt="" *ngIf="userProfilePic != ''">
+            <ion-img src="{{api+userProfilePic}}" alt="" *ngIf="userProfilePic != ''" />
             <img src="/assets/user.png" alt="" *ngIf="userProfilePic == ''">
           </ion-avatar>
           <ion-button color="icon-only" (click)="changeProfilePic()">
@@ -110,7 +110,8 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button expand="block" color="icon-only" *ngIf="!isLastForm && formId!='unfilled' && formId!=0"
+    <ion-button expand="block" color="icon-only"
+      *ngIf="!isLastForm && formId!='unfilled' && formId!=0 && formId!= 'partner'"
       (click)="skip()">{{skipText}}</ion-button>
     <ion-button expand="block" color="success" (click)="submit()">{{btnText}}</ion-button>
 

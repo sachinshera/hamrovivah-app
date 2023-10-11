@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-searchresult',
@@ -9,7 +10,7 @@ import { ProfileService } from 'src/app/services/profile.service';
   styleUrls: ['./searchresult.page.scss'],
 })
 export class SearchresultPage implements OnInit {
-
+  public api = environment.api;
   constructor(
     private router: Router,
     private route: ActivatedRoute,

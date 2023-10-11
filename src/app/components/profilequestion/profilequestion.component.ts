@@ -6,13 +6,14 @@ import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { UserService } from 'src/app/services/user.service';
 import { LoadingController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-profilequestion',
   templateUrl: './profilequestion.component.html',
   styleUrls: ['./profilequestion.component.scss'],
 })
 export class ProfilequestionComponent implements OnInit {
-
+  public api = environment.api;
   constructor(
     public profileService: ProfileService,
     public router: Router,
@@ -85,7 +86,6 @@ export class ProfilequestionComponent implements OnInit {
         this.form = formData;
         let unfilledInputs = this.getUnfilledFields();
         // get unfilled inputs from all form
-
         for (let i = 0; i < unfilledInputs.length; i++) {
           let formId = unfilledInputs[i].formId;
           let inputId = unfilledInputs[i].inputId;
@@ -99,6 +99,15 @@ export class ProfilequestionComponent implements OnInit {
             }
           }
         };
+      }
+      else if (this.formId == "partner") {
+        for (let i = 0; i < this.allForm.length; i++) {
+          if (this.allForm[i].tags == "partner") {
+            this.form = this.allForm[i];
+            this.btnText = "Save";
+            this.isLastForm = true;
+          }
+        }
       }
       else {
         let formData = this.allForm[0];
@@ -116,7 +125,17 @@ export class ProfilequestionComponent implements OnInit {
         this.isLastForm = true;
       };
 
-    }).catch((err) => { });
+    }).catch((err) => {
+      this.toastController.create({
+        message: err,
+        duration: 2000,
+        position: "top",
+        color: "danger",
+        icon: "alert-circle-outline"
+      }).then((toast) => {
+        toast.present();
+      })
+    });
   }
 
   getFormControlsFields() {
@@ -182,7 +201,7 @@ export class ProfilequestionComponent implements OnInit {
       } else {
         this.profileService.updateValues(bindedFormValue).then((data: any) => {
           // check if form is unfilled form
-          if (this.formId == "unfilled") {
+          if (this.formId == "unfilled" || this.formId == "partner") {
             this.router.navigate(['/profilestup/form/success']);
           }
 
@@ -244,6 +263,7 @@ export class ProfilequestionComponent implements OnInit {
 
   getUnfilledFields() {
     let unfilledFields: any = [];
+    console.log("unfilled", this.allForm);
     //   data from all form
     for (let i = 0; i < this.allForm.length; i++) {
       // data from each form
@@ -258,6 +278,7 @@ export class ProfilequestionComponent implements OnInit {
           });
         }
       }
+      console.log("un", unfilledFields);
     };
 
     return unfilledFields;
@@ -308,7 +329,15 @@ export class ProfilequestionComponent implements OnInit {
         });
         this.isProfilpicUpload = true;
       }).catch((err) => {
-        console.log(err);
+        this.alertController.create({
+          header: "Error",
+          message: "Error while uploading profile pic",
+        }).then((alert) => {
+          alert.present();
+        });
+        this.loading.then((load: any) => {
+          load.dismiss();
+        })
       });
     }
   }
