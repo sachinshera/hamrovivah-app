@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { Capacitor } from '@capacitor/core';
-import { SplashScreen } from '@capacitor/splash-screen';
-import { App as CapacitorApp } from '@capacitor/app';
+import { App, App as CapacitorApp } from '@capacitor/app';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +17,12 @@ export class AppComponent implements OnInit {
   };
 
   async ngOnInit() {
-
+    if (Capacitor.isPluginAvailable('App')) {
+      CapacitorApp.addListener('backButton', () => {
+        if (window.location.pathname == '/home') {
+          CapacitorApp.exitApp();
+        }
+      });
+    };
   }
 }

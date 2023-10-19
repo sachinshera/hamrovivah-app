@@ -52,7 +52,7 @@
         <ion-card-content>
 
           <ion-avatar style="margin: 0 auto;width: 100px; height: 100px;">
-            <ion-img src="{{api+userProfilePic}}" alt="" *ngIf="userProfilePic != ''" />
+            <ion-img src="{{userProfilePic}}" alt="" *ngIf="userProfilePic != ''" />
             <img src="/assets/user.png" alt="" *ngIf="userProfilePic == ''">
           </ion-avatar>
           <ion-button color="icon-only" (click)="changeProfilePic()">

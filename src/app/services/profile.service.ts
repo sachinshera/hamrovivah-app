@@ -140,5 +140,24 @@ export class ProfileService {
       }).catch(err => reject(err));
 
     });
+  };
+
+  // get profile by prefrences
+
+  getPfofilesByPrefrences(page: number) {
+    return new Promise(async (resolve, reject) => {
+      let token = await this.LoginService.getToken();
+      fetch(this.api + '/profile/prefrences?page=' + page, {
+        method: 'GET',
+        headers: {
+          'Authorization': token
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => reject(err));
+    })
   }
 }

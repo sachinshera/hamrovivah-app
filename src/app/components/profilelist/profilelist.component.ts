@@ -10,6 +10,12 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfilelistComponent implements OnInit {
   public api = environment.api;
+  @Input() heading = 'Profile List';
+  @Input() showMoreBtn = false;
+
+
+
+  @Input() profiles: any = [];
   constructor(
     public profileService: ProfileService,
     public toastController: ToastController,
@@ -17,75 +23,7 @@ export class ProfilelistComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getProfiles();
+    console.log(this.profiles);
   }
-
-  profileList: any[] = [
-    {
-      "Fullname": "sachin kumar",
-      "Address": "Banka,Bihar",
-      "Age": "22 Yrs",
-      "Profession": "Software Engineer",
-      "Religion": "Hindu",
-      "ProfilePic": "https://randomuser.me/api/portraits/men/12.jpg",
-      "Height": "5 Ft 5 Inch"
-    },
-    {
-      "Fullname": "sachin kumar",
-      "Address": "Banka,Bihar",
-      "Age": "22 Yrs",
-      "Profession": "Software Engineer",
-      "Religion": "Hindu",
-      "ProfilePic": "https://randomuser.me/api/portraits/men/86.jpg",
-      "Height": "5 Ft 5 Inch"
-    },
-    {
-      "Fullname": "sachin kumar",
-      "Address": "Banka,Bihar",
-      "Age": "22 Yrs",
-      "Profession": "Software Engineer",
-      "Religion": "Hindu",
-      "ProfilePic": "https://randomuser.me/api/portraits/men/31.jpg",
-      "Height": "5 Ft 5 Inch"
-    },
-    {
-      "Fullname": "sachin kumar",
-      "Address": "Banka,Bihar",
-      "Age": "22 Yrs",
-      "Profession": "Software Engineer",
-      "Religion": "Hindu",
-      "ProfilePic": "https://randomuser.me/api/portraits/men/80.jpg",
-      "Height": "5 Ft 5 Inch"
-    }
-  ];
-
-  public profiles: any = [];
-  public currentPage: number = 0;
-
-  getProfiles() {
-    this.profileService.getProfiles(this.currentPage).then((data: any) => {
-      this.profiles = data.data;
-      console.log(this.profiles);
-    }).catch((err: any) => {
-      console.log(err)
-    });
-  };
-
-  // find input value
-
-  findInputByProfile(id: string, name: string) {
-    // find name in profiles.input
-    let profle = this.profiles.filter((item: any) => item.id == id);
-
-    let profileData = profle[0]?.Data ? profle[0].Data : [];
-    // find name in profileData
-
-    let input = profileData.filter((item: any) => item.Input.tag == name);
-    if (input.length == 0) {
-      return ' ';
-    }
-    return input[0].inputValue;
-  }
-
 
 }

@@ -16,7 +16,7 @@
       <ion-row>
         <ion-col size="12">
           <ion-img style="width: 100%;height: 250px;object-fit: cover;" *ngIf="!isLoading"
-            [src]="api+profileData?.profile?.proifleImage"></ion-img>
+            [src]="profileData?.profile?.proifleImage"></ion-img>
           <ion-skeleton-text [animated]="true" *ngIf="isLoading"
             style="width: 100%;height: 200px;border-radius: 10px;"></ion-skeleton-text>
         </ion-col>

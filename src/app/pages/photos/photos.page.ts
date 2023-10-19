@@ -3,8 +3,6 @@ import { UserService } from 'src/app/services/user.service';
 import { ActionSheetController, AlertController, ModalController, ToastController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import { IonModal } from '@ionic/angular';
-import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
-import { Share } from '@capacitor/share';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 @Component({
@@ -269,76 +267,6 @@ export class PhotosPage implements OnInit {
   downloadCurrent() {
     let url = this.viewCurrentPhoto;
     let filename = this.viewCurrentFilename;
-
-    // check permission
-
-    Filesystem.checkPermissions().then((res: any) => {
-      console.log(res);
-      if (res.publicStorage == "granted") {
-
-      } else {
-        console.log("permission not granted");
-        Filesystem.requestPermissions().then((res: any) => {
-          console.log(res);
-          if (res.publicStorage == "granted") {
-
-          } else {
-            this.AlertController.create({
-              header: "Permission required",
-              message: "Please allow permission to download photos",
-              buttons: ["OK"]
-            }).then((alert) => {
-              alert.present();
-            });
-          }
-        }).catch(err => {
-          this.AlertController.create({
-            header: "Permission required",
-            message: "Please allow permission to download photos",
-            buttons: ["OK"]
-          }).then((alert) => {
-            alert.present();
-          });
-        });
-      }
-    });
-
-    this.UserService.downloadFile(url).then((res: any) => {
-      console.log(res);
-      let base64 = res.data;
-      let base64Data = base64.split(',')[1];
-      Filesystem.writeFile({
-        path: filename,
-        data: base64Data,
-        directory: Directory.Documents,
-        encoding: Encoding.UTF8
-      }).then((res: any) => {
-        console.log(res);
-        this.AlertController.create({
-          header: "Success",
-          message: "Photo downloaded successfully",
-          buttons: ["OK"]
-        }).then((alert) => {
-          alert.present();
-        })
-      }).catch(err => {
-        this.AlertController.create({
-          header: "Error",
-          message: "Unable to download photo, please try again later",
-          buttons: ["OK"]
-        }).then((alert) => {
-          alert.present();
-        })
-      });
-    }).catch(err => {
-      this.AlertController.create({
-        header: "Error",
-        message: "Unable to download photo, please try again later",
-        buttons: ["OK"]
-      }).then((alert) => {
-        alert.present();
-      })
-    })
   };
 
   // share
@@ -347,41 +275,6 @@ export class PhotosPage implements OnInit {
     let url = this.viewCurrentPhoto;
     let filename = this.viewCurrentFilename;
     // check share api available 
-
-    if (await Share.canShare()) {
-      Share.share({
-        title: filename,
-        text: filename,
-        url: url,
-      }).then((res: any) => {
-        console.log(res);
-        this.AlertController.create({
-          header: "Success",
-          message: "Photo shared successfully",
-          buttons: ["OK"]
-        }).then((alert) => {
-          alert.present();
-        })
-      }).catch(err => {
-        console.log(err.message)
-        this.AlertController.create({
-          header: "Error",
-          message: err.message ? err.message : "Unable to share photo, please try again later",
-          buttons: ["OK"]
-        }).then((alert) => {
-          alert.present();
-        })
-      });
-
-    } else {
-      this.AlertController.create({
-        header: "Error",
-        message: "Unable to share photo, please try again later",
-        buttons: ["OK"]
-      }).then((alert) => {
-        alert.present();
-      })
-    }
   };
 
   // delete current

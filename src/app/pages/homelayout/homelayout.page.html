@@ -34,36 +34,56 @@
 
 
   <app-noticebox></app-noticebox>
-  <!-- <div class="ion-text-center">
-    <ion-chip color="primary">
-      <ion-label>Age</ion-label>
-      <ion-icon name="close-circle"></ion-icon>
-    </ion-chip>
 
-    <ion-chip color="primary">
-      <ion-label>Height</ion-label>
+  <div class="skeleton-loader" *ngIf="isLoading">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-skeleton-text animated="true" style="width: 100%;height: 130px;"></ion-skeleton-text>
 
-    </ion-chip>
+          <ion-skeleton-text animated="true" style="width: 100%;height: 30px;"></ion-skeleton-text>
+          <ion-skeleton-text animated="true" style="width: 100%;height: 20px;"></ion-skeleton-text>
+        </ion-col>
+        <ion-col size="6">
 
-    <ion-chip color="primary">
-      <ion-label>Religion</ion-label>
+          <ion-skeleton-text animated="true" style="width: 100%;height: 130px;"></ion-skeleton-text>
 
-    </ion-chip>
+          <ion-skeleton-text animated="true" style="width: 100%;height: 30px;"></ion-skeleton-text>
+          <ion-skeleton-text animated="true" style="width: 100%;height: 20px;"></ion-skeleton-text>
 
-    <ion-chip color="primary">
-      <ion-label>City</ion-label>
 
-    </ion-chip>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-skeleton-text animated="true" style="width: 100%;height: 130px;"></ion-skeleton-text>
 
-    <ion-chip color="primary">
-      <ion-label>Work</ion-label>
-    </ion-chip>
-  </div> -->
+          <ion-skeleton-text animated="true" style="width: 100%;height: 30px;"></ion-skeleton-text>
+          <ion-skeleton-text animated="true" style="width: 100%;height: 20px;"></ion-skeleton-text>
+        </ion-col>
+        <ion-col size="6">
 
-  <div class="main-content" class="ion-padding">
-    <app-profilelist></app-profilelist>
+          <ion-skeleton-text animated="true" style="width: 100%;height: 130px;"></ion-skeleton-text>
 
-    <!-- <app-profilelist></app-profilelist> -->
+          <ion-skeleton-text animated="true" style="width: 100%;height: 30px;"></ion-skeleton-text>
+          <ion-skeleton-text animated="true" style="width: 100%;height: 20px;"></ion-skeleton-text>
+
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+
+  <div class="main-content" class="ion-padding" *ngIf="!isLoading">
+    <app-profilelist [profiles]="allusers" [heading]="'Recently Added'"></app-profilelist>
+    <div *ngFor="let item of prefrencesProfiles">
+      <app-profilelist [profiles]="allusers"
+        [heading]="'Related on your '+item.value[0].Input.inputName"></app-profilelist>
+    </div>
   </div>
 
 </ion-content>

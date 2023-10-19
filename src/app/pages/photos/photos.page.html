@@ -20,7 +20,7 @@
         <ion-col size="6" *ngFor="let photo of userPhotos" class="ion-no-padding" (click)="viewPhoto(photo.file)"
           (contextmenu)="photosActions(photo.id)">
           <ion-scroll zooming="true" style="width:100%;height: 100%;">
-            <ion-img tappable style="width:100%;height: 100%;" [src]="api+photo.file"
+            <ion-img tappable style="width:100%;height: 100%;" [src]="photo.file"
               class="preview-img ion-no-margin prev-{{photo.id}}" (ionImgDidLoad)="logingImg(photo.id)"
               (ionError)="imgLoadError(photo.id)" (ionImgDidLoad)="imageLoaded(photo.id)" />
           </ion-scroll>
@@ -75,7 +75,7 @@
     <ion-content class="ion-no-padding">
       <swiper-container [loop]="true" [zoom]="true" #imgSlider (slidechange)="onSlideChange()">
         <swiper-slide *ngFor="let slide of sliderData">
-          <ion-img [src]="api+slide.file" class="view-img-modal"></ion-img>
+          <ion-img [src]="slide.file" class="view-img-modal"></ion-img>
         </swiper-slide>
       </swiper-container>
       <div class="swiper-button-prev">
