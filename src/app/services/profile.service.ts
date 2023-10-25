@@ -159,5 +159,25 @@ export class ProfileService {
         })
         .catch(err => reject(err));
     })
-  }
+  };
+
+  // create order
+
+  createOrder() {
+    return new Promise(async (resolve, reject) => {
+      let token = await this.LoginService.getToken();
+      fetch(this.api + '/userplans/pay/100', {
+        method: 'GET',
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json',
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => reject(err));
+    })
+  };
 }

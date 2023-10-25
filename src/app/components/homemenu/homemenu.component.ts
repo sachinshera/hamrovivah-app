@@ -47,6 +47,38 @@ export class HomemenuComponent implements OnInit {
     toast.then((toast) => {
       toast.present();
     });
+  };
+
+  shareThisApp() {
+
+    // check if the share method is supported
+    // if not supported then show a toast
+    if (!(navigator as any).share) {
+      let toast = this.toastController.create({
+        message: "Sorry, your Device does not support sharing",
+        duration: 2000,
+        color: "danger",
+        position: "bottom",
+        cssClass: "toast",
+      });
+
+      toast.then((toast) => {
+        toast.present();
+      });
+      return;
+    };
+
+    // share the app
+
+    (navigator as any).share({
+      title: "Share this app",
+      text: "Download the app from here",
+      url: "https://play.google.com/store/apps/details?id=com.ionicframework.ionic5app",
+    }).then(() => {
+      console.log("Shared successfully");
+    }).catch((err: any) => {
+      console.log(err);
+    });
   }
 
 }

@@ -17,15 +17,45 @@ export class LoginService {
 
   verifySessionToken(): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.storageService.get("session").then((token) => {
+      this.storageService.get("session").then(async (token) => {
         // check if token is not null or undefined
         if (token != null || token != undefined) {
+
+          // check last session timestamp not more then 1 hour 
+
+          let lastSessionTimestamp: any = await this.storageService.get("lastSessionTimestamp");
+
+
+          if (lastSessionTimestamp != null || lastSessionTimestamp != undefined) {
+
+            // currenttime stamp
+
+            let currentTimestamp = new Date().getTime();
+
+            // check if last session timestamp is more then 1 hour
+
+            if (currentTimestamp - lastSessionTimestamp < 1000 * 60 * 60) {
+
+              let user = await this.storageService.get("user");
+              resolve(JSON.parse(user));
+              return;
+            }
+
+          }
           // veryfy token from server side in header Authorization
           this.http.get(environment.api + "/login/session", {
             headers: {
               "Authorization": token,
             }
           }).subscribe((res: any) => {
+            // currenttime stamp
+
+            let currentTimestamp = new Date().getTime();
+
+            // set last session timestamp
+
+            this.storageService.set("lastSessionTimestamp", currentTimestamp);
+
             resolve(res);
           }, err => {
             reject(err);

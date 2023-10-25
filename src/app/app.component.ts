@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { Capacitor } from '@capacitor/core';
 import { App, App as CapacitorApp } from '@capacitor/app';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { App, App as CapacitorApp } from '@capacitor/app';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
+  showCustomSplash = true;
   constructor(
 
   ) {
@@ -23,6 +24,13 @@ export class AppComponent implements OnInit {
           CapacitorApp.exitApp();
         }
       });
+    };
+
+    if (Capacitor.isPluginAvailable('SplashScreen')) {
+      SplashScreen.hide();
+      setTimeout(() => {
+        // this.showCustomSplash = false;
+      }, 3000);
     };
   }
 }

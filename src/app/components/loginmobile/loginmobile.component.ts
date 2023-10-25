@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonModal, ToastController } from '@ionic/angular';
+import { IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
 import { environment } from 'src/environments/environment';
 import { Dialog } from '@capacitor/dialog';
@@ -75,10 +75,24 @@ export class LoginmobileComponent implements OnInit {
         okButtonTitle: 'Yes',
       });
       if (value) {
+
+        // show loading
+        var sendOtpLoading = this.loadingController.create({
+          "duration": 2000,
+          "animated": true,
+          "message": "sending otp ...",
+          "spinner": "circles"
+        });
+
+        (await sendOtpLoading).present();
         let phoneNumber = this.userCountryCode + this.userMobileNumber;
-        this.LoginService.initiateLoginOtpRequest(phoneNumber).then((res: any) => {
+        this.LoginService.initiateLoginOtpRequest(phoneNumber).then(async (res: any) => {
           this.otpToken = res.token;
           this.showOtpBox = true;
+
+          (await sendOtpLoading).dismiss();
+
+
           // show success toast
           const toast = this.toastController.create({
             message: 'OTP sent to your mobile number',
@@ -89,8 +103,9 @@ export class LoginmobileComponent implements OnInit {
           toast.then((toast) => {
             toast.present();
           });
-        }).catch((err: any) => {
+        }).catch(async (err: any) => {
           // show error message
+          (await sendOtpLoading).dismiss();
           const toast = this.toastController.create({
             message: err.error.message,
             duration: 2000,
@@ -109,11 +124,26 @@ export class LoginmobileComponent implements OnInit {
   };
 
   loginwithotp() {
+    // check otp and token is not null
+    if (this.otpToken == "" && this.userOtp == "") {
+      const toast = this.toastController.create({
+        message: "Enter Valid Otp",
+        duration: 2000,
+        color: 'danger',
+        position: 'bottom'
+      });
+
+      toast.then((toast) => {
+        toast.present();
+      });
+      return;
+    }
     this.LoginService.verifyLoginOtpRequest(this.otpToken, this.userOtp).then((res: any) => {
       this.LoginService.setSessionToken(res.token);
       this.LoginService.setUserData(JSON.stringify(res.user));
       // refirect to home page
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
+      this.showOtpBox = false;
     }).catch((err: any) => {
       const toast = this.toastController.create({
         message: err.error.message,
@@ -1612,9 +1642,13 @@ export class LoginmobileComponent implements OnInit {
     public toastController: ToastController,
     private LoginService: LoginService,
     private router: Router,
+    private loadingController: LoadingController,
   ) { }
 
   async ngOnInit() {
+    let country = this.countries.find((country: any) => country.value === '+977');
+    this.selectedCountriesText = ` ${country.flag} ${country.value}`;
+    this.userCountryCode = '+977';
     this.LoginService.getUserCountryByIp().then((res: any) => {
       let country_calling_code = res.country_calling_code;
       // find country by calling code
@@ -1622,10 +1656,6 @@ export class LoginmobileComponent implements OnInit {
       this.selectedCountriesText = ` ${country.flag} ${country.value}`;
       this.userCountryCode = country_calling_code;
     }).catch((err: any) => {
-      // set default country nepal if error
-      let country = this.countries.find((country: any) => country.value === '+977');
-      this.selectedCountriesText = ` ${country.flag} ${country.value}`;
-      this.userCountryCode = '+977';
     });
   }
 

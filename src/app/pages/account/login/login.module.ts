@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +11,7 @@ import { CountryselectComponent } from 'src/app/components/actions/countryselect
 import { LoginmobileComponent } from 'src/app/components/loginmobile/loginmobile.component';
 import { LoginonboardComponent } from 'src/app/components/loginonboard/loginonboard.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +19,7 @@ import { LoginonboardComponent } from 'src/app/components/loginonboard/loginonbo
     IonicModule,
     LoginPageRoutingModule
   ],
-  declarations: [LoginPage, CountryselectComponent, LoginmobileComponent, LoginonboardComponent]
+  declarations: [LoginPage, CountryselectComponent, LoginmobileComponent, LoginonboardComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LoginPageModule { }

@@ -2,12 +2,24 @@
 
 <!-- text and button to navigate to /profilesetup -->
 
+
+<div>
+  <p class="ion-text-center">
+    Your haven't pay the setup fee yet.
+  </p>
+  <ion-button expand="block" color="danger" routerLink="/pay/razorpay">
+    Pay Now
+  </ion-button>
+</div>
+
 <ion-card style="box-shadow: 0px;" *ngIf="percentage <100">
   <ion-card-header>
     <ion-card-title class="ion-text-center">Notice</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
+
+
     <div *ngIf="percentage>60 && percentage <100">
       <p class="ion-text-center">
         Your have completed {{percentage}}% of your profile setup process.
@@ -16,6 +28,8 @@
         Continue Setup
       </ion-button>
     </div>
+
+
 
     <div *ngIf="percentage>0 && percentage <60">
       <p class="ion-text-center">

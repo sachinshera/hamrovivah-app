@@ -9,14 +9,22 @@ const config: CapacitorConfig = {
     iosScheme: 'https',
   },
   plugins: {
-    "GoogleAuth": {
-      "scopes": [
-        "profile",
-        "email"
-      ],
-      "serverClientId": "712518121703-ccecdguj89jr051f33bt3p40bqq0uflb.apps.googleusercontent.com",
-      "forceCodeForRefreshToken": true
-    }
+    SplashScreen: {
+      launchShowDuration: 3000,
+      launchAutoHide: true,
+      launchFadeOutDuration: 2000,
+      backgroundColor: "#ffffffff",
+      androidSplashResourceName: "splash",
+      androidScaleType: "CENTER_CROP",
+      showSpinner: false,
+      androidSpinnerStyle: "large",
+      iosSpinnerStyle: "small",
+      spinnerColor: "#999999",
+      splashFullScreen: true,
+      splashImmersive: true,
+      layoutName: "launch_screen",
+      useDialog: false,
+    },
   }
 }
 export default config;

@@ -45,18 +45,23 @@
 
 
 
-        <ion-item routerLink="/invite">
+        <ion-item (click)="shareThisApp()">
           <ion-icon name="person-add-outline"></ion-icon>
           <ion-label>
             Invite Friends
+
+            <!-- https://play.google.com/store/apps/details?id=org.kashisol.notesocean&pcampaignid=web_share -->
           </ion-label>
         </ion-item>
 
-        <ion-item routerLink="/home" lines="none">
+        <ion-item lines="none">
           <ion-icon name="help-circle-outline"></ion-icon>
-          <ion-label>
-            Help
-          </ion-label>
+          <a href="https://hamrovivah.com/help" style="text-decoration: none;color: inherit;" rel="noreferrer noopener"
+            target="_blank">
+            <ion-label>
+              Help
+            </ion-label>
+          </a>
         </ion-item>
 
 

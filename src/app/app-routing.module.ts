@@ -60,6 +60,14 @@ const routes: Routes = [
       {
         path: 'search/:search',
         loadChildren: () => import('./pages/searchresult/searchresult.module').then(m => m.SearchresultPageModule)
+      },
+      {
+        path: 'pay/razorpay',
+        loadChildren: () => import('./pages/payment/razorpay/razorpay.module').then(m => m.RazorpayPageModule)
+      },
+      {
+        path: 'pay/razorpay/:orderid',
+        loadChildren: () => import('./pages/payment/razorpay/razorpay.module').then(m => m.RazorpayPageModule)
       }
     ]
   },

@@ -1,53 +1,71 @@
 <ion-content [fullscreen]="true">
-  <div class="main-content">
-    <div class="ion-text-center">
-      <img src="assets/logo.png" alt="HamroVivah" />
-    </div>
-    <!-- login box emial and password -->
-
-    <div class="ion-margin inputcont">
-      <div style="margin: 50px 0px;">
-        <h2 class="ion-text-center">
-          Welcome to Hamro Vivah
-        </h2>
-        <!-- <h6 class="ion-text-center">
-          Enter your mobile number to get started
-        </h6> -->
+  <swiper-container pager="true" autoplay [pagination]="true" [loop]="false" #swiper>
+    <swiper-slide>
+      <div class="onboard-cont">
+        <img src="assets/images/wedding2.jpg" alt="">
       </div>
-
-      <ion-item lines="inset" *ngIf="!showOtpBox">
-        <ion-button (click)="OpenSelectCountryModel()" size="medium" color="icon-only"
+    </swiper-slide>
+  </swiper-container>
+  <div class="login-box">
+    <h4 class="ion-text-center">
+      Login to continue
+    </h4>
+    <div *ngIf="!showOtpBox">
+      <ion-item>
+        <label (click)="OpenSelectCountryModel()" size="medium" color="icon-only"
           class="ion-no-padding country-select-btn">
           {{ selectedCountriesText }}
-        </ion-button>
-        <ion-input type="text" [(ngModel)]="userMobileNumber" placeholder="XXX XXX XXX X"></ion-input>
-        <ion-button expand="block" size="medium" (click)="loginwithmobile()">
-          <ion-icon name="send-outline"></ion-icon>
-        </ion-button>
+        </label>
+        <ion-input type="text" [autofocus]="true" [(ngModel)]="userMobileNumber" placeholder="980 XX XX "
+          style="width:75%;margin-left: 2px;"></ion-input>
+
       </ion-item>
+      <p class="ion-text-center">
+        Your will receive an OTP on this number
+      </p>
 
-      <!-- otp box -->
-
-      <div class="otpcont" *ngIf="showOtpBox">
-        <div style="padding: 10px;">
-          <ion-text slot="end" color="success" class="ion-margin ion-padding">
-            Enter the OTP sent to your mobile number
-          </ion-text>
-        </div>
-        <ion-item lines="inset">
-          <ion-input type="text" [(ngModel)]="userOtp" placeholder="Enter OTP"></ion-input>
-          <ion-button expand="block" size="medium" (click)="loginwithotp()">
-            <ion-icon name="send-outline"></ion-icon>
+      <ion-row center>
+        <ion-col class="ion-text-center">
+          <ion-button color="danger" (click)="loginwithmobile()">
+            Send OTP
+            <ion-icon name="send-outline" style="margin-left: 3px;"></ion-icon>
           </ion-button>
-        </ion-item>
+        </ion-col>
+      </ion-row>
 
-        <!-- resend otp -->
-        <ion-button size="small" fill="icon-only" class="ion-margin" (click)="resend()">
-          Re-Send OTP
-        </ion-button>
-      </div>
     </div>
 
+    <div class="otpcont" *ngIf="showOtpBox">
+      <div style="padding: 10px;">
+        <p style="font-size: 15px;color: green;">
+          Enter the 6 digit OTP sent to your mobile number
+        </p>
+      </div>
+      <ion-item lines="inset">
+        <ion-input type="text" [(ngModel)]="userOtp" placeholder="Enter OTP"></ion-input>
+
+      </ion-item>
+
+
+
+      <ion-row center>
+        <ion-col class="ion-text-center">
+          <ion-button color="success" (click)="loginwithotp()">
+            Verify OTP
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <!-- resend otp -->
+      <p size="small" fill="icon-only" class="ion-margin" (click)="resend()">
+        Re-Send OTP
+        <!-- re icon -->
+
+        <ion-icon name="reload-outline"></ion-icon>
+
+
+      </p>
+    </div>
   </div>
 </ion-content>
 
