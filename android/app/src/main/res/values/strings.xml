@@ -4,8 +4,4 @@
     <string name="title_activity_main">Hamro Vivah</string>
     <string name="package_name">com.hamrovivah.app</string>
     <string name="custom_url_scheme">com.hamrovivah.app</string>
-
-    <!-- <string name="facebook_app_id">280034274792025</string>
-    <string name="facebook_client_token">118a27df496dc6c4b1e708d13d56c0e7</string> -->
-
 </resources>

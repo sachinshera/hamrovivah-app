@@ -1,11 +1,7 @@
 <ion-content [fullscreen]="true">
-  <swiper-container pager="true" autoplay [pagination]="true" [loop]="false" #swiper>
-    <swiper-slide>
-      <div class="onboard-cont">
-        <img src="assets/images/wedding2.jpg" alt="">
-      </div>
-    </swiper-slide>
-  </swiper-container>
+  <ion-img [src]="'assets/logo.png'" />
+</ion-content>
+<ion-footer>
   <div class="login-box">
     <h4 class="ion-text-center">
       Login to continue
@@ -38,7 +34,7 @@
     <div class="otpcont" *ngIf="showOtpBox">
       <div style="padding: 10px;">
         <p style="font-size: 15px;color: green;">
-          Enter the 6 digit OTP sent to your mobile number
+          Enter the 6 digit OTP sent to {{userMobileNumber}}
         </p>
       </div>
       <ion-item lines="inset">
@@ -57,17 +53,12 @@
       </ion-row>
 
       <!-- resend otp -->
-      <p size="small" fill="icon-only" class="ion-margin" (click)="resend()">
-        Re-Send OTP
-        <!-- re icon -->
-
-        <ion-icon name="reload-outline"></ion-icon>
-
-
-      </p>
+      <ion-button size="small" fill="icon-only" class="ion-margin" (click)="resend()">
+        {{resentBtnText}}
+      </ion-button>
     </div>
   </div>
-</ion-content>
+</ion-footer>
 
 <ion-modal trigger="select-country" #modal>
   <ng-template>

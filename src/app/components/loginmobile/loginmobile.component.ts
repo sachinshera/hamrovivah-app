@@ -17,11 +17,23 @@ export class LoginmobileComponent implements OnInit {
   public showOtpBox = false;
   public userOtp = '';
   private otpToken = '';
+  public resentBtnText = "Re Send";
+  public reSendTimer = 0;
 
   resend() {
+    if (this.reSendTimer != 0) {
+      this.toastController.create({
+        message: "Please wait for " + this.reSendTimer + " seconds",
+        duration: 2000,
+        color: 'danger',
+        position: 'bottom'
+      }).then((toast) => {
+        toast.present();
+      });
+      return;
+    }
     this.loginwithmobile();
-  }
-
+  };
   async loginwithmobile() {
     // check if user has entered mobile number
     if (this.userMobileNumber == null || this.userMobileNumber == undefined) {
@@ -103,6 +115,7 @@ export class LoginmobileComponent implements OnInit {
           toast.then((toast) => {
             toast.present();
           });
+          this.setResendTimer();
         }).catch(async (err: any) => {
           // show error message
           (await sendOtpLoading).dismiss();
@@ -122,6 +135,23 @@ export class LoginmobileComponent implements OnInit {
     };
     showConfirm();
   };
+
+  // set resend timer
+
+  setResendTimer() {
+    this.reSendTimer = 60;
+
+    var timer = setInterval(() => {
+      this.resentBtnText = "Re Send In (" + this.reSendTimer + ") sec";
+      this.reSendTimer = this.reSendTimer - 1;
+      if (this.reSendTimer == 0) {
+        clearInterval(timer);
+        this.resentBtnText = "Re Send";
+      }
+    }, 1000);
+  }
+
+
 
   loginwithotp() {
     // check otp and token is not null
@@ -144,6 +174,10 @@ export class LoginmobileComponent implements OnInit {
       // refirect to home page
       this.router.navigate(['/home']);
       this.showOtpBox = false;
+      this.otpToken = "";
+      this.userOtp = "";
+      this.userMobileNumber = "";
+      this.userCountryCode = "";
     }).catch((err: any) => {
       const toast = this.toastController.create({
         message: err.error.message,
