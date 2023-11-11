@@ -136,4 +136,22 @@ export class UserService {
         });
     });
   };
+
+  // get all plans
+
+  getAllPlans() {
+    return new Promise(async (resolve, reject) => {
+      var session = await this.storageService.get("session");
+      this.http.get(environment.api + "/plans", {
+        headers: {
+          "Authorization": session
+        }
+      })
+        .subscribe((res: any) => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  };
 }

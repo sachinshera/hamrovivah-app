@@ -24,10 +24,10 @@ export class HomelayoutPage implements OnInit {
         let id = res.data[i].id;
         let proifleImage = res.data[i].proifleImage;
         console.log("proifleImage", proifleImage);
-        let fullname = res.data[i].Data.filter((item: any) => item.Input.tag == 'Fullname')[0]?.inputValue;
-        let age = res.data[i].Data.filter((item: any) => item.Input.tag == 'Age')[0]?.inputValue;
-        let country = res.data[i].Data.filter((item: any) => item.Input.tag == 'Country')[0]?.inputValue;
-        let profession = res.data[i].Data.filter((item: any) => item.Input.tag == 'Profession')[0]?.inputValue;
+        let fullname = res.data[i].Data.filter((item: any) => item.Input.tag == 'fullname')[0]?.inputValue;
+        let age = res.data[i].Data.filter((item: any) => item.Input.tag == 'age')[0]?.inputValue;
+        let country = res.data[i].Data.filter((item: any) => item.Input.tag == 'country')[0]?.inputValue;
+        let profession = res.data[i].Data.filter((item: any) => item.Input.tag == 'profession')[0]?.inputValue;
 
         let bindData = {
           id: id ? id : '',

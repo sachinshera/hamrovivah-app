@@ -4,7 +4,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title class="" *ngIf="!isLoading">{{findInputByTag('Fullname')}}</ion-title>
+    <ion-title class="" *ngIf="!isLoading">{{findInputByTag('fullname')}}</ion-title>
     <ion-skeleton-text [animated]="true" *ngIf="isLoading"
       style="width: 70%;height: 20px;border-radius: 10px;"></ion-skeleton-text>
   </ion-toolbar>

@@ -68,13 +68,15 @@ const routes: Routes = [
       {
         path: 'pay/razorpay/:orderid',
         loadChildren: () => import('./pages/payment/razorpay/razorpay.module').then(m => m.RazorpayPageModule)
+      },
+      {
+        path: 'subscription',
+        loadChildren: () => import('./pages/plans/plans.module').then(m => m.PlansPageModule)
       }
+
     ]
   },
-  {
-    path: "**",
-    redirectTo: "home"
-  }
+
 ];
 
 @NgModule({

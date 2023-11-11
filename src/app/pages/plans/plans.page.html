@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Susbcription
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <swiper-container [loop]="false" [zoom]="true" [slidesPerView]="1.5" #imgSlider>
+    <swiper-slide *ngFor="let item of plans">
+      <!-- plan card -->
+      <ion-card style="border: 1px solid red;" class="ion-text-center">
+        <ion-chip color="danger">
+          Susbcribed
+        </ion-chip>
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">
+            <ion-label>
+              <h1>
+                {{item.name}}
+              </h1>
+              <!-- price -->
+            </ion-label>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- plan description -->
+          <ion-text class="ion-text-center">
+            <p>
+              {{item.description}}
+            </p>
+          </ion-text>
+          <!-- feaures list -->
+          <!-- price -->
+
+          <ion-list class="ion-text-center">
+            <ion-chip color="primary">
+              {{item.price}} {{item.currency}}
+            </ion-chip>
+            <ion-item class="ion-text-center">
+              <ion-label>
+                {{item.planDuration}}
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+        <ion-button expand="block" color="danger">Buy Now</ion-button>
+        <ion-badge slot="end">22</ion-badge>
+      </ion-card>
+    </swiper-slide>
+  </swiper-container>
+</ion-content>

@@ -26,6 +26,7 @@ export class AuthguardGuard implements CanActivate {
 
     try {
       await this.loginService.verifySessionToken();
+      return true;
     } catch (err) {
       this.router.navigate(['/login']);
       return false;

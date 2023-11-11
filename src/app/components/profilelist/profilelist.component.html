@@ -19,14 +19,15 @@
             <ion-card-header>
               <ion-card-title class="profile-name-text">{{item.fullname}}</ion-card-title>
               <ion-card-subtitle>{{item.country}}</ion-card-subtitle>
-              <ion-card-subtitle>
-                {{item.age}} {{item.height}}
-              </ion-card-subtitle>
+              <template><ion-card-subtitle>
+                  {{item.age}} {{item.height}}
+                </ion-card-subtitle></template>
             </ion-card-header>
-
-            <ion-card-content>
-              {{item.occupations}}
-            </ion-card-content>
+            <template>
+              <ion-card-content>
+                {{item.occupations}}
+              </ion-card-content>
+            </template>
           </ion-card>
         </div>
       </ion-col>
