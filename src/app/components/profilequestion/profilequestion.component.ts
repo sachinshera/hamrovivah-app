@@ -40,6 +40,7 @@ export class ProfilequestionComponent implements OnInit {
   public loading: any;
   public skeletons = [0, 1, 3, 4, 5, 6, 7, 8, 9, 7, 8, 9];
   public isLoading = true;
+  public filesTypesInputs: any = [];
 
 
   ngOnInit() {
@@ -145,6 +146,9 @@ export class ProfilequestionComponent implements OnInit {
       let inputType = this.form.Inputs[i].inputType;
       let required = this.form.Inputs[i].inputRequired;
       let value = this.form.Inputs[i].Values?.inputValue;
+      if (inputType == "file") {
+        this.filesTypesInputs.push(inputName);
+      }
       formGroupFields[inputName] = new FormControl(value);
       if (required == true) {
         formGroupFields[inputName].setValidators(Validators.required);
@@ -154,14 +158,37 @@ export class ProfilequestionComponent implements OnInit {
     };
 
     this.dynamicForm = new FormGroup(formGroupFields);
-    console.log(this.dynamicForm);
+  };
+
+
+  reselectFile(inputId: any) {
+    this.form.Inputs.forEach((input: any) => {
+      if (input.id == inputId) {
+        input.Values.inputValue = "";
+      }
+    })
+  };
+
+  openLink(link: any) {
+    window.open(link, "_blank");
+  }
+
+  onFileSelect(input: any, inputId: any) {
+    console.log(input.files);
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (e: any) => {
+        console.log('Got here: ', e.target.result);
+        this.dynamicForm.controls[inputId].setValue(e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
   }
 
   async submit() {
-
-    console.log("submit", this.dynamicForm.value);
     // check if form is valid
     if (this.dynamicForm.valid) {
+      console.log(this.dynamicForm);
       //  convet form value to array
       let formValue = Object.entries(this.dynamicForm.value);
 
@@ -172,6 +199,14 @@ export class ProfilequestionComponent implements OnInit {
       for (let i = 0; i < formValue.length; i++) {
         let inputId = formValue[i][0];
         let inputValue = formValue[i][1];
+        // check if input type is not file
+        // if (this.filesTypesInputs.includes(inputId) == false) {
+        //   bindedFormValue.push({
+        //     inputId: inputId,
+        //     inputValue: inputValue
+        //   });
+        // };
+
         bindedFormValue.push({
           inputId: inputId,
           inputValue: inputValue
