@@ -5,6 +5,8 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { environment } from 'src/environments/environment';
+import { Capacitor } from '@capacitor/core';
+import { FileOpener } from '@capacitor-community/file-opener';
 @Component({
   selector: 'app-userprofile',
   templateUrl: './userprofile.page.html',
@@ -25,6 +27,10 @@ export class UserprofilePage implements OnInit {
   public userid: string = "";
   public profileData: any = {};
   public isLoading = true;
+  public userphotopath = "";
+  public liked = false;
+
+
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -39,12 +45,32 @@ export class UserprofilePage implements OnInit {
     window.open(`tel:+918210071758`, '_system');
   };
 
+  likeAuser() {
+    this.liked = !this.liked;
+    this.profile.likeUser(this.userid).then((data: any) => {
+      this.toastController.create({
+        message: data.message,
+        duration: 2000
+      }).then((toast: any) => {
+        toast.present();
+      });
+    }).catch(err => {
+      this.toastController.create({
+        message: err.message,
+        duration: 2000
+      }).then((toast: any) => {
+        toast.present();
+      });
+    });
+  }
+
   getProfileById() {
     this.profile.getProfileById(this.userid)
       .then((data: any) => {
+        console.log(data)
         this.profileData = data.data;
         this.isLoading = false;
-        console.log(this.profileData);
+        this.liked = this.profileData.Liked;
       })
       .catch(err => console.log(err));
   };
@@ -74,5 +100,18 @@ export class UserprofilePage implements OnInit {
         }
       }
     }
+  };
+
+  openLink(link: string) {
+    // check if platform is web
+    if (Capacitor.isNativePlatform()) {
+      FileOpener.open({ filePath: link }).then((data) => { }).catch((err) => {
+        console.log("falied to open file", err);
+      });
+    } else {
+      window.open(link, "_blank");
+      return;
+    }
+
   }
 }

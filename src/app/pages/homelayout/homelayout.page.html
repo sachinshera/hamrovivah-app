@@ -80,10 +80,10 @@
 
   <div class="main-content" class="ion-padding" *ngIf="!isLoading">
     <app-profilelist [profiles]="allusers" [heading]="'Recently Added'"></app-profilelist>
-    <div *ngFor="let item of prefrencesProfiles">
+    <!-- <div *ngFor="let item of prefrencesProfiles">
       <app-profilelist [profiles]="allusers"
         [heading]="'Related on your '+item.value[0].Input.inputName"></app-profilelist>
-    </div>
+    </div> -->
   </div>
 
 </ion-content>

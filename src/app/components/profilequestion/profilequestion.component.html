@@ -11,7 +11,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
   <ion-item-group>
     <form [formGroup]="dynamicForm" (ngsubmit)="submit()" *ngIf="dynamicForm">
       <ion-card *ngIf="formId=='unfilled' && form.Inputs.length>0" color="medium">
@@ -64,7 +63,7 @@
       <ion-list>
         <ion-item *ngFor="let item of form.Inputs" class="ion-margin">
           <div [formGroup]="dynamicForm">
-            <ion-label>{{item.inputName}}</ion-label>
+            <ion-label>{{item.inputName}} <span *ngIf="item.inputRequired" style="color:red">*</span> </ion-label>
             <ion-input formControlName="{{item.id}}" type="{{item.inputType}}" required="{{item.inputRequired}}"
               *ngIf="item.inputType == 'text' || item.inputType == 'number' || item.inputType == 'email' || item.inputType == 'date'"
               value="{{item.Values?.inputValue}}"></ion-input>
@@ -74,13 +73,13 @@
                 value="{{option.value}}">{{option.label}}</ion-select-option>
             </ion-select>
             <ion-input id="{{item.id}}" type="file" (change)="onFileSelect($event.target,item.id)"
-              *ngIf="item.inputType == 'file' && item.Values?.inputValue== ''" [accept]="item.fileAccept"></ion-input>
+              *ngIf="item.inputType == 'file' && item.Values?.inputValue==null" [accept]="item.fileAccept"></ion-input>
             <div style="display: flex;justify-content: space-between;">
               <ion-button (click)="openLink(item.Values?.inputValue)" color="success"
-                *ngIf="item.inputType == 'file' && item.Values?.inputValue!= ''">
+                *ngIf="item.inputType == 'file' && item.Values?.inputValue!= null ">
                 <ion-icon name="checkmark-circle-outline"></ion-icon> Uploaded </ion-button>
               <ion-button (click)="reselectFile(item.id)"
-                *ngIf="item.inputType == 'file' && item.Values?.inputValue!= ''">
+                *ngIf="item.inputType == 'file' && item.Values?.inputValue!= null">
                 <ion-icon name="reload-outline"></ion-icon>
               </ion-button>
             </div>

@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { SearchresultPageRoutingModule } from './searchresult-routing.module';
 
 import { SearchresultPage } from './searchresult.page';
+import { SharedModule } from 'src/app/modules/shared/shared.module';
+import { HomelayoutPageModule } from '../homelayout/homelayout.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchresultPageRoutingModule
+    SearchresultPageRoutingModule,
+    HomelayoutPageModule
   ],
-  declarations: [SearchresultPage]
+  declarations: [SearchresultPage],
+  exports: []
 })
-export class SearchresultPageModule {}
+export class SearchresultPageModule { }

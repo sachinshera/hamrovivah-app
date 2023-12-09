@@ -20,52 +20,16 @@ export class HomelayoutPage implements OnInit {
   ngOnInit() {
     this.profileService.getProfiles(0).then((res: any) => {
       this.isLoading = false;
-      for (let i = 0; i < res.data.length; i++) {
-        let id = res.data[i].id;
-        let proifleImage = res.data[i].proifleImage;
-        console.log("proifleImage", proifleImage);
-        let fullname = res.data[i].Data.filter((item: any) => item.Input.tag == 'fullname')[0]?.inputValue;
-        let age = res.data[i].Data.filter((item: any) => item.Input.tag == 'age')[0]?.inputValue;
-        let country = res.data[i].Data.filter((item: any) => item.Input.tag == 'country')[0]?.inputValue;
-        let profession = res.data[i].Data.filter((item: any) => item.Input.tag == 'profession')[0]?.inputValue;
-
-        let bindData = {
-          id: id ? id : '',
-          proifleImage: proifleImage ? proifleImage : 'assets/images/user.png',
-          fullname: fullname ? fullname : '',
-          age: age ? age : '',
-          country: country ? country : '',
-          profession: profession ? profession : '',
-        };
-
-        this.allusers.push(bindData);
-      };
+      this.allusers = res.data;
     }).catch((err: any) => {
       console.log("err", err);
     });
 
     this.profileService.getPfofilesByPrefrences(0).then((res: any) => {
-      // group by res.inputValue
-
-      let groupBy = (array: any, key: any) => {
-        return array.reduce((result: any, currentValue: any) => {
-          (result[currentValue[key]] = result[currentValue[key]] || []).push(
-            currentValue
-          );
-          return result;
-        }, {});
-      };
-
-      let grouped = groupBy(res, 'inputValue');
-
-      this.prefrencesProfiles = Object.keys(grouped).map((key) => {
-        return { key, value: grouped[key] };
-      });
-
-      console.log("this.prefrencesProfiles", this.prefrencesProfiles);
-
+      this.isLoading = false;
+      this.prefrencesProfiles = res.data;
     }).catch((err: any) => {
-      console.log("err", err)
+      console.log("err", err);
     });
   }
 

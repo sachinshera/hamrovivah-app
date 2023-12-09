@@ -15,7 +15,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="12">
-          <ion-img style="width: 100%;height: 250px;object-fit: cover;" *ngIf="!isLoading"
+          <ion-img style="width: 100%;height: 250px;object-fit: fill;" *ngIf="!isLoading"
             [src]="profileData?.profile?.proifleImage"></ion-img>
           <ion-skeleton-text [animated]="true" *ngIf="isLoading"
             style="width: 100%;height: 200px;border-radius: 10px;"></ion-skeleton-text>
@@ -24,37 +24,57 @@
     </ion-grid>
   </div>
 
-  <ion-card class="ion-text-center" color="icon-only">
-    <ion-skeleton-text *ngIf="isLoading" [animated]="true"
-      style="height: 20px;width: 40%;margin: 0 auto ;"></ion-skeleton-text>
+  <!-- <div class="ion-text-center">
     <ion-icon *ngIf="!isLoading" name="navigate-circle-outline"></ion-icon>
     <span *ngIf="!isLoading" routerLink="/photos/{{profileData.profile.id}}/name/{{profileData.forms[0].Inputs[0].Values
       .inputValue}}">
       View Photos
     </span>
-  </ion-card>
+  </div> -->
 
 
   <div>
     <ion-grid>
       <ion-row>
-        <ion-col size="6">
+        <ion-col size="4">
+          <ion-button color="primary" fill="" expand="block" (click)="likeAuser()">
+            <ion-skeleton-text *ngIf="isLoading" [animated]="true"
+              style="width: 100%;height: 30px;"></ion-skeleton-text>
+            <div *ngIf="!liked">
+              <ion-icon name="heart-outline"></ion-icon>
+              <ion-text>
+                Like
+              </ion-text>
+            </div>
+
+            <div *ngIf="liked">
+              <ion-icon name="heart"></ion-icon>
+              <ion-text>
+                Like
+              </ion-text>
+            </div>
+
+          </ion-button>
+        </ion-col>
+        <ion-col size="4">
           <ion-button fill="" color="primary" expand="block">
             <ion-skeleton-text *ngIf="isLoading" [animated]="true"
               style="width: 100%;height: 30px;"></ion-skeleton-text>
-            <ion-icon *ngIf="!isLoading" name="heart-outline"></ion-icon>
-            <ion-text *ngIf="!isLoading">
-              Like
+
+            <ion-icon *ngIf="!isLoading" name="navigate-circle-outline"></ion-icon>
+            <ion-text *ngIf="!isLoading" routerLink="/photos/{{profileData?.profile?.id+'/name/'+profileData?.forms[0]?.Inputs[0]?.Values
+            ?.inputValue}}">
+              Photos
             </ion-text>
           </ion-button>
         </ion-col>
-        <ion-col size="6">
+        <ion-col size="4">
           <ion-button fill="" color="primary" expand="block">
             <ion-skeleton-text *ngIf="isLoading" [animated]="true"
               style="width: 100%;height: 30px;"></ion-skeleton-text>
-            <ion-icon *ngIf="!isLoading" name="share-outline"></ion-icon>
+            <ion-icon *ngIf="!isLoading" name="call-outline"></ion-icon>
             <ion-text *ngIf="!isLoading">
-              Share
+              Contact
             </ion-text>
           </ion-button>
         </ion-col>
@@ -210,12 +230,15 @@
             <ion-card-content>
               <ion-grid>
                 <ion-row *ngFor="let input of form.Inputs">
-                  <ion-col size="6">
-                    <ion-label>{{
-                      input.inputName}}</ion-label>
+                  <ion-col size="6" *ngIf="input?.Values?.inputValue != null">
+                    <ion-label>{{input.inputName}}</ion-label>
                   </ion-col>
-                  <ion-col size="6">
-                    <ion-label>{{input.Values.inputValue}}</ion-label>
+                  <ion-col size="6" *ngIf="input?.Values?.inputValue != null">
+                    <ion-label *ngIf="input.inputType!='file'">{{input.Values.inputValue}}</ion-label>
+                    <ion-button (click)="openLink(input?.Values?.inputValue)" size="small"
+                      *ngIf="input.inputType=='file'">
+                      <ion-icon name="open"></ion-icon>
+                      Open </ion-button>
                   </ion-col>
                 </ion-row>
               </ion-grid>
@@ -226,10 +249,10 @@
     </ion-grid>
   </div>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-button (click)="callus()">
       <ion-icon name="call-outline" style="margin: 0px 5px;"></ion-icon>
       Contact
     </ion-button>
-  </ion-fab>
+  </ion-fab> -->
 </ion-content>

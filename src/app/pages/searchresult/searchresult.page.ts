@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FileOpener } from '@capacitor-community/file-opener';
+import { Capacitor } from '@capacitor/core';
 import { ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 import { environment } from 'src/environments/environment';
@@ -87,5 +89,18 @@ export class SearchresultPage implements OnInit {
     this.profiles = [];
     this.searchProfiles();
     event.target.complete();
+  };
+
+  openLink(link: string) {
+    // check if platform is web
+    if (Capacitor.isNativePlatform()) {
+      FileOpener.open({ filePath: link }).then((data) => { }).catch((err) => {
+        console.log("falied to open file", err);
+      });
+    } else {
+      window.open(link, "_blank");
+      return;
+    }
+
   }
 }

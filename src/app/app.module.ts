@@ -8,14 +8,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
-    FormsModule, ReactiveFormsModule, IonicStorageModule.forRoot()],
+    FormsModule, ReactiveFormsModule, IonicStorageModule.forRoot(), CommonModule,],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
-  ],
+  ]
 })
 export class AppModule { }

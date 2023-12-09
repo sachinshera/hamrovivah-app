@@ -13,17 +13,8 @@
       refreshingSpinner="circles" refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
-  <div *ngIf="!loading">
-    <ion-card *ngFor="let profile of profiles" class="ion-no-padding" routerLink="/profile/{{profile.User.id}}">
-      <ion-card-content class="ion-no-padding">
-        <ion-img [src]="profile.User.proifleImage" class="user_img" />
-        <div class="ion-padding">
-          <ion-card-title>{{profile.User.Data[0].inputValue}}</ion-card-title>
-          <ion-card-subtitle>{{profile.User.Data[1].inputValue}} ,{{profile.User.Data[2].inputValue}}
-          </ion-card-subtitle>
-        </div>
-      </ion-card-content>
-    </ion-card>
+  <div *ngIf="!loading" class="ion-padding">
+    <app-profilelist [profiles]="profiles" [heading]="'Result of '+searchText "></app-profilelist>
   </div>
 
   <div *ngIf="loading">

@@ -23,7 +23,6 @@ export class ProfilelistComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.profiles);
+    console.log("profiles", this.profiles);
   }
-
 }

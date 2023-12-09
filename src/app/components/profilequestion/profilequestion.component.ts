@@ -2,11 +2,13 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
-import { ToastController } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { UserService } from 'src/app/services/user.service';
 import { LoadingController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { FileOpener, FileOpenerOptions, FileOpenerPlugin } from '@capacitor-community/file-opener';
+import { Capacitor } from '@capacitor/core';
 @Component({
   selector: 'app-profilequestion',
   templateUrl: './profilequestion.component.html',
@@ -164,13 +166,22 @@ export class ProfilequestionComponent implements OnInit {
   reselectFile(inputId: any) {
     this.form.Inputs.forEach((input: any) => {
       if (input.id == inputId) {
-        input.Values.inputValue = "";
+        input.Values.inputValue = null;
       }
     })
   };
 
-  openLink(link: any) {
-    window.open(link, "_blank");
+  openLink(link: string) {
+    // check if platform is web
+    if (Capacitor.isNativePlatform()) {
+      FileOpener.open({ filePath: link }).then((data) => { }).catch((err) => {
+        console.log("falied to open file", err);
+      });
+    } else {
+      window.open(link, "_blank");
+      return;
+    }
+
   }
 
   onFileSelect(input: any, inputId: any) {

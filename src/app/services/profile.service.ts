@@ -180,4 +180,64 @@ export class ProfileService {
         .catch(err => reject(err));
     })
   };
+
+  // like a user
+
+  likeUser(id: string) {
+    return new Promise(async (resolve, reject) => {
+      let token = await this.LoginService.getToken();
+      fetch(this.api + '/likes/' + id, {
+        method: 'POST',
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json',
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => reject(err));
+    })
+  };
+
+  // get my likes
+
+  getMyLikes() {
+    return new Promise(async (resolve, reject) => {
+      let token = await this.LoginService.getToken();
+      fetch(this.api + '/likes', {
+        method: 'GET',
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json',
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => reject(err));
+    })
+  };
+
+  // get who liked me
+
+  getWhoLikedMe() {
+    return new Promise(async (resolve, reject) => {
+      let token = await this.LoginService.getToken();
+      fetch(this.api + '/likes/whomLikedMe', {
+        method: 'GET',
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json',
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => reject(err));
+    })
+  };
 }
