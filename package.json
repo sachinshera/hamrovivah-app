@@ -10,7 +10,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "assets": "npx capacitor-assets generate"
+    "assets": "npx capacitor-assets generate",
+    "change": "capacitor-set-version -v 1.4.1 -b 16"
   },
   "private": true,
   "dependencies": {

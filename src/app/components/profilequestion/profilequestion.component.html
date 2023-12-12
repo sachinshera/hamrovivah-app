@@ -54,7 +54,7 @@
             <ion-img src="{{userProfilePic}}" alt="" *ngIf="userProfilePic != ''" />
             <img src="/assets/user.png" alt="" *ngIf="userProfilePic == ''">
           </ion-avatar>
-          <ion-button color="icon-only" (click)="changeProfilePic()">
+          <ion-button size="small" (click)="changeProfilePic()">
             Change
           </ion-button>
         </ion-card-content>
@@ -122,10 +122,9 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button expand="block" color="icon-only"
-      *ngIf="!isLastForm && formId!='unfilled' && formId!=0 && formId!= 'partner'"
+    <ion-button expand="block" color="dark" *ngIf="!isLastForm && formId!='unfilled' && formId!=0 && formId!= 'partner'"
       (click)="skip()">{{skipText}}</ion-button>
-    <ion-button expand="block" color="success" (click)="submit()">{{btnText}}</ion-button>
+    <ion-button expand="block" (click)="submit()">{{btnText}}</ion-button>
 
   </ion-toolbar>
 </ion-footer>

@@ -4,7 +4,7 @@ swiper-container {
     --swiper-pagination-progressbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.25);
     --swiper-scrollbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1);
     --swiper-scrollbar-drag-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.5);
-    height: 95vh;
+    height: 100vh;
 }
 
 swiper-slide {
@@ -23,43 +23,72 @@ swiper-slide {
 
     text-align: center;
     box-sizing: border-box;
+    width: 100%;
+    height: 100%;
 }
 
 .onboard-cont {
-    // width: 100%;
-    padding: 10px;
+    width: 100%;
+    height: 100vh;
+    padding: 0px;
 }
+
+// dark mode
+
+
+
 
 .onboard-cont img {
     width: 100%;
-    height: 60vh;
-    border-radius: 10px;
+    height: 70%;
+    border-radius: 50%;
+
 }
 
-.brand-logo {
+.onboard-cont .content {
     width: 100%;
-    padding: 15px;
-    position: relative;
-    background-color: rgba($color: #000000, $alpha: 1.0)
+    height: 30%;
+    background-color: inherit;
+    border-radius: 20px 20px 0px 0px;
+    padding: 10px;
+    box-shadow: 0px 0px 2px #ccc;
 }
 
-.brand-logo img {
-    width: 70%;
-    margin: 0 auto !important;
-    display: block;
+.content {
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+    box-shadow: 0px 0px 2px #ccc;
 }
 
-// footer
-
-ion-footer {
-    position: absolute;
-    bottom: 4vh;
-    width: 100%;
+@media screen and (prefers-color-scheme: dark) {
+    .content {
+        box-shadow: 0px 0px 5px #dd1818 !important;
+    }
 }
+
+
+
+
 
 .footer-btn {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
+.footer {
+    background-color: transparent !important;
+}
+
+.grad-1 {
+    margin: 0px 3px;
+}
+
+
+.grad-2 {
+    color: #dd1818;
 }

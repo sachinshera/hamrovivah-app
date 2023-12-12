@@ -9,36 +9,60 @@
         <img src="assets/logo.png" alt="">
     </div> -->
 
-    <swiper-container pager="true" autoplay [pagination]="true" [loop]="false" (slidechange)="onSlideChange()" #swiper>
+    <swiper-container [loop]="false" (slidechange)="onSlideChange()" #swiper>
         <swiper-slide>
             <div class="onboard-cont">
-                <img src="assets/images/wedding.jpg" alt="">
-
-                <p>
-                    Love is the most important ingredient, so cook with your love.
-                </p>
+                <img src="assets/svg/wedding.svg" alt="" class="onboard-img">
+                <div class="content">
+                    <h1>
+                        <span class="grad-1">Wedding</span>
+                        <span class="grad-2">Planner</span>
+                    </h1>
+                    <p>
+                        We are here to help you to plan your wedding in a better way.
+                    </p>
+                </div>
             </div>
         </swiper-slide>
         <swiper-slide>
             <div class="onboard-cont">
-                <img src="assets/images/wedding2.jpg" alt="">
-                <p>
-                    Do not live with your love, live for your love.
-                </p>
+                <img src="assets/svg/Wedding-pana.svg" alt="" class="onboard-img">
+                <div class="content">
+                    <h1>
+                        <span class="grad-1">Match</span>
+                        <span class="grad-2">Making</span>
+                    </h1>
+                    <p>
+                        Our Matchmaking system will help you to find your perfect match.
+                    </p>
+                </div>
             </div>
 
         </swiper-slide>
         <swiper-slide>
 
-            <div class="onboard-cont">
-                <img src="assets/images/wedding3.jpg" alt="">
-                <p>
-                    Walk with your love, walk for your love.
-                </p>
+            <div class="onboard-cont grad-1">
+                <img src="assets/svg/Good team-pana.svg" alt="" class="onboard-img">
+                <div class="content">
+                    <h1>
+                        <span class="grad-1">
+                            Match
+                        </span>
+                        <span class="grad-2">
+                            Making
+                        </span>
+                    </h1>
+                    <p>
+                        Matchmaking is the process of matching two or more people together for the purpose of marriage.
+                    </p>
 
-                <ion-button class="skip-btn" (click)="start()">
-                    Get Started
-                </ion-button>
+                    <ion-button (click)="start()">
+                        Get Started
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </ion-button>
+                </div>
+
+
             </div>
 
 
@@ -48,15 +72,35 @@
 
 </ion-content>
 
-<ion-footer fill="clear">
-    <!-- slider next and skip button -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!isLast">
+    <ion-fab-button (click)="continue()">
+        <ion-icon name="caret-forward-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
 
+<!-- for prev -->
+
+<ion-fab vertical="bottom" horizontal="start" slot="fixed" *ngIf="!isBeginning">
+    <ion-fab-button (click)="prev()">
+        <ion-icon name="caret-back-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+
+<!-- skip button on top right -->
+
+<ion-fab vertical="top" horizontal="end" slot="fixed" *ngIf="!isLast">
+    <ion-fab-button (click)="start()">
+        Skip
+    </ion-fab-button>
+</ion-fab>
+
+<!-- <div class="footer">
     <div class="footer-btn">
-        <ion-button fill="clear" class="skip-btn" (click)="start()">
+        <ion-button fill="" class="skip-btn" (click)="start()">
             Skip
         </ion-button>
-        <ion-button fill="clear" class="next-btn" (click)="continue()">
+        <ion-button fill="" class="next-btn" (click)="continue()">
             Next <ion-icon name="caret-forward-outline"></ion-icon>
         </ion-button>
     </div>
-</ion-footer>
+</div> -->

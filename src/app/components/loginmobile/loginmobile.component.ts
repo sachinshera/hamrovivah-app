@@ -173,11 +173,24 @@ export class LoginmobileComponent implements OnInit {
       this.LoginService.setUserData(JSON.stringify(res.user));
       // refirect to home page
       this.router.navigate(['/home']);
-      this.showOtpBox = false;
-      this.otpToken = "";
-      this.userOtp = "";
-      this.userMobileNumber = "";
-      this.userCountryCode = "";
+      const toast = this.toastController.create({
+        message: "Login sucessfully",
+        duration: 2000,
+        color: 'success',
+        position: 'bottom'
+      });
+
+      toast.then((toast) => {
+        toast.present();
+      });
+
+      setTimeout(() => {
+        this.showOtpBox = false;
+        this.otpToken = "";
+        this.userOtp = "";
+        this.userMobileNumber = "";
+        this.userCountryCode = "";
+      }, 2000);
     }).catch((err: any) => {
       const toast = this.toastController.create({
         message: err.error.message,

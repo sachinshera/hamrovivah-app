@@ -1,64 +1,74 @@
-<ion-content [fullscreen]="true">
-  <ion-img [src]="'assets/logo.png'" />
-</ion-content>
-<ion-footer>
-  <div class="login-box">
-    <h4 class="ion-text-center">
-      Login to continue
-    </h4>
-    <div *ngIf="!showOtpBox">
-      <ion-item>
-        <label (click)="OpenSelectCountryModel()" size="medium" color="icon-only"
-          class="ion-no-padding country-select-btn">
-          {{ selectedCountriesText }}
-        </label>
-        <ion-input type="text" [autofocus]="true" [(ngModel)]="userMobileNumber" placeholder="980 XX XX "
-          style="width:75%;margin-left: 2px;"></ion-input>
-
-      </ion-item>
-      <p class="ion-text-center">
-        Your will receive an OTP on this number
-      </p>
-
-      <ion-row center>
-        <ion-col class="ion-text-center">
-          <ion-button color="danger" (click)="loginwithmobile()">
-            Send OTP
-            <ion-icon name="send-outline" style="margin-left: 3px;"></ion-icon>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-
+<ion-content>
+  <div class="main">
+    <div class="ion-text-center ion-margin">
+      <h1>
+        One <span style="color: #dd1818;">Step</span>
+      </h1>
+      <h1>
+        Closer
+        To <span style="color: #dd1818;">Happiness</span>
+      </h1>
     </div>
+    <ion-img [src]="'assets/svg/Coolness-amico.svg'"></ion-img>
+    <div class="login-box">
+      <h4 class="ion-text-center">
+        Login to continue
+      </h4>
+      <div *ngIf="!showOtpBox">
+        <ion-item>
+          <label (click)="OpenSelectCountryModel()" size="medium" color="icon-only"
+            class="ion-no-padding country-select-btn">
+            {{ selectedCountriesText }}
+          </label>
+          <ion-input type="text" [autofocus]="true" [(ngModel)]="userMobileNumber" placeholder="980 XX XX "
+            style="width:75%;margin-left: 2px;"></ion-input>
 
-    <div class="otpcont" *ngIf="showOtpBox">
-      <div style="padding: 10px;">
-        <p style="font-size: 15px;color: green;">
-          Enter the 6 digit OTP sent to {{userMobileNumber}}
-        </p>
+        </ion-item>
+        <h6 class="ion-text-center">
+          Your will receive an OTP on this number
+        </h6>
+
+        <ion-row center>
+          <ion-col class="ion-text-center">
+            <ion-button size="large" color="primary" (click)="loginwithmobile()">
+              Send OTP
+              <ion-icon name="send-outline" style="margin-left: 3px;"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
       </div>
-      <ion-item lines="inset">
-        <ion-input type="text" [(ngModel)]="userOtp" placeholder="Enter OTP"></ion-input>
 
-      </ion-item>
+      <div class="otpcont" *ngIf="showOtpBox">
+        <div style="padding: 10px;">
+          <p style="font-size: 15px;color: green;">
+            Enter the 6 digit OTP sent to {{userMobileNumber}}
+          </p>
+        </div>
+        <ion-item lines="inset">
+          <ion-input type="text" [(ngModel)]="userOtp" placeholder="Enter OTP"></ion-input>
+
+        </ion-item>
 
 
 
-      <ion-row center>
-        <ion-col class="ion-text-center">
-          <ion-button color="success" (click)="loginwithotp()">
-            Verify OTP
-          </ion-button>
-        </ion-col>
-      </ion-row>
+        <ion-row center>
+          <ion-col class="ion-text-center">
+            <ion-button size="large" color="dark" (click)="loginwithotp()">
+              Verify OTP
+            </ion-button>
+          </ion-col>
+        </ion-row>
 
-      <!-- resend otp -->
-      <ion-button size="small" fill="icon-only" class="ion-margin" (click)="resend()">
-        {{resentBtnText}}
-      </ion-button>
+        <!-- resend otp -->
+        <ion-button size="small" fill="icon-only" class="ion-margin" (click)="resend()">
+          {{resentBtnText}}
+        </ion-button>
+      </div>
     </div>
   </div>
-</ion-footer>
+
+</ion-content>
 
 <ion-modal trigger="select-country" #modal>
   <ng-template>
