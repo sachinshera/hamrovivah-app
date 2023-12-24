@@ -19,7 +19,7 @@ export class UserService {
   getUserDetails() {
     return new Promise(async (resolve, reject) => {
       var session = await this.storageService.get("session");
-      this.http.get(environment.api + "/users", {
+      this.http.get(environment.api + "/users/v2", {
         headers: {
           "Authorization": session
         }

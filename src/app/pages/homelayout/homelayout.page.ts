@@ -31,6 +31,18 @@ export class HomelayoutPage implements OnInit {
     }).catch((err: any) => {
       console.log("err", err);
     });
+  };
+
+  handleRefresh(event: any) {
+    this.allusers = [];
+    this.profileService.getProfiles(0).then((res: any) => {
+      this.isLoading = false;
+      this.allusers = res.data;
+      event.target.complete();
+    }).catch((err: any) => {
+      console.log("err", err);
+      event.target.complete();
+    });
   }
 
 }

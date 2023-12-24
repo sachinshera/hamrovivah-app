@@ -24,5 +24,16 @@ export class ProfilelistComponent implements OnInit {
 
   ngOnInit() {
     console.log("profiles", this.profiles);
+    console.log(this.getInputvalueByTagname('fullname', this.profiles[0].forms));
+  };
+
+  public getInputvalueByTagname(tagname: string, forms: any) {
+    for (let i = 0; i < forms.length; i++) {
+      for (let j = 0; j < forms[i].Inputs.length; j++) {
+        if (forms[i].Inputs[j].tag == tagname) {
+          return forms[i].Inputs[j].Values.inputValue;
+        }
+      }
+    }
   }
 }

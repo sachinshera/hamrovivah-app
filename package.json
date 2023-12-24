@@ -11,7 +11,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "assets": "npx capacitor-assets generate",
-    "change": "capacitor-set-version -v 1.4.1 -b 16"
+    "change": "capacitor-set-version -v 1.4.3 -b 18"
   },
   "private": true,
   "dependencies": {
@@ -32,6 +32,7 @@
     "@capacitor/ios": "^5.4.0",
     "@capacitor/keyboard": "5.0.6",
     "@capacitor/preferences": "^5.0.6",
+    "@capacitor/share": "^5.0.6",
     "@capacitor/splash-screen": "^5.0.6",
     "@capacitor/status-bar": "5.0.6",
     "@ionic/angular": "^7.0.0",

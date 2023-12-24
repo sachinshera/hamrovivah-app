@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
 import { environment } from 'src/environments/environment';
+import { Share } from '@capacitor/share';
 @Component({
   selector: 'app-homemenu',
   templateUrl: './homemenu.component.html',
@@ -22,10 +23,9 @@ export class HomemenuComponent implements OnInit {
   ngOnInit() {
     this.loginService.getUserData().then((userdata) => {
       // userdata = JSON.parse(userdata);
-      this.name = userdata.name;
-      this.mobile = userdata.mobile;
-      this.profilePic = userdata.proifleImage;
-      console.log(userdata);
+      this.name = this.getInputvalueByTagname('fullname', userdata.forms);
+      this.mobile = userdata.user.mobile;
+      this.profilePic = userdata.user.proifleImage;
     }).catch((err) => {
       console.log(err)
     });
@@ -49,36 +49,49 @@ export class HomemenuComponent implements OnInit {
     });
   };
 
-  shareThisApp() {
+  async shareThisApp() {
 
-    // check if the share method is supported
-    // if not supported then show a toast
-    if (!(navigator as any).share) {
-      let toast = this.toastController.create({
-        message: "Sorry, your Device does not support sharing",
+    if (!await Share.canShare()) {
+      // show toast
+      this.toastController.create({
+        message: "Your device does not support sharing",
         duration: 2000,
         color: "danger",
         position: "bottom",
         cssClass: "toast",
-      });
-
-      toast.then((toast) => {
+      }).then((toast) => {
         toast.present();
       });
-      return;
     };
 
-    // share the app
+    try {
+      await Share.share({
+        title: "Hamro Vivah",
+        text: "Download Hamro Vivah App for free",
+        url: "https://play.google.com/store/apps/details?id=com.hamrovivah.app",
+        dialogTitle: "Share with your friends",
+      });
+    } catch (err: any) {
+      this.toastController.create({
+        message: err.message,
+        duration: 2000,
+        color: "danger",
+        position: "bottom",
+        cssClass: "toast",
+      }).then((toast) => {
+        toast.present();
+      });
+    }
+  };
 
-    (navigator as any).share({
-      title: "Share this app",
-      text: "Download the app from here",
-      url: "https://play.google.com/store/apps/details?id=com.ionicframework.ionic5app",
-    }).then(() => {
-      console.log("Shared successfully");
-    }).catch((err: any) => {
-      console.log(err);
-    });
+  public getInputvalueByTagname(tagname: string, forms: any) {
+    for (let i = 0; i < forms.length; i++) {
+      for (let j = 0; j < forms[i].Inputs.length; j++) {
+        if (forms[i].Inputs[j].tag == tagname) {
+          return forms[i].Inputs[j].Values.inputValue;
+        }
+      }
+    }
   }
 
 }

@@ -113,5 +113,23 @@ export class UserprofilePage implements OnInit {
       return;
     }
 
+  };
+
+  handleRefresh(event: any) {
+    this.profileData = {};
+    this.isLoading = true;
+
+    this.profile.getProfileById(this.userid)
+      .then((data: any) => {
+        console.log(data)
+        this.profileData = data.data;
+        this.isLoading = false;
+        this.liked = this.profileData.Liked;
+        event.target.complete();
+      })
+      .catch(err => {
+        console.log(err);
+        event.target.complete();
+      });
   }
 }

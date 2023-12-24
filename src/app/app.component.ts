@@ -3,9 +3,6 @@ import { register } from 'swiper/element/bundle';
 import { Capacitor } from '@capacitor/core';
 import { App, App as CapacitorApp } from '@capacitor/app';
 import { SplashScreen } from '@capacitor/splash-screen';
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -20,12 +17,6 @@ export class AppComponent implements OnInit {
   };
 
   async ngOnInit() {
-
-    // firebase init
-
-    const firebaseApp = initializeApp(environment.firebaseConfig);
-    const analytics = getAnalytics(firebaseApp);
-
     if (Capacitor.isPluginAvailable('App')) {
       CapacitorApp.addListener('backButton', () => {
         if (window.location.pathname == '/home') {
@@ -36,13 +27,6 @@ export class AppComponent implements OnInit {
 
     if (Capacitor.isPluginAvailable('SplashScreen')) {
       SplashScreen.hide();
-      setTimeout(() => {
-        // this.showCustomSplash = false;
-      }, 3000);
     };
-    // firebase init
-
-
-
-  }
+  };
 }

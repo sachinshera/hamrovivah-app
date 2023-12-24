@@ -111,11 +111,11 @@ export class ProfileService {
   updateValues(values: any[]) {
     return new Promise(async (resolve, reject) => {
       // check each value has inputId and  inputValue
-      values.forEach((value) => {
-        if (value.inputId == undefined || value.inputValue == undefined) {
-          reject("inputId or inputValue is undefined");
-        }
-      });
+      // values.forEach((value) => {
+      //   if (value.inputId == undefined || value.inputValue == undefined) {
+      //     reject("inputId or inputValue is undefined");
+      //   }
+      // });
 
       let token = await this.LoginService.getToken();
       var form = new FormData();

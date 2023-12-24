@@ -137,7 +137,7 @@ export class LoginService {
   getUserData(): Promise<any> {
     return new Promise(async (resolve, reject) => {
       let session = await this.storageService.get("session");
-      this.http.get(environment.api + "/users", {
+      this.http.get(environment.api + "/users/v2", {
         headers: {
           "Authorization": session
         }

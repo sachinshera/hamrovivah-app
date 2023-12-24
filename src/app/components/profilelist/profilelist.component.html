@@ -18,13 +18,13 @@
               src="{{item?.proifleImage !== null ?item?.proifleImage: '/assets/user.png' }}" />
             <ion-card-header>
               <ion-card-title class="profile-name-text">
-                {{item?.forms[0]?.Inputs[0]?.Values?.inputValue}}
+                {{getInputvalueByTagname('fullname', this.item.forms)}}
               </ion-card-title>
             </ion-card-header>
             <ion-card-content>
               {{item.forms[0]?.Inputs[1]?.Values?.inputValue}}
-              <span *ngIf="item.forms[0]?.Inputs[2]?.Values?.inputValue != null">,</span>
-
+              <span
+                *ngIf="item.forms[0]?.Inputs[2]?.Values?.inputValue != null && item.forms[0]?.Inputs[1]?.Values?.inputValue !=''">,</span>
               {{item.forms[0]?.Inputs[2]?.Values?.inputValue}}
               <span *ngIf="item.forms[0]?.Inputs[3]?.Values?.inputValue != null">,</span>
               {{item.forms[0]?.Inputs[3]?.Values?.inputValue}}

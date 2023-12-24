@@ -11,6 +11,9 @@
 </ion-header>
 
 <ion-content fullscreen="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div>
     <ion-grid>
       <ion-row>
@@ -24,13 +27,7 @@
     </ion-grid>
   </div>
 
-  <!-- <div class="ion-text-center">
-    <ion-icon *ngIf="!isLoading" name="navigate-circle-outline"></ion-icon>
-    <span *ngIf="!isLoading" routerLink="/photos/{{profileData.profile.id}}/name/{{profileData.forms[0].Inputs[0].Values
-      .inputValue}}">
-      View Photos
-    </span>
-  </div> -->
+
 
 
   <div>

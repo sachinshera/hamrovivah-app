@@ -156,6 +156,8 @@ export class ProfilequestionComponent implements OnInit {
         formGroupFields[inputName].setValidators(Validators.required);
         // formGroupFields[inputName].setValue(value)
         this.fields.push(inputName);
+      } else {
+        this.fields.push(inputName);
       }
     };
 
@@ -174,7 +176,9 @@ export class ProfilequestionComponent implements OnInit {
   openLink(link: string) {
     // check if platform is web
     if (Capacitor.isNativePlatform()) {
-      FileOpener.open({ filePath: link }).then((data) => { }).catch((err) => {
+      FileOpener.open({ filePath: link }).then((data) => {
+        console.log("file opened", data);
+      }).catch((err) => {
         console.log("falied to open file", err);
       });
     } else {
@@ -199,7 +203,7 @@ export class ProfilequestionComponent implements OnInit {
   async submit() {
     // check if form is valid
     if (this.dynamicForm.valid) {
-      console.log(this.dynamicForm);
+      console.log(this.dynamicForm.value);
       //  convet form value to array
       let formValue = Object.entries(this.dynamicForm.value);
 
@@ -233,6 +237,7 @@ export class ProfilequestionComponent implements OnInit {
         this.profileService.updateValues(bindedFormValue).then((data: any) => {
           this.router.navigate(['/profilestup/form/success']);
         }).catch((err) => {
+          console.log(err);
           let toast = this.toastController.create({
             message: err,
             duration: 2000,
@@ -246,6 +251,7 @@ export class ProfilequestionComponent implements OnInit {
         });
       } else {
         this.profileService.updateValues(bindedFormValue).then((data: any) => {
+          console.log("filled", data);
           // check if form is unfilled form
           if (this.formId == "unfilled" || this.formId == "partner") {
             this.router.navigate(['/profilestup/form/success']);
@@ -269,6 +275,7 @@ export class ProfilequestionComponent implements OnInit {
           }
 
         }).catch((err) => {
+          console.log(err);
           let toast = this.toastController.create({
             message: err,
             duration: 2000,
@@ -334,8 +341,9 @@ export class ProfilequestionComponent implements OnInit {
 
   getUserData() {
     this.userService.getUserDetails().then((data: any) => {
-      if (data.proifleImage != null) {
-        this.userProfilePic = data.proifleImage;
+      console.log("user data", data);
+      if (data.user.proifleImage != null) {
+        this.userProfilePic = data.user.proifleImage;
         this.isProfilpicUpload = true;
       }
     }).catch((err) => {
