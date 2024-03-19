@@ -1,0 +1,75 @@
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <div class="my-profile">
+      <div class="my-profile-content">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        &nbsp;&nbsp;&nbsp;&nbsp;My Profile
+      </div>
+    </div>
+    <div style="padding-left: 16px; padding-right: 16px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: whitesmoke; border-top: 0.5px solid grey;">
+      <br>
+      <br>
+
+      <!-- image card -->
+      <ion-card class="image-card ion-padding">
+
+        <ion-avatar style="margin: 0 auto;width: 100px; height: 100px;" class="rounded-image">
+          <ion-img src="{{userProfilePic}}" alt="" *ngIf="userProfilePic !== ''" />
+          <img src="/assets/user.png" alt="" *ngIf="userProfilePic === ''">
+        </ion-avatar>
+        <!-- <ion-icon name="camera" class="camera-icon"></ion-icon> -->
+        <br>
+        <div class="ion-text-center">
+          <div class="card-head">
+            <ion-icon name="pencil-outline"></ion-icon>
+            <ion-label>{{ name }}</ion-label>
+          </div>
+          <br>
+          A few words about the user, whatever he or she wants to write here under 50 words.
+        </div>
+
+      </ion-card>
+      <br>
+
+      <!-- Documents card -->
+      <ion-card class="ion-text-center ion-padding" style="border-radius: 15px;">
+
+        <p class="card-head">
+          Verify your profile
+        </p>
+        <p>
+          Verifying information is crucial in conversations, it can lead to more meaningful responses.
+        </p>
+        <ion-button shape="round" class="customBtn" (click)="inputAttachment()">
+          Upload Documents
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+
+        <br>
+
+      </ion-card>
+      <br>
+
+      <!-- form cards -->
+      <div *ngFor="let forms of userData;">
+        <ion-card style="border-radius: 15px;">
+          <ion-card-header class="ion-text-center card-head">
+            <div class="d-flex justify-content-center">
+              <ion-icon name="pencil-outline"></ion-icon>
+              <ion-label>{{ forms.name }}</ion-label>
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row *ngFor="let inputs of forms.Inputs ">
+                <ion-col size="6">{{ inputs?.inputName }}</ion-col>
+                <ion-col size="6">{{ inputs?.Values?.inputValue }}</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+        <br>
+      </div>
+    </div>
+  </div>
+</ion-content>
