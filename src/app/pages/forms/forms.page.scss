@@ -1,0 +1,42 @@
+.customStyle{
+  font-size: 16px;
+}
+.dobIcon {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+}
+.custom-buttons ion-button {
+  text-transform: none;
+  width: 70%;
+}
+.btnClass{
+  text-transform: none;
+  width: 70%;
+}
+.isDisabled {
+  color: currentColor;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+  text-decoration: none;
+}
+.progress-circle-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-left: 33%;
+  margin-top: 5%;
+}
+
+
+.person-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  color: grey;
+}

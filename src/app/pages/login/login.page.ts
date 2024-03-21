@@ -166,8 +166,6 @@ export class LoginPage implements OnInit {
         }
       };
       showConfirm();
-
-      // this.router.navigate(['fourth-form'])
     }
   }
 
@@ -229,7 +227,7 @@ export class LoginPage implements OnInit {
         this.loginService.setSessionToken(res.token);
         this.loginService.setUserData(JSON.stringify(res.user));
         // refirect to home page
-        this.router.navigate(['/home']);
+        this.router.navigate(['/forms/0']);
         const toast = this.toastController.create({
           message: 'Login sucessfully',
           duration: 2000,

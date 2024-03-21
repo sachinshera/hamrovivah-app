@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
@@ -15,6 +15,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./forms.page.scss'],
 })
 export class FormsPage implements OnInit {
+  fileInput!: ElementRef;
   public api = environment.api;
   public form: any = [];
   public formId!: any;
@@ -50,9 +51,23 @@ export class FormsPage implements OnInit {
       this.getform();
     }
     this.formId = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log('this.formId', this.formId);
     this.getUserData();
   }
+  triggerInput(itemId: string) {
+    // Construct the ID of the file input dynamically
+    const fileInputId = `${itemId}`;
 
+    // Get the file input element by ID
+    const fileInputElement: HTMLInputElement = document.getElementById(fileInputId) as HTMLInputElement;
+
+    // Trigger click event on the file input element
+    fileInputElement.click();
+  }
+
+  uploadAttachment($event: any){
+    console.log('event trigger')
+  }
   // get form
 
   getform() {
@@ -271,7 +286,7 @@ export class FormsPage implements OnInit {
           else if (this.formId == this.allForm.length - 1) {
             this.router.navigate(['/profilestup/form/success']);
           } else {
-            this.router.navigate(['profilestup/form/', this.nextFormId]);
+            this.router.navigate(['forms/', this.nextFormId]);
           }
 
         }).catch((err) => {
@@ -309,7 +324,7 @@ export class FormsPage implements OnInit {
   }
 
   skip() {
-    this.router.navigate(['profilestup/form/', this.nextFormId]);
+    this.router.navigate(['forms/', this.nextFormId]);
   };
 
   // get unfilled fields  with category

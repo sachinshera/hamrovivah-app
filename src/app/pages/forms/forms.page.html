@@ -14,10 +14,143 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">forms</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-item-group>
+    <form [formGroup]="dynamicForm" (ngsubmit)="submit()" *ngIf="dynamicForm">
+      <ion-card *ngIf="formId==='unfilled' && form.Inputs.length>0" color="medium">
+        <ion-card-content>
+          <p class="ion-text-center" style="font-size: 12px;">
+            <ion-text>
+              You are very close to complete your profile setup.
+              <br>
+              Please fill the following details to complete your
+              profile
+            </ion-text>
+          </p>
+        </ion-card-content>
+
+      </ion-card>
+      <ion-card *ngIf="formId==='unfilled' && form.Inputs.length===0" color="medium">
+        <ion-card-content>
+          <p class="ion-text-center" style="font-size: 12px;">
+            <ion-text>
+              You have completed your profile setup.
+              <br>
+              Please click on the button below to Finish
+            </ion-text>
+          </p>
+        </ion-card-content>
+
+      </ion-card>
+      <!-- new div added to check ui on 18March2024 starts -->
+
+
+      <br>
+
+      <div class="progress-circle-container" *ngIf="!!formId && formId ==='0' ">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="-10 -10 220 220">
+          <g fill="none" stroke-width="8" transform="translate(100,100)">
+            <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" [attr.stroke]="getPercentage() > 0 ? 'orange' : 'grey'" />
+            <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" [attr.stroke]="getPercentage() > 0.25 ? 'orange' : 'grey'" />
+            <path d="M 86.6,50 A 100,100 0 0,1 0,100" [attr.stroke]="getPercentage() > 0.5 ? 'orange' : 'grey'" />
+            <path d="M 0,100 A 100,100 0 0,1 -86.6,50" [attr.stroke]="getPercentage() > 0.7 ? 'orange' : 'grey'" />
+            <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" [attr.stroke]="getPercentage() > 0.8 ? 'orange' : 'grey'" />
+            <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" [attr.stroke]="getPercentage() === 0.9 ? 'orange' : 'grey'" />
+          </g>
+        </svg>
+        <ion-avatar class="person-icon" (click)="changeProfilePic()">
+          <ion-img src="{{userProfilePic}}" alt="" *ngIf="userProfilePic !== ''" />
+          <img src="/assets/user.png" alt="" *ngIf="userProfilePic === ''">
+        </ion-avatar>
+      </div>
+
+      <br><br>
+
+      <div *ngFor="let item of form.Inputs" class="ion-padding customStyle">
+        <div [formGroup]="dynamicForm">
+          <ion-label>{{item.inputName}} <span *ngIf="item.inputRequired" style="color:red">*</span> </ion-label>
+
+          <ion-input mode="md" fill="outline" shape="round" label-placement="floating" formControlName="{{item.id}}"
+            type="{{item.inputType}}" required="{{item.inputRequired}}"
+            *ngIf="item.inputType === 'text' || item.inputType === 'number' || item.inputType === 'email' || item.inputType === 'date'"
+            value="{{item.Values?.inputValue}}">
+          </ion-input>
+
+          <ion-select mode="md" fill="outline" shape="round" label-placement="floating"
+            selectedText="{{item.Values?.inputValue}}" formControlName="{{item.id}}"
+            *ngIf="item.inputType === 'select'">
+            <ion-select-option *ngFor="let option of item.inputOptions"
+              value="{{option.value}}">{{option.label}}</ion-select-option>
+          </ion-select>
+
+          <div class="ion-text-center">
+            <ion-button class="btnClass" shape="round"
+              *ngIf="item.inputType === 'file' && item.Values?.inputValue===null" (click)="triggerInput(item.id)">
+              Upload
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </ion-button>
+
+          </div>
+          <ion-input class="{{ item.id }}" id="{{ item.id }}" type="file"
+            (change)="onFileSelect($event.target,item.id)"
+            *ngIf="item.inputType === 'file' && item.Values?.inputValue===null" [accept]="item.fileAccept"></ion-input>
+          <div style="display: flex;justify-content: space-between;">
+            <ion-button (click)="openLink(item.Values?.inputValue)" color="success"
+              *ngIf="item.inputType === 'file' && item.Values?.inputValue!== null ">
+              <ion-icon name="checkmark-circle-outline"></ion-icon> Uploaded </ion-button>
+            <ion-button (click)="reselectFile(item.id)"
+              *ngIf="item.inputType === 'file' && item.Values?.inputValue!== null">
+              <ion-icon name="reload-outline"></ion-icon>
+            </ion-button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- new div added on 18March2024 endss -->
+      <!-- skeletons -->
+
+    </form>
+    <div *ngIf="isLoading">
+      <ion-card class="ion-text-center" *ngIf="formId=== 0 && isLoading">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-skeleton-text [animated]="true" style="width:100%;height: 30px;"></ion-skeleton-text>
+          </ion-card-title>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width:100%;height: 10px;"></ion-skeleton-text>
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+
+          <ion-avatar style="margin: 0 auto;width: 100px; height: 100px;">
+            <!-- <img src="{{userProfilePic}}" alt="" *ngIf="userProfilePic !== ''">
+            <img src="/assets/user.png" alt="" *ngIf="userProfilePic === ''"> -->
+            <ion-skeleton-text [animated]="true" style="width:100%;height: 100px;"></ion-skeleton-text>
+          </ion-avatar>
+          <ion-button color="icon-only">
+            <ion-skeleton-text [animated]="true" style="width:100px;height: 30px;"></ion-skeleton-text>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+      <ion-item *ngFor="let ske of skeletons">
+        <ion-skeleton-text [animated]="true" style="width:100%;height: 30px;margin-bottom: 10px;"></ion-skeleton-text>
+      </ion-item>
+
+    </div>
+  </ion-item-group>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+    <div class="ion-text-center custom-buttons">
+      <ion-button color="dark" shape="round"
+        *ngIf="!isLastForm && formId!=='unfilled' && formId!=='0' && formId!== 'partner'"
+        (click)="skip()">{{skipText}}</ion-button>
+      <ion-button shape="round" (click)="submit()"
+        [ngClass]="{'isDisabled': dynamicForm?.invalid}">{{btnText}}</ion-button>
+    </div>
+
+  </ion-toolbar>
+</ion-footer>
