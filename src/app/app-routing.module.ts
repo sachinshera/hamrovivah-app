@@ -75,7 +75,8 @@ const routes: Routes = [
       }
 
     ]
-  },  {
+  },
+  {
     path: 'my-profile',
     loadChildren: () => import('./pages/my-profile/my-profile.module').then( m => m.MyProfilePageModule)
   },
@@ -83,6 +84,15 @@ const routes: Routes = [
     path: 'welcome',
     loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule)
   },
+  {
+    path: 'login-page',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'forms/:id',
+    loadChildren: () => import('./pages/forms/forms.module').then( m => m.FormsPageModule)
+  },
+
 
 
 ];

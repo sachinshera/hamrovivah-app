@@ -1,0 +1,53 @@
+<ion-content [fullscreen]="true">
+  <div class="container"
+    style="background-image: url(assets/images/frames.png); background-size: contain; background-repeat: repeat-y; height: 100%;">
+
+    <div class="top-sec">
+      <img src="assets/images/logo.png" width="80%" height="80%" class="pos">
+    </div>
+    <br>
+    <br>
+    <br> <br>
+    <br>
+    <br>
+    <div class="ion-padding">
+      <form [formGroup]="zeroethForm" (ngSubmit)="loginwithmobile()" *ngIf="zeroethForm">
+
+        <ion-label stacked>Mobile no.</ion-label>
+        <div class="input-row">
+          <ion-select mode="md" style="width: 40%; background-color: white;" fill="outline" shape="round"
+            label-placement="floating" formControlName="countryCode">
+            <ion-select-option *ngFor="let item of countryCodeOptions" value="{{item}}"> {{item}}
+            </ion-select-option>
+          </ion-select>
+
+          <ion-input type="number" mode="md" style="width: 60%; background-color: white;" fill="outline" shape="round"
+            label-placement="floating" formControlName="phone"></ion-input>
+        </div>
+        <ion-text>
+          <p>Your number will not be visible to any member</p>
+        </ion-text>
+
+        <!-- Display validation error message -->
+        <ion-text color="danger" *ngIf="countryCode?.touched && countryCode?.invalid">
+          <p *ngIf="countryCode?.errors?.['required']">Please select any one</p>
+        </ion-text>
+
+        <!-- Display validation error message -->
+        <ion-text color="danger" *ngIf="phone?.touched && phone?.invalid">
+          <p *ngIf="phone?.errors?.['required']">Please enter your mobile no.</p>
+        </ion-text>
+
+        <br>
+
+        <div class="ion-text-center custom-buttons">
+
+          <ion-button style="width: 80%;" shape="round" size="large" type="submit" [disabled]="zeroethForm.invalid">
+            Send OTP
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

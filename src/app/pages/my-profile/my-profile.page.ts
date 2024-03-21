@@ -57,7 +57,7 @@ export class MyProfilePage implements OnInit {
   inputAttachment() {
     let input: any = document.createElement('input');
     input.type = 'file';
-    input.accept = '.csv,.pdf,.doc,.xls';
+    input.accept = 'image/*';
     input.multiple = false;
     input.click();
 
@@ -86,6 +86,7 @@ export class MyProfilePage implements OnInit {
         toast.then(toast => toast.present());
         loading.then(loading => loading.dismiss());
       }).catch(err => {
+        console.log('err', err)
         this.toastController.create({
           message: "Unable to upload file, please try again later",
           duration: 2000,
