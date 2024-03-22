@@ -55,15 +55,23 @@ export class FormsPage implements OnInit {
     this.getUserData();
   }
   triggerInput(itemId: string) {
+    console.log('Triggering input for item ID:', itemId);
+
     // Construct the ID of the file input dynamically
     const fileInputId = `${itemId}`;
 
     // Get the file input element by ID
     const fileInputElement: HTMLInputElement = document.getElementById(fileInputId) as HTMLInputElement;
 
-    // Trigger click event on the file input element
-    fileInputElement.click();
+    if (fileInputElement) {
+      // Trigger click event on the file input element
+      fileInputElement.click();
+      console.log('Click event triggered for file input:', fileInputElement);
+    } else {
+      console.error('File input element not found for ID:', fileInputId);
+    }
   }
+
 
   uploadAttachment($event: any){
     console.log('event trigger')

@@ -82,7 +82,7 @@
             <ion-select-option *ngFor="let option of item.inputOptions"
               value="{{option.value}}">{{option.label}}</ion-select-option>
           </ion-select>
-
+<!--
           <div class="ion-text-center">
             <ion-button class="btnClass" shape="round"
               *ngIf="item.inputType === 'file' && item.Values?.inputValue===null" (click)="triggerInput(item.id)">
@@ -90,9 +90,9 @@
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </ion-button>
 
-          </div>
+          </div> -->
           <ion-input class="{{ item.id }}" id="{{ item.id }}" type="file"
-            (change)="onFileSelect($event.target,item.id)"
+            (change)="uploadAttachment($event)"
             *ngIf="item.inputType === 'file' && item.Values?.inputValue===null" [accept]="item.fileAccept"></ion-input>
           <div style="display: flex;justify-content: space-between;">
             <ion-button (click)="openLink(item.Values?.inputValue)" color="success"
