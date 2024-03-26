@@ -27,6 +27,8 @@ border-radius: 15px;
 
 .customBtn{
   text-transform: none;
+  width: 40%;
+  font-size: 16px
 }
 .card-container {
   display: flex;
@@ -54,6 +56,7 @@ border-radius: 15px;
   text-transform: none;
   width: 90%;
   margin-bottom: 16px;
+  font-size: 18px;
 }
 .matches-head{
   font-weight: bold;
@@ -79,6 +82,7 @@ ion-content{
 }
 
 .scroller-container{
+  padding-top: 16px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -96,4 +100,39 @@ ion-content{
 }
 li{
   font-size: 14px;
+}
+.photo-stack {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 257px; /* Adjust height as needed */
+}
+
+.photo {
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+.left {
+  transform: translateX(-50%);
+  z-index: 1;
+  height: 99%;
+}
+
+.center {
+  z-index: 2;
+}
+
+.right {
+  transform: translateX(50%);
+  z-index: 1;
+  height: 99%;
+}
+
+.photo img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px; /* Adjust border radius as needed */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add shadow for better visual */
 }

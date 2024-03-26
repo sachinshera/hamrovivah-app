@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.page.html',
-  styleUrls: ['./home-page.page.scss'],
+  selector: 'app-matches-page',
+  templateUrl: './matches-page.page.html',
+  styleUrls: ['./matches-page.page.scss'],
 })
-export class HomePagePage implements OnInit {
+export class MatchesPagePage implements OnInit {
   public api = environment.api;
   public allusers: any = [];
   public prefrencesProfiles: any = [];
@@ -129,18 +127,5 @@ export class HomePagePage implements OnInit {
       }
     }
   }
-  handleRefresh(event: any) {
-    this.allusers = [];
-    this.profileService
-      .getProfiles(0)
-      .then((res: any) => {
-        this.isLoading = false;
-        this.allusers = res.data;
-        event.target.complete();
-      })
-      .catch((err: any) => {
-        console.log('err', err);
-        event.target.complete();
-      });
-  }
+
 }

@@ -107,6 +107,18 @@ const routes: Routes = [
     path: 'search-partner',
     loadChildren: () => import('./pages/search-partner/search-partner.module').then( m => m.SearchPartnerPageModule)
   },
+  {
+    path: 'matches-page',
+    loadChildren: () => import('./pages/matches-page/matches-page.module').then( m => m.MatchesPagePageModule)
+  },
+  {
+    path: 'matches',
+    loadChildren: () => import('./pages/chat/matches/matches.module').then( m => m.MatchesPageModule)
+  },
+  {
+    path: 'message',
+    loadChildren: () => import('./pages/chat/message/message.module').then( m => m.MessagePageModule)
+  },
 
 
 ];
