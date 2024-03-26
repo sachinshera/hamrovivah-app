@@ -15,23 +15,24 @@
 
         <ion-label stacked>Mobile no.</ion-label>
         <div class="input-row">
-          <ion-select mode="md" style="width: 40%; background-color: white;" fill="outline" shape="round"
+          <!-- <ion-select mode="md" style="width: 40%; background-color: white;" fill="outline" shape="round"
             label-placement="floating" formControlName="countryCode">
             <ion-select-option *ngFor="let item of countryCodeOptions" value="{{item}}"> {{item}}
             </ion-select-option>
-          </ion-select>
+          </ion-select> -->
+          <label (click)="onCodeSelect()" size="medium" color="icon-only"
+          class="ion-no-padding country-select-btn">
+          {{ userCountryCode }}
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </label>
 
-          <ion-input type="number" mode="md" style="width: 60%; background-color: white;" fill="outline" shape="round"
+          <ion-input type="number" mode="md" style="width: 80%; background-color: white;" fill="outline" shape="round"
             label-placement="floating" formControlName="phone"></ion-input>
         </div>
         <ion-text>
           <p>Your number will not be visible to any member</p>
         </ion-text>
 
-        <!-- Display validation error message -->
-        <ion-text color="danger" *ngIf="countryCode?.touched && countryCode?.invalid">
-          <p *ngIf="countryCode?.errors?.['required']">Please select any one</p>
-        </ion-text>
 
         <!-- Display validation error message -->
         <ion-text color="danger" *ngIf="phone?.touched && phone?.invalid">

@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <div class="my-profile">
+      <div class="my-profile-content">
+        Skip&nbsp;<ion-icon name="arrow-forward-outline"></ion-icon>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+    <div class="ion-text-center"
+      style="padding-left: 16px; padding-right: 16px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: whitesmoke; border-top: 0.5px solid grey; height: 89vh;">
+      <br>
+      <br>
+      <p class="photo-head">Upload your photos</p>
+
+      Increase your chances of receiving responses by uploading your photos
+      <br><br><br><br><br>
+    <div style="display: flex; flex-direction: row; justify-content: center;">
+      <div class="person-icon">
+        <ion-icon name="person"></ion-icon>
+      </div>
+      <div class="stack-div"></div>
+      <div class="stack-div"></div>
+    </div>
+    <br><br>
+    <ion-button class="custBtn" shape="round" (click)="uploadPhoto()">
+      <ion-icon name="image"></ion-icon>
+      &nbsp;Add from File</ion-button>
+    <br>
+    <ion-button class="custBtn" shape="round">
+      <ion-icon name="camera"></ion-icon>
+      &nbsp;Use Camera</ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,62 @@
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <div class="my-profile">
+      <div class="my-profile-content">
+        Search for a partner
+      </div>
+    </div>
+    <div
+      style="padding: 16px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: whitesmoke; border-top: 0.5px solid grey;">
+
+      <p class="card-head">Search based on your preferences</p>
+      <!-- card -->
+      <ion-card class="ion-padding">
+        <ion-card-content>
+            <ion-label class="range-label">Age</ion-label>
+            <ion-range labelPlacement="floating" [(ngModel)]="age" min="18" max="99" dualKnobs="true"  [pin]="true" [pinFormatter]="pinFormatter1">
+            </ion-range>
+            <br><br>
+            <ion-label class="range-label">Height</ion-label>
+            <ion-range labelPlacement="floating" [(ngModel)]="height" min="3" max="8" step="0.1" dualKnobs="true"  [pin]="true" [pinFormatter]="pinFormatter2">
+            </ion-range>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+
+        <ion-tab-button routerLink="/home-page">
+          <ion-icon name="home-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button routerLink="/search-partner'">
+          <ion-icon name="search-outline" class="activeTab"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button tab="tab3">
+          <ion-icon name="people-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button tab="tab4">
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button tab="tab5">
+          <ion-icon name="diamond-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+
+  </ion-toolbar>
+</ion-footer>

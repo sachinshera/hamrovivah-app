@@ -1,0 +1,50 @@
+.my-profile{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  padding-left: 20px;
+  flex-direction: row-reverse;
+}
+.content{
+  background-color: #FF7F50;
+}
+.photo-head{
+  font-size: 24px;
+  font-weight: 700;
+}
+.person-icon {
+  width: 155px; /* Adjust according to your preference */
+  height: 154px; /* Adjust according to your preference */
+  background-color: white; /* Adjust the background color as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px; /* Adjust the border radius as needed */
+  border: 2px dashed #FF7F50;
+  box-sizing: border-box;
+}
+
+.person-icon ion-icon {
+  font-size: 70px; /* Adjust the icon size as needed */
+  color: #C4C4C4; /* Adjust the icon color as needed */
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+}
+.stack-div{
+  border-radius: 0 20px 20px 0; /* Adjust the border radius as needed */
+  border-top: 2px dashed #FF7F50;
+  border-right: 2px dashed #FF7F50;
+  border-bottom: 2px dashed #FF7F50;
+  width: 52px;
+  background-color: white;
+}
+ion-content{
+  font-size: 16px;
+}
+.custBtn{
+  text-transform: none;
+  width: 80%;
+  font-size: 16px;
+}

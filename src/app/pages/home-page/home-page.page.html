@@ -1,0 +1,224 @@
+<ion-content [fullscreen]="true" style="padding-bottom: 56px;">
+  <div class="content">
+    <div class="my-profile">
+      <div style="width: 100%;">
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size="8">
+              <!-- Content for the left side -->
+              <div style="text-align: start;">
+                <div style="display: flex; flex-direction: row;">
+                  <div class="image-card">
+                    <ion-avatar style="margin: 0 auto;width: 40px; height: 40px;" class="rounded-image">
+                      <ion-img src="{{userProfilePic}}" alt="" *ngIf="userProfilePic !== ''" />
+                      <img src="/assets/user.png" alt="" *ngIf="userProfilePic === ''">
+                    </ion-avatar>
+                  </div>
+                  <div class="name-div">
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{name}}
+                    <br>
+                    &nbsp;&nbsp;&nbsp;<ion-button shape="round" class="customBtn" size="small">Edit Profile</ion-button>
+                  </div>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="4">
+              <!-- Content for the right side -->
+              <div class="right-sec">
+                <ion-icon name="notifications"></ion-icon>
+                &nbsp;
+                <ion-icon name="menu-outline"></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+    <div
+      style="padding-left: 16px; padding-right: 16px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: whitesmoke; border-top: 0.5px solid grey;">
+      <br>
+      <br>
+      <!-- premium card -->
+      <ion-card>
+        <div class="card-container">
+          <div class="text-container">
+            Get Premium services to find your partner now!
+          </div>
+          <div class="image-container">
+            <img src="assets/images/premium.png" alt="Sample Image">
+          </div>
+        </div>
+
+        <ul>
+          <li>Get call back within 24 hours</li>
+          <li>Meet in offline</li>
+        </ul>
+
+        <div class="ion-text-center">
+          <ion-button class="customButton" shape="round">Upgrade Now</ion-button>
+        </div>
+
+      </ion-card>
+
+      <!-- matches div -->
+      <div>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="10">
+              <div class="matches-head">
+                All Matches({{allMatches?.length}})
+              </div>
+              Members who match your preferences
+            </ion-col>
+            <ion-col size="2">
+              <div class="seeAll">
+                See all
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- sliding divs -->
+        <div class="scroller-container">
+          <div class="card1" *ngFor="let user of allMatches">
+            <div style="display: flex; flex-direction: column;">
+              <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
+              <div>
+                {{getName(user.forms)}}
+              </div>
+              <div>
+                {{getAge(user.forms)}}, {{getProfession(user.forms)}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+      </div>
+
+      <!-- profile completion part -->
+      <ion-card class="ion-padding" *ngIf="percentage <1">
+        <div style="display: flex; flex-direction: row;">
+          <div class="complete-profile">
+            Complete your profile&nbsp;
+          </div>
+          <div style="margin-top: 7px; width: 48%;">
+            <ion-progress-bar style="border-radius: 60px;" [value]="percentage"></ion-progress-bar>
+          </div>
+        </div>
+        <p>Add your details to let people know about you</p>
+        <ion-button class="custBtn" shape="round">
+          Edit Profile
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-card>
+
+      <!-- matches div -->
+      <div>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="10">
+              <div class="matches-head">
+                New Matches({{newMatches.length}})
+              </div>
+              Members who joined recently
+            </ion-col>
+            <ion-col size="2">
+              <div class="seeAll">
+                See all
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- sliding divs -->
+        <div class="scroller-container">
+          <div class="card1" *ngFor="let user of newMatches">
+            <div style="display: flex; flex-direction: column;">
+              <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
+              <div>
+                {{getName(user.forms)}}
+              </div>
+              <div>
+                {{getAge(user.forms)}}, {{getProfession(user.forms)}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+      </div>
+
+      <!-- matches div -->
+      <div>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="10">
+              <div class="matches-head">
+                Recent Visitors({{recentVisiors.length}})
+              </div>
+              Members who visited your profile
+            </ion-col>
+            <ion-col size="2">
+              <div class="seeAll">
+                See all
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- sliding divs -->
+        <div class="scroller-container">
+          <div class="card1" *ngFor="let user of recentVisiors">
+            <div style="display: flex; flex-direction: column;">
+              <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
+              <div>
+                {{getName(user.forms)}}
+              </div>
+              <div>
+                {{getAge(user.forms)}}, {{getProfession(user.forms)}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+      </div>
+
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+
+        <ion-tab-button routerLink="'/home-page'">
+          <ion-icon name="home-outline" class="activeTab"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button routerLink="/search-partner">
+          <ion-icon name="search-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button tab="tab3">
+          <ion-icon name="people-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button tab="tab4">
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button tab="tab5">
+          <ion-icon name="diamond-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+
+  </ion-toolbar>
+</ion-footer>

@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
   AlertController,
+  IonModal,
   LoadingController,
   ModalController,
   ToastController,
 } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
 import { Dialog } from '@capacitor/dialog';
+import { countries } from 'src/app/data-models';
+import { CountryselectComponent } from 'src/app/components/actions/countryselect/countryselect.component';
+import { ModalPagePage } from '../modal-page/modal-page.page';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +20,10 @@ import { Dialog } from '@capacitor/dialog';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  @ViewChild('modal', { static: true }) modal!: IonModal;
   zeroethForm!: FormGroup; //form declaration
-  countryCodeOptions = ['+91', '+977']; //options to show for country code field
   public userMobileNumber: any = '';
-  public userCountryCode: any = '';
+  public userCountryCode = '+977';
   public showOtpBox = false;
   public userOtp = '';
   private otpToken = '';
@@ -39,20 +43,61 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     // form declaration
     this.zeroethForm = this.formBuilder.group({
-      countryCode: [this.userMobileNumber, Validators.required],
       phone: ['', Validators.required],
     });
     this.loginService.getUserCountryByIp().then((res: any) => {
-      let code = res.country_calling_code;
-      if (code) {
-        console.log('code', code);
-        this.zeroethForm?.controls['countryCode'].setValue(code);
-      }
+      let userCountryCode = res.country_calling_code;
+      // find country by calling code
+      let country = countries.find(
+        (country: any) => country.value === userCountryCode
+      );
+      console.log('country', country);
+
+        this.userCountryCode = country.value;
+
     });
   }
-  // Function to get the countryCode control from the form
-  get countryCode() {
-    return this.zeroethForm.get('countryCode');
+  private formatData(data: string[]) {
+    if (data.length === 1) {
+      const country = countries.find((country: any) => country.value === data[0]);
+      return {
+        text: country.text,
+        flag: country.flag,
+        value: country.value
+      }
+    }
+    return false;
+  }
+  countrySelectionChange(countries: string[]) {
+    // @ts-ignore
+    this.selectedCountriesText = ` ${this.formatData(countries).flag} ${
+      this.formatData(countries).valueOf
+    }`;
+    // @ts-ignore
+    this.userCountryCode = this.formatData(countries).value;
+    this.modal.dismiss();
+  }
+
+
+  async onCodeSelect(){
+    const siteInfo = {
+      id: 1,
+      name: 'countryCode'
+    }
+    console.log('clicked', siteInfo)
+    const modal = await this.modalController.create({
+      component: ModalPagePage,
+      cssClass: 'move-up-modal',
+      componentProps: {
+        site: siteInfo,
+      },
+    });
+    await modal.present();
+    modal.onDidDismiss().then((data) => {
+      console.log('data', data)
+      const country = data.data
+      this.userCountryCode = country.value
+    })
   }
   // Function to get the phone control from the form
   get phone() {
@@ -62,7 +107,7 @@ export class LoginPage implements OnInit {
   async loginwithmobile() {
     if (this.zeroethForm.valid) {
       console.log('Form submitted with data:', this.zeroethForm.value);
-      this.userCountryCode = this.zeroethForm.value.countryCode;
+
       this.userMobileNumber = this.zeroethForm.value.phone;
 
       // check if user has entered mobile number
@@ -182,82 +227,57 @@ export class LoginPage implements OnInit {
     }, 1000);
   }
   async presentAlert() {
-    const alert = await this.alertController.create({
-      message:
-        `Please fill the phone verification PIN that has been sent to your number\n\nEnter the OTP\n`,
-      inputs: [
-        {
-          name: 'inputField',
-          type: 'text',
-          placeholder: 'Input Field'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Verify',
-          handler: (data) => {
-            this.userOtp = data.inputField;
-            this.loginwithotp();
-          },
-        },
-      ],
-    });
+    // const alert = await this.alertController.create({
+    //   message: `Please fill the phone verification PIN that has been sent to your number\n\nEnter the OTP\n`,
+    //   inputs: [
+    //     {
+    //       name: 'inputField',
+    //       type: 'text',
+    //       placeholder: 'Input Field',
+    //     },
+    //   ],
+    //   buttons: [
+    //     {
+    //       text: 'Verify',
+    //       handler: (data) => {
+    //         this.userOtp = data.inputField;
+    //         this.loginwithotp();
+    //       },
+    //     },
+    //   ],
+    // });
 
-    await alert.present();
-  }
+    // await alert.present();
+    const siteInfo = {
+      id: 1,
+      name: 'enterOtp',
+      otpToken: this.otpToken
 
-  loginwithotp() {
-    // check otp and token is not null
-    if (this.otpToken == '' && this.userOtp == '') {
-      const toast = this.toastController.create({
-        message: 'Enter Valid Otp',
-        duration: 2000,
-        color: 'danger',
-        position: 'bottom',
-      });
-
-      toast.then((toast) => {
-        toast.present();
-      });
-      return;
     }
-    this.loginService
-      .verifyLoginOtpRequest(this.otpToken, this.userOtp)
-      .then((res: any) => {
-        this.loginService.setSessionToken(res.token);
-        this.loginService.setUserData(JSON.stringify(res.user));
-        // refirect to home page
-        this.router.navigate(['/forms/0']);
-        const toast = this.toastController.create({
-          message: 'Login sucessfully',
-          duration: 2000,
-          color: 'success',
-          position: 'bottom',
-        });
+    console.log('clicked', siteInfo)
+    const modal = await this.modalController.create({
+      component: ModalPagePage,
+      cssClass: 'move-up-modal',
+      componentProps: {
+        site: siteInfo,
+      },
+    });
+    await modal.present();
+    modal.onDidDismiss().then((res: any) => {
+      console.log('res', res)
+      this.userOtp = res.otp;
+      this.loginService.setSessionToken(res.token);
+      this.loginService.setUserData(JSON.stringify(res.user));
 
-        toast.then((toast) => {
-          toast.present();
-        });
+      this.router.navigate(['/forms/0']);
 
-        setTimeout(() => {
-          this.showOtpBox = false;
-          this.otpToken = '';
-          this.userOtp = '';
-          this.userMobileNumber = '';
-          this.userCountryCode = '';
-        }, 2000);
-      })
-      .catch((err: any) => {
-        const toast = this.toastController.create({
-          message: err.error.message,
-          duration: 2000,
-          color: 'danger',
-          position: 'bottom',
-        });
-
-        toast.then((toast) => {
-          toast.present();
-        });
-      });
+      setTimeout(() => {
+        this.showOtpBox = false;
+        this.otpToken = "";
+        this.userOtp = "";
+        this.userMobileNumber = "";
+        this.userCountryCode = "";
+      }, 2000);
+    })
   }
 }

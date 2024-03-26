@@ -1,0 +1,48 @@
+<ion-header translucent *ngIf="site.name === 'countryCode'">
+  <ion-toolbar>
+    <ion-title>
+      &nbsp; Search Country Code
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar type="text" placeholder="Search by country name / code" debounce="500"
+      [formControl]="searchFilterCtrl">
+    </ion-searchbar>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen *ngIf="site.name === 'countryCode'">
+  <div>
+    <ion-list *ngFor="let country of countryList | async">
+      <ion-item (click)="onSelect(country)">{{ country.value }} {{ country.code }} {{ country.text }}
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-content fullscreen *ngIf="site.name === 'enterOtp' ">
+  <div class="enter-otp ion-padding ion-text-center" *ngIf="!showThumb">
+    <p>
+      Please fill the phone verification PIN that has been sent to your number
+    </p>
+    <p>
+      Enter the OTP
+    </p>
+    <form [formGroup]="otpForm" (ngSubmit)="onSelect(otpForm.value)" *ngIf="otpForm">
+      <div class="input-otp">
+        <ion-input type="text" mode="md" fill="outline" shape="round"
+        label-placement="floating" formControlName="otp"></ion-input>
+      </div>
+
+      <br>
+      <ion-button class="customBtn" type="submit" shape="round" size="large">Verify</ion-button>
+
+    </form>
+
+  </div>
+  <div class="enter-otp ion-padding ion-text-center" *ngIf="showThumb">
+    <ion-icon name="thumbs-up" style="color: #56C568; font-size: 60px;"></ion-icon>
+    <br>
+    Verification Successful
+  </div>
+</ion-content>

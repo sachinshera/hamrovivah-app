@@ -258,7 +258,7 @@ export class FormsPage implements OnInit {
       // check if form is last form
       if (this.formId == this.allForm.length - 1) {
         this.profileService.updateValues(bindedFormValue).then((data: any) => {
-          this.router.navigate(['/profilestup/form/success']);
+          this.router.navigate(['/upload-photos']);
         }).catch((err) => {
           console.log(err);
           let toast = this.toastController.create({
@@ -277,7 +277,7 @@ export class FormsPage implements OnInit {
           console.log("filled", data);
           // check if form is unfilled form
           if (this.formId == "unfilled" || this.formId == "partner") {
-            this.router.navigate(['/profilestup/form/success']);
+            this.router.navigate(['/upload-photos']);
           }
 
           // check form id is 0 and profile pic is not uploaded
@@ -292,7 +292,7 @@ export class FormsPage implements OnInit {
           }
 
           else if (this.formId == this.allForm.length - 1) {
-            this.router.navigate(['/profilestup/form/success']);
+            this.router.navigate(['/upload-photos']);
           } else {
             this.router.navigate(['forms/', this.nextFormId]);
           }

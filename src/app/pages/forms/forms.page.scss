@@ -10,10 +10,12 @@
 .custom-buttons ion-button {
   text-transform: none;
   width: 70%;
+  font-size: 16px;
 }
 .btnClass{
   text-transform: none;
   width: 70%;
+  font-size: 16px;
 }
 .isDisabled {
   color: currentColor;
@@ -39,4 +41,7 @@
   width: 80%;
   height: 80%;
   color: grey;
+}
+ion-header{
+  font-size: 16px;
 }

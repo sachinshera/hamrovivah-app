@@ -92,7 +92,21 @@ const routes: Routes = [
     path: 'forms/:id',
     loadChildren: () => import('./pages/forms/forms.module').then( m => m.FormsPageModule)
   },
-
+  {
+    path: 'home-page',
+    loadChildren: () => import('./pages/home-page/home-page.module').then( m => m.HomePagePageModule)
+  },  {
+    path: 'modal-page',
+    loadChildren: () => import('./pages/modal-page/modal-page.module').then( m => m.ModalPagePageModule)
+  },
+  {
+    path: 'upload-photos',
+    loadChildren: () => import('./pages/upload-photos/upload-photos.module').then( m => m.UploadPhotosPageModule)
+  },
+  {
+    path: 'search-partner',
+    loadChildren: () => import('./pages/search-partner/search-partner.module').then( m => m.SearchPartnerPageModule)
+  },
 
 
 ];

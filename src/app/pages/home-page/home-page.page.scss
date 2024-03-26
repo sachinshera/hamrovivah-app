@@ -1,0 +1,96 @@
+.my-profile{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  padding-left: 20px;
+}
+.content{
+  background-color: #FF7F50;
+}
+.image-card {
+  position: relative;
+  overflow: hidden; /* Ensure the image stays within the circular border */
+border-radius: 15px;
+}
+
+.rounded-image {
+  width: 100%; /* Ensure the image fills the circular card */
+  height: auto; /* Maintain aspect ratio */
+}
+.right-sec{
+  text-align: end;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.customBtn{
+  text-transform: none;
+}
+.card-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 16px 0 16px;
+}
+
+.image-container {
+  margin-left: 10px; /* Adjust spacing between image and text */
+}
+
+.image-container img {
+  width: 96px;
+  height: 96px;
+}
+
+.text-container {
+  flex: 1;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+.customButton{
+  text-transform: none;
+  width: 90%;
+  margin-bottom: 16px;
+}
+.matches-head{
+  font-weight: bold;
+  font-size: 14px;
+}
+.seeAll{
+  margin-top: 10px;
+}
+.slideshow-container{
+  height: 195px;
+}
+.complete-profile{
+  font-weight: bold;
+  font-size: 14px;
+  color: black;
+}
+.custBtn{
+  width: 70%;
+  text-transform: none;
+}
+ion-content{
+  padding-bottom: 56px;
+}
+
+.scroller-container{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card1 {
+    display: inline-block;
+    margin-right: 16px;
+  }
+}
+.activeTab{
+  background-color: #FF7F50;
+  border-radius: 50%;
+  padding: 8px;
+  color: white;
+}
