@@ -1,0 +1,52 @@
+.background{
+  background-color: whitesmoke;
+}
+.no-v-scroll {
+  height: 100%;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+}
+.my-profile{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  padding-left: 20px;
+}
+.content{
+  background-color: #FF7F50;
+}
+.activeTab{
+  background-color: #FF7F50;
+  border-radius: 50%;
+  padding: 8px;
+  color: white;
+}
+ion-avatar img {
+  width: 40px;
+  height: 40px;
+}
+.head-cls{
+  padding: 16px 0 0 16px;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+.scroller-container{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 16px;
+
+  .card1 {
+    display: inline-block;
+    width: 52px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 16px;
+  }
+}
