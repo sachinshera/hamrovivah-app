@@ -9,8 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { CommonModule } from '@angular/common';
+import { ScrollToBottomDirective } from './directives/scroll-to-bottom.directive';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ScrollToBottomDirective],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
     FormsModule, ReactiveFormsModule, IonicStorageModule.forRoot(), CommonModule,],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

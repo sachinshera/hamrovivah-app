@@ -1,13 +1,94 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>message</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">message</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="row bg-light" style="width:100%; margin: 0%;padding: 0%;">
+  <div class="content">
+    <div class="my-profile">
+      <div class="my-profile-content">
+        Chat to connect
+      </div>
+    </div>
+    <div
+      style="padding: 16px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: white; border-top: 0.5px solid grey;">
+      <div class="chatlist" class="col-12" style="width:100%; margin: 0%;padding: 0%;">
+
+        <div class="row container d-flex " style="width: 100%;padding: 0%;margin: 0%;">
+          <div style="width: 100%;padding: 0%;margin: 0%;">
+            <div #myList class="ps-container ps-theme-default ps-active-y" id="chat-content"
+              style="overflow-y: scroll !important; height:76vh !important; width: 100%; margin: 0%;padding: 0%;">
+              <div *ngFor="let message of List;let last=last">
+                <div *ngIf="message.From===uid" class="media media-chat media-chat-reverse"
+                  style="padding: 0%;margin: 0%;">
+                  <div class="media-body" style="width:75%; float: right; padding-right:20px;">
+                    <p>{{message.message}}</p>
+                    <p class="meta" style="color: #8b95a5;"><time datetime="2018">{{message.timestamp |
+                        date:'short'}}</time></p>
+                  </div>
+                </div>
+                <div *ngIf="message.From!==uid" class="media media-chat" style="padding: 0%;margin: 0%;">
+                  <div class="media-body" style="padding-left:20px; width: 75%;">
+                    <p style="background-color:whitesmoke">{{message.message}}</p>
+                    <p class="meta"><time datetime="2018">{{message.timestamp | date:'short'}}</time></p>
+                  </div>
+                </div>
+              </div>
+              <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="10">
+          <ion-textarea autoGrow="true" placeholder="Write your message" class="message-input" rows="1" maxLength="500"
+            [(ngModel)]="message">
+          </ion-textarea>
+        </ion-col>
+        <ion-col size="2" style="padding:0px">
+          <ion-button expand="block" fill="clear" color="primary" [disabled]="message === ''" class="msg-btn">
+            <ion-icon name="send" style="font-size: 20px;" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+
+        <ion-tab-button routerLink="/home-page">
+          <ion-icon name="home-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button routerLink="/search-partner">
+          <ion-icon name="search-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button routerLink="/matches-page">
+          <ion-icon name="people-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button routerLink="/matches">
+          <ion-icon name="chatbubble-ellipses-outline" class="activeTab"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button tab="tab5">
+          <ion-icon name="diamond-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+
+  </ion-toolbar>
+</ion-footer>
