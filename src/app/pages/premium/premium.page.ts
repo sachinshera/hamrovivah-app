@@ -138,15 +138,22 @@ export class PremiumPage implements OnInit {
   ];
 
   faqs = [
-    { question: 'How does the offline meeting feature work?',
-    answer: 'Users can connect with others for offline meetings through the app by following simple guidelines and requirements set by the app',
-    showAnswer: false },
-    { question: 'Can I talk to the app owner or members foir assistance?',
-    answer: 'Answer 2',
-    showAnswer: false },
-    { question: "How do I schedule an offline meeting at the company's centre?",
-    answer: 'Answer 3',
-    showAnswer: false },
+    {
+      question: 'How does the offline meeting feature work?',
+      answer:
+        'Users can connect with others for offline meetings through the app by following simple guidelines and requirements set by the app',
+      showAnswer: false,
+    },
+    {
+      question: 'Can I talk to the app owner or members foir assistance?',
+      answer: 'Answer 2',
+      showAnswer: false,
+    },
+    {
+      question: "How do I schedule an offline meeting at the company's centre?",
+      answer: 'Answer 3',
+      showAnswer: false,
+    },
   ];
 
   constructor() {}

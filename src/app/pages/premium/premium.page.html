@@ -10,44 +10,70 @@
 
         <!-- plan cards -->
         <div class="scroller-container">
-          <div class="card1 ion-padding ion-text-center" *ngFor="let plan of allPlans">
+          <ion-card class="card1" *ngFor="let plan of allPlans">
 
-          </div>
+
+              <div class="ion-text-center" style="background-color: #FFD700; height: 25.33px; font-weight: 600; font-size: 12px; padding-top: 6px;">{{plan.cardHead}}</div>
+              <div style="height: 100%;" class="ion-padding">
+                <div class="ion-text-center">
+                  <div class="plan-name">{{plan.planName}}</div>
+                  <div class="plan-rate">&#8377;{{plan.planRate}}</div>
+                  <div class="user">user/mo</div>
+                  <div class="users">{{plan.users}} Active Users</div>
+                </div>
+
+                <ion-button expand="block" color="warning" style="font-size: 14px;">Continue</ion-button>
+
+                <ul class="custom-list">
+                  <li *ngFor="let item of plan.features">
+                    <span class="custom-icon">
+                      <ion-icon name="checkmark-circle" *ngIf="item.accessible" color="warning"></ion-icon>
+                      <ion-icon name="close-circle" *ngIf="!item.accessible" color="danger"></ion-icon>
+                    </span>
+                    {{item.feature}}
+                  </li>
+                </ul>
+
+              </div>
+
+          </ion-card>
         </div>
 
         <!-- card find a partner -->
         <ion-card class="ion-padding ion-text-center">
-          <ion-card-header>
+
             <ion-card-title>Need help in finding a partner?</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            Talk with Hamrovivah team to get help in finding a perfect match for you
+
+
+            <div style="font-size: 14px; padding-top: 16px;">
+              Talk with Hamrovivah team to get help in finding a perfect match for you
+            </div>
             <br>
-            <ion-button>
-              <ion-icon name="call"></ion-icon>Call Us
+            <ion-button color="secondary">
+              <ion-icon name="call"></ion-icon>&nbsp;Call Us
             </ion-button>
             <br>
-            <ion-button>
+            <ion-button color="secondary">
               <ion-icon name="logo-whatsapp"></ion-icon>&nbsp;Whatsapp Us
             </ion-button>
-          </ion-card-content>
+
         </ion-card>
 
         <!-- faq -->
-        <h3 class="head-cls">Frequently asked questions</h3>
+        <p class="head-cls">Frequently asked questions</p>
         <ion-list>
           <!-- FAQ items -->
           <ng-container *ngFor="let faq of faqs">
             <ion-item (click)="toggleAnswer(faq)" [lines]="faq.showAnswer ? 'none' : 'full'">
               <!-- Question -->
-              <ion-label>{{ faq.question }}</ion-label>
+              <ion-label class="qns">{{ faq.question }}</ion-label>
               <!-- Arrow icon -->
               <ion-icon slot="end" name="chevron-down" *ngIf="!faq.showAnswer"></ion-icon>
               <ion-icon slot="end" name="chevron-up" *ngIf="faq.showAnswer"></ion-icon>
             </ion-item>
             <!-- Answer -->
             <ion-item *ngIf="faq.showAnswer">
-              <ion-label>{{ faq.answer }}</ion-label>
+              <ion-label class="answrs">{{ faq.answer }}</ion-label>
             </ion-item>
           </ng-container>
         </ion-list>

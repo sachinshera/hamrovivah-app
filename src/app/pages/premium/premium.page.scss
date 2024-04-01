@@ -44,17 +44,55 @@ ion-avatar img {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  padding: 16px;
 
   .card1 {
     display: inline-block;
     width: 223px;
     height: 401px;
     margin-right: 16px;
-    background-color: white;
-    border-radius: 10px;
   }
 }
 ion-content{
   font-size: 16px;
+}
+.plan-name{
+  font-weight: 500;
+  font-size: 18px;
+}
+.plan-rate{
+  font-weight: 700;
+  font-size: 16px;
+}
+.user{
+  color: #56C568;
+}
+.users{
+  border-top: 0.0025px solid grey;
+  border-bottom: 0.0025px solid grey;
+  padding: 8px;
+  margin: 16px 30px 16px 30px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.custom-list {
+  list-style: none; /* Remove default bullets */
+  padding-left: 4px;
+  padding-top: 5px;
+}
+.custom-list li {
+  margin-top: 10px; /* Adjust spacing between items */
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.custom-icon {
+  display: inline-block;
+  width: 20px; /* Adjust icon width */
+  height: 20px; /* Adjust icon height */
+}
+.qns{
+  font-size: 16px;
+}
+.answrs{
+  font-size: 14px;
 }
