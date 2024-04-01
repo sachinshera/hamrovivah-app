@@ -1,0 +1,93 @@
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <div class="my-profile">
+      <div class="my-profile-content">
+        Upgrade to Premium
+      </div>
+    </div>
+    <div class="curved-div">
+      <div class="scrollable-content">
+
+        <!-- plan cards -->
+        <div class="scroller-container">
+          <div class="card1 ion-padding ion-text-center" *ngFor="let plan of allPlans">
+
+          </div>
+        </div>
+
+        <!-- card find a partner -->
+        <ion-card class="ion-padding ion-text-center">
+          <ion-card-header>
+            <ion-card-title>Need help in finding a partner?</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Talk with Hamrovivah team to get help in finding a perfect match for you
+            <br>
+            <ion-button>
+              <ion-icon name="call"></ion-icon>Call Us
+            </ion-button>
+            <br>
+            <ion-button>
+              <ion-icon name="logo-whatsapp"></ion-icon>&nbsp;Whatsapp Us
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- faq -->
+        <h3 class="head-cls">Frequently asked questions</h3>
+        <ion-list>
+          <!-- FAQ items -->
+          <ng-container *ngFor="let faq of faqs">
+            <ion-item (click)="toggleAnswer(faq)" [lines]="faq.showAnswer ? 'none' : 'full'">
+              <!-- Question -->
+              <ion-label>{{ faq.question }}</ion-label>
+              <!-- Arrow icon -->
+              <ion-icon slot="end" name="chevron-down" *ngIf="!faq.showAnswer"></ion-icon>
+              <ion-icon slot="end" name="chevron-up" *ngIf="faq.showAnswer"></ion-icon>
+            </ion-item>
+            <!-- Answer -->
+            <ion-item *ngIf="faq.showAnswer">
+              <ion-label>{{ faq.answer }}</ion-label>
+            </ion-item>
+          </ng-container>
+        </ion-list>
+
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+
+        <ion-tab-button routerLink="/home-page">
+          <ion-icon name="home-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button routerLink="/search-partner">
+          <ion-icon name="search-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button routerLink="/matches-page">
+          <ion-icon name="people-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button routerLink="/matches">
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+
+        <ion-tab-button routerLink="/premium">
+          <ion-icon name="diamond-outline" class="activeTab"></ion-icon>
+          <!-- <ion-label>Home</ion-label> -->
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+
+  </ion-toolbar>
+</ion-footer>

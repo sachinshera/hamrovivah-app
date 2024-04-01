@@ -1,0 +1,60 @@
+.curved-div{
+  padding: 16px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: whitesmoke;
+  border-top: 0.5px solid grey;
+}
+.scrollable-content {
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal scrolling */
+  max-height: calc(100vh - 175px); /* Adjust the height as needed */
+  padding-bottom: 100px;
+}
+.content{
+  background-color: #FF7F50;
+  overflow-y: auto;
+  max-height: calc(100vh - 43px); /* Adjust the height as needed */
+}
+.my-profile{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  justify-content: center;
+}
+
+.activeTab{
+  background-color: #FF7F50;
+  border-radius: 50%;
+  padding: 8px;
+  color: white;
+}
+ion-avatar img {
+  width: 40px;
+  height: 40px;
+}
+.head-cls{
+  padding: 0 0 0 8px;
+  font-weight: 700;
+  font-size: 16px;
+}
+.scroller-container{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 16px;
+
+  .card1 {
+    display: inline-block;
+    width: 223px;
+    height: 401px;
+    margin-right: 16px;
+    background-color: white;
+    border-radius: 10px;
+  }
+}
+ion-content{
+  font-size: 16px;
+}

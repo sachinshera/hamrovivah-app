@@ -119,6 +119,10 @@ const routes: Routes = [
     path: 'message',
     loadChildren: () => import('./pages/chat/message/message.module').then( m => m.MessagePageModule)
   },
+  {
+    path: 'premium',
+    loadChildren: () => import('./pages/premium/premium.module').then( m => m.PremiumPageModule)
+  },
 
 
 ];
