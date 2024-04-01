@@ -1,5 +1,4 @@
-<ion-content [fullscreen]="true">
-  <!-- <div class="background"> -->
+<ion-content [fullscreen]="true" >
     <div class="content">
       <div class="my-profile">
         <div class="my-profile-content">
@@ -8,40 +7,43 @@
       </div>
       <div
         style="padding: 16px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: whitesmoke; border-top: 0.5px solid grey;">
-        <div *ngIf="isLoaded===true" style="background-color: white;">
-          <p class="head-cls">My matches</p>
-          <div class="scroller-container">
-            <div class="card1" *ngFor="let user of selectedContacts">
-              <div style="display: flex; flex-direction: column;">
-                <img [src]="user.proifleImage" width="52px" height="52px" style="border-radius: 50%;">
-                <div>
-                  {{getName(user.forms)}}
+
+        <div class="scrollable-content">
+          <div *ngIf="isLoaded===true" style="background-color: white;">
+            <p class="head-cls">My matches</p>
+            <div class="scroller-container">
+              <div class="card1" *ngFor="let user of selectedContacts">
+                <div style="display: flex; flex-direction: column;">
+                  <img [src]="user.proifleImage" width="52px" height="52px" style="border-radius: 50%;">
+                  <div>
+                    {{getName(user.forms)}}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <br>
+          <br>
 
-        <!-- Recent Chats -->
-        <div *ngFor="let chat of recentChats">
-          <div (click)="openChat(chat)">
-            <ion-item>
-              <ion-avatar slot="start">
-                <img [src]="chat.contact.profilePic" alt="Profile Pic">
-              </ion-avatar>
-              <ion-label>
-                <h2>{{ chat.contact.name }}</h2>
-                <p>{{ chat.lastMessage }}</p>
-              </ion-label>
-              <ion-badge slot="end" *ngIf="chat.unreadCount">{{ chat.unreadCount }}</ion-badge>
-            </ion-item>
+          <!-- Recent Chats -->
+          <div *ngFor="let chat of recentChats">
+            <div (click)="openChat(chat)">
+              <ion-item>
+                <ion-avatar slot="start">
+                  <img [src]="chat.contact.profilePic" alt="Profile Pic">
+                </ion-avatar>
+                <ion-label>
+                  <h2>{{ chat.contact.name }}</h2>
+                  <p>{{ chat.lastMessage }}</p>
+                </ion-label>
+                <ion-badge slot="end" *ngIf="chat.unreadCount">{{ chat.unreadCount }}</ion-badge>
+              </ion-item>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
-  <!-- </div> -->
 </ion-content>
 
 

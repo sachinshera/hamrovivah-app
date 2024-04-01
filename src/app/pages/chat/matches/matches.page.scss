@@ -1,12 +1,13 @@
-.background{
-  background-color: whitesmoke;
+.scrollable-content {
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal scrolling */
+  max-height: calc(100vh - 175px); /* Adjust the height as needed */
+  padding-bottom: 100px;
 }
-.no-v-scroll {
-  height: 100%;
-  overflow-y: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: 0 !important;
+.content{
+  background-color: #FF7F50;
+  overflow-y: auto;
+  max-height: calc(100vh - 43px); /* Adjust the height as needed */
 }
 .my-profile{
   height: 100px;
@@ -16,9 +17,7 @@
   font-size: 16px;
   padding-left: 20px;
 }
-.content{
-  background-color: #FF7F50;
-}
+
 .activeTab{
   background-color: #FF7F50;
   border-radius: 50%;
