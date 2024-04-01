@@ -1,0 +1,57 @@
+.curved-div{
+  padding: 16px 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: whitesmoke;
+  border-top: 0.5px solid grey;
+}
+.scrollable-content {
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal scrolling */
+  max-height: calc(100vh - 175px); /* Adjust the height as needed */
+  padding-bottom: 100px;
+}
+.content{
+  background-color: #FF7F50;
+  overflow-y: auto;
+  max-height: calc(100vh - 43px); /* Adjust the height as needed */
+}
+.my-profile{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  padding-left: 24px;
+}
+.notification-item ion-icon {
+  font-size: 24px; /* Adjust icon size */
+  margin-right: 10px; /* Adjust spacing between icon and text */
+}
+
+.notification-item ion-label h2 {
+  font-size: 18px; /* Adjust title font size */
+  margin-bottom: 5px; /* Adjust spacing between title and message */
+}
+
+.notification-item ion-label p {
+  font-size: 14px; /* Adjust message font size */
+  color: #666; /* Adjust message color */
+}
+
+.image-wrapper {
+  width: 32px; /* Adjust wrapper width */
+  height: 32px; /* Adjust wrapper height */
+  border-radius: 50%; /* Make the wrapper circular */
+  overflow: hidden; /* Ensure the image stays within the circle */
+  background-color: #FF7F50; /* Orange background color */
+  color: #FFFF50;
+  margin-right: 10px; /* Adjust spacing between image and text */
+  padding: 7px;
+}
+
+.date-image {
+  width: 95%; /* Make the image fill the wrapper */
+  height: auto; /* Preserve aspect ratio */
+}
+

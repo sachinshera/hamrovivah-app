@@ -1,13 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>notification-page</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">notification-page</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="content">
+    <div class="my-profile">
+      <div class="my-profile-content">
+        <!-- back button -->
+        <ion-icon slot="icon-only" name="arrow-back-outline" (click)="onBack()"></ion-icon>
+        &nbsp;
+        Notifications
+      </div>
+    </div>
+    <div class="curved-div">
+      <div class="scrollable-content">
+        <ion-list>
+          <ng-container *ngFor="let group of groupedNotifications">
+            <!-- Group heading -->
+            <ion-item-divider color="light">
+              <ion-label>{{ group.date }}</ion-label>
+            </ion-item-divider>
+            <!-- Notifications for this group -->
+            <ng-container *ngFor="let notification of group.notifications">
+              <ion-item lines="none">
+                <!-- Image Wrapper -->
+                <div class="image-wrapper">
+                  <!-- Image -->
+                  <img [src]="getImage(notification.category)" alt="Date Image" class="date-image">
+                </div>
+                <!-- Notification Content -->
+                <ion-label>
+                  <h2>{{ notification.title }}</h2>
+                  <p>{{ notification.message }}</p>
+                </ion-label>
+              </ion-item>
+            </ng-container>
+          </ng-container>
+        </ion-list>
+      </div>
+    </div>
+  </div>
 </ion-content>
