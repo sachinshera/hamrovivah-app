@@ -1,0 +1,95 @@
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <div class="my-profile">
+      <div class="my-profile-content">
+        <!-- back button -->
+        <ion-icon slot="icon-only" name="arrow-back-outline" (click)="onBack()"></ion-icon>
+      </div>
+    </div>
+    <div class="curved-div" *ngIf="!!profileData">
+      <div class="scrollable-content ion-padding">
+        <!-- profile picture and username -->
+        <ion-card class="user-card" *ngIf="profileData.profile">
+          <!-- Background Image -->
+          <div class="card-background" [style.backgroundImage]="'url(' + profileData.profile.proifleImage + ')'"></div>
+
+          <!-- User Details -->
+          <div class="details">
+            <div class="left-bottom">
+              <div class="name">{{ getName(profileData.forms) }}</div>
+              <div class="age">{{ getAge(profileData.forms) }}</div>
+              <div class="profession">{{ getProfession(profileData.forms) }}</div>
+            </div>
+            <div class="right-bottom" (click)="likeAuser()">
+              <div class="heart-container-1" *ngIf="!this.liked">
+                <ion-icon name="heart" class="heart-icon-1"></ion-icon>
+              </div>
+              <div class="heart-container-2" *ngIf="this.liked">
+                <ion-icon name="heart" class="heart-icon-2"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </ion-card>
+
+        <!-- about card-description -->
+        <ion-card>
+          <p class="about-head">About {{getName(profileData.forms)}}</p>
+          <p class="about-des">
+            {{profileDescription}}
+          </p>
+        </ion-card>
+
+        <!-- chips -->
+        <ion-card>
+          <ion-chip color="danger" style="color: black;" *ngFor="let data of dataInChips">
+            <img src="assets/images/language.png" width="16px" height="16px" *ngIf="data.key==='language' ">
+            <img src="assets/images/religion.png" width="16px" height="16px" *ngIf="data.key==='religion' ">
+            <img src="assets/images/smokes.png" width="16px" height="16px" *ngIf="data.key==='smokes' ">
+            <img src="assets/images/drink.png" width="16px" height="16px" *ngIf="data.key==='drinks' ">
+            &nbsp;{{data.value}}
+          </ion-chip>
+        </ion-card>
+
+        <!-- list card -->
+        <ion-card>
+          <ion-list>
+
+            <ng-container *ngFor="let item of dataInList">
+              <ion-item lines="none">
+                <div class="image-wrapper">
+                  <ion-icon name="person-outline" *ngIf="item.key ==='Marital Status' "></ion-icon>
+                  <ion-icon name="calendar-outline" *ngIf="item.key ==='Born Date' "></ion-icon>
+                  <ion-icon name="location-outline" *ngIf="item.key ==='Lives in' "></ion-icon>
+                  <ion-icon name="restaurant-outline" *ngIf="item.key ==='Diet' "></ion-icon>
+                </div>
+
+                <ion-label>
+                  <h2>{{ item.key }}</h2>
+                  <p>{{ item.value }}</p>
+                </ion-label>
+              </ion-item>
+            </ng-container>
+
+          </ion-list>
+        </ion-card>
+
+        <!-- interests card -->
+        <ion-card>
+          <ion-card-title style="padding: 16px 16px 0 16px;">Interests</ion-card-title>
+          <ion-list>
+            <ion-item lines="none" *ngFor="let item of interests">
+              {{item}}
+            </ion-item>
+          </ion-list>
+        </ion-card>
+
+        <!-- Button container -->
+        <div class="button-container">
+          <ion-button shape="round" color="secondary" size="large" class="customBtn">Send Request</ion-button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</ion-content>

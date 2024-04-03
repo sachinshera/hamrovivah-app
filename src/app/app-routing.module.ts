@@ -95,7 +95,8 @@ const routes: Routes = [
   {
     path: 'home-page',
     loadChildren: () => import('./pages/home-page/home-page.module').then( m => m.HomePagePageModule)
-  },  {
+  },
+  {
     path: 'modal-page',
     loadChildren: () => import('./pages/modal-page/modal-page.module').then( m => m.ModalPagePageModule)
   },
@@ -126,6 +127,10 @@ const routes: Routes = [
   {
     path: 'notification-page',
     loadChildren: () => import('./pages/notification-page/notification-page.module').then( m => m.NotificationPagePageModule)
+  },
+  {
+    path: 'profile-page/:id',
+    loadChildren: () => import('./pages/profile-page/profile-page.module').then( m => m.ProfilePagePageModule)
   },
 
 
