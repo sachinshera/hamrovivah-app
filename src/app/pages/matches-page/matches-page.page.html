@@ -1,156 +1,163 @@
-<ion-content [fullscreen]="true" style="padding-bottom: 56px;">
+<ion-content [fullscreen]="true">
   <div class="content">
     <div class="my-profile">
       Find your matches
     </div>
     <div
-      style="overflow-y: auto; padding-left: 16px; padding-right: 16px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: whitesmoke; border-top: 0.5px solid grey;">
+      style="overflow-y: auto; padding-left: 16px; padding-right: 16px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: whitesmoke; border-top: 0.5px solid #40E0D0;">
 
-      <!-- chips -->
-      <div class="scroller-container">
-        <div class="card1">
-          <ion-chip>All Matches({{allMatches?.length}})</ion-chip>
-          <ion-chip>New Matches({{newMatches?.length}})</ion-chip>
-          <ion-chip>Recent visitors({{recentVisiors?.length}})</ion-chip>
-        </div>
-      </div>
+      <div class="scrollable-content">
 
-      <br>
-
-      <!-- all matches div -->
-      <div>
-        <div class="matches-head">
-          All Matches({{allMatches?.length}})
-        </div>
-        Members who match your preferences
-        <!-- sliding divs -->
+        <!-- chips -->
         <div class="scroller-container">
-          <div class="card1" *ngFor="let user of allMatches">
-            <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
-              <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
-              <div>
-                {{getName(user.forms)}}
-              </div>
-              <div>
-                {{getAge(user.forms)}}, {{getProfession(user.forms)}}
+          <div class="card1">
+            <ion-chip>All Matches({{allMatches?.length}})</ion-chip>
+            <ion-chip>New Matches({{newMatches?.length}})</ion-chip>
+            <ion-chip>Recent visitors({{recentVisiors?.length}})</ion-chip>
+          </div>
+        </div>
+
+        <br>
+
+        <!-- all matches div -->
+        <div>
+          <div class="matches-head">
+            All Matches({{allMatches?.length}})
+          </div>
+          Members who match your preferences
+          <!-- sliding divs -->
+          <div class="scroller-container">
+            <div class="card1" *ngFor="let user of allMatches">
+              <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
+                <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
+                <div>
+                  {{getName(user.forms)}}
+                </div>
+                <div>
+                  {{getAge(user.forms)}}, {{getProfession(user.forms)}}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <br>
-        <div class="ion-text-center">
-          <ion-button class="customBtn" shape="round" color="secondary">
-            See All
-            <ion-icon name="chevron-forward-outline"></ion-icon>
-          </ion-button>
-        </div>
-        <br>
-      </div>
-
-      <!-- new matches div -->
-      <div>
-        <div class="matches-head">
-          New Matches({{newMatches.length}})
-        </div>
-        Members who joined recently
-        <!-- sliding divs -->
-        <div class="scroller-container">
-          <div class="card1" *ngFor="let user of newMatches">
-            <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
-              <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
-              <div>
-                {{getName(user.forms)}}
-              </div>
-              <div>
-                {{getAge(user.forms)}}, {{getProfession(user.forms)}}
-              </div>
-            </div>
+          <br>
+          <div class="ion-text-center">
+            <ion-button class="customBtn" shape="round" color="secondary">
+              See All
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </ion-button>
           </div>
+          <br>
         </div>
-        <br>
-        <div class="ion-text-center">
-          <ion-button class="customBtn" shape="round" color="secondary">
-            See All
-            <ion-icon name="chevron-forward-outline"></ion-icon>
-          </ion-button>
-        </div>
-        <br>
-      </div>
 
-      <!-- premium matches -->
-
-      <div style="padding: 0 20px;">
-        <div class="photo-stack">
-          <div class="photo left">
-            <img src="assets/images/prof_image_two.jpg" style="border-radius: 16px;" height="250px" alt="Left Photo">
+        <!-- new matches div -->
+        <div>
+          <div class="matches-head">
+            New Matches({{newMatches.length}})
           </div>
-          <div class="photo center">
-            <img src="assets/images/prof_image_one.jpg" style="border-radius: 16px;" height="257px" width="227px" alt="Center Photo">
-          </div>
-          <div class="photo right">
-            <img src="assets/images/prof_image_three.jpg" style="border-radius: 16px;" height="250px" alt="Right Photo">
-          </div>
-        </div>
-
-
-        <div class="ion-text-center">
-          <ion-button class="customButton" size="large" shape="round" color="warning">Watch with Premium</ion-button>
-        </div>
-      </div>
-
-      <!-- recent div -->
-      <div>
-        <div class="matches-head">
-          Recent Visitors({{recentVisiors.length}})
-        </div>
-        Members who visited your profile
-
-        <!-- sliding divs -->
-        <div class="scroller-container">
-          <div class="card1" *ngFor="let user of recentVisiors">
-            <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
-              <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
-              <div>
-                {{getName(user.forms)}}
-              </div>
-              <div>
-                {{getAge(user.forms)}}, {{getProfession(user.forms)}}
+          Members who joined recently
+          <!-- sliding divs -->
+          <div class="scroller-container">
+            <div class="card1" *ngFor="let user of newMatches">
+              <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
+                <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
+                <div>
+                  {{getName(user.forms)}}
+                </div>
+                <div>
+                  {{getAge(user.forms)}}, {{getProfession(user.forms)}}
+                </div>
               </div>
             </div>
           </div>
+          <br>
+          <div class="ion-text-center">
+            <ion-button class="customBtn" shape="round" color="secondary">
+              See All
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </ion-button>
+          </div>
+          <br>
         </div>
-        <br>
-        <div class="ion-text-center">
-          <ion-button class="customBtn" shape="round" color="secondary">
-            See All
-            <ion-icon name="chevron-forward-outline"></ion-icon>
-          </ion-button>
+
+        <!-- premium matches -->
+
+        <div style="padding: 0 20px;">
+          <div class="photo-stack">
+            <div class="photo left">
+              <img src="assets/images/prof_image_two.jpg" style="border-radius: 16px;" height="250px" alt="Left Photo">
+            </div>
+            <div class="photo center">
+              <img src="assets/images/prof_image_one.jpg" style="border-radius: 16px;" height="257px" width="227px"
+                alt="Center Photo">
+            </div>
+            <div class="photo right">
+              <img src="assets/images/prof_image_three.jpg" style="border-radius: 16px;" height="250px"
+                alt="Right Photo">
+            </div>
+          </div>
+
+
+          <div class="ion-text-center">
+            <ion-button class="customButton" size="large" shape="round" color="warning">Watch with Premium</ion-button>
+          </div>
         </div>
-        <br>
+
+        <!-- recent div -->
+        <div>
+          <div class="matches-head">
+            Recent Visitors({{recentVisiors.length}})
+          </div>
+          Members who visited your profile
+
+          <!-- sliding divs -->
+          <div class="scroller-container">
+            <div class="card1" *ngFor="let user of recentVisiors">
+              <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
+                <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
+                <div>
+                  {{getName(user.forms)}}
+                </div>
+                <div>
+                  {{getAge(user.forms)}}, {{getProfession(user.forms)}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="ion-text-center">
+            <ion-button class="customBtn" shape="round" color="secondary">
+              See All
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </ion-button>
+          </div>
+          <br>
+        </div>
+
+        <!-- premium card -->
+        <ion-card>
+          <div class="card-container">
+            <div class="text-container">
+              Get Premium services to find your partner now!
+            </div>
+            <div class="image-container">
+              <img src="assets/images/premium.png" alt="Sample Image">
+            </div>
+          </div>
+
+          <ul>
+            <li>Get call back within 24 hours</li>
+            <li>Meet in offline</li>
+          </ul>
+
+          <div class="ion-text-center">
+            <ion-button class="customButton" size="large" shape="round" color="warning" routerLink="/premium">
+              Upgrade Now
+            </ion-button>
+          </div>
+
+        </ion-card>
+
       </div>
-
-      <!-- premium card -->
-      <ion-card>
-        <div class="card-container">
-          <div class="text-container">
-            Get Premium services to find your partner now!
-          </div>
-          <div class="image-container">
-            <img src="assets/images/premium.png" alt="Sample Image">
-          </div>
-        </div>
-
-        <ul>
-          <li>Get call back within 24 hours</li>
-          <li>Meet in offline</li>
-        </ul>
-
-        <div class="ion-text-center">
-          <ion-button class="customButton" size="large" shape="round" color="warning">Upgrade Now</ion-button>
-        </div>
-
-      </ion-card>
-
     </div>
   </div>
 </ion-content>
@@ -161,7 +168,7 @@
     <ion-tabs>
       <ion-tab-bar slot="bottom">
 
-        <ion-tab-button routerLink="'/home-page'">
+        <ion-tab-button routerLink="/home-page">
           <ion-icon name="home-outline"></ion-icon>
           <!-- <ion-label>Home</ion-label> -->
         </ion-tab-button>
