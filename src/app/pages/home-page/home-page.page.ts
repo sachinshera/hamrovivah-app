@@ -30,6 +30,7 @@ export class HomePagePage implements OnInit {
   constructor(
     public profileService: ProfileService,
     private userService: UserService,
+    private router: Router
   ) {}
   ngOnInit() {
     this.profileService

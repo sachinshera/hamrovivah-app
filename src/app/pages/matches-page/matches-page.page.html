@@ -26,7 +26,7 @@
         <!-- sliding divs -->
         <div class="scroller-container">
           <div class="card1" *ngFor="let user of allMatches">
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
               <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
               <div>
                 {{getName(user.forms)}}
@@ -39,7 +39,7 @@
         </div>
         <br>
         <div class="ion-text-center">
-          <ion-button class="customBtn" shape="round">
+          <ion-button class="customBtn" shape="round" color="secondary">
             See All
             <ion-icon name="chevron-forward-outline"></ion-icon>
           </ion-button>
@@ -56,7 +56,7 @@
         <!-- sliding divs -->
         <div class="scroller-container">
           <div class="card1" *ngFor="let user of newMatches">
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
               <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
               <div>
                 {{getName(user.forms)}}
@@ -69,12 +69,33 @@
         </div>
         <br>
         <div class="ion-text-center">
-          <ion-button class="customBtn" shape="round">
+          <ion-button class="customBtn" shape="round" color="secondary">
             See All
             <ion-icon name="chevron-forward-outline"></ion-icon>
           </ion-button>
         </div>
         <br>
+      </div>
+
+      <!-- premium matches -->
+
+      <div style="padding: 0 20px;">
+        <div class="photo-stack">
+          <div class="photo left">
+            <img src="assets/images/prof_image_two.jpg" style="border-radius: 16px;" height="250px" alt="Left Photo">
+          </div>
+          <div class="photo center">
+            <img src="assets/images/prof_image_one.jpg" style="border-radius: 16px;" height="257px" width="227px" alt="Center Photo">
+          </div>
+          <div class="photo right">
+            <img src="assets/images/prof_image_three.jpg" style="border-radius: 16px;" height="250px" alt="Right Photo">
+          </div>
+        </div>
+
+
+        <div class="ion-text-center">
+          <ion-button class="customButton" size="large" shape="round" color="warning">Watch with Premium</ion-button>
+        </div>
       </div>
 
       <!-- recent div -->
@@ -87,7 +108,7 @@
         <!-- sliding divs -->
         <div class="scroller-container">
           <div class="card1" *ngFor="let user of recentVisiors">
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
               <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
               <div>
                 {{getName(user.forms)}}
@@ -100,33 +121,13 @@
         </div>
         <br>
         <div class="ion-text-center">
-          <ion-button class="customBtn" shape="round">
+          <ion-button class="customBtn" shape="round" color="secondary">
             See All
             <ion-icon name="chevron-forward-outline"></ion-icon>
           </ion-button>
         </div>
         <br>
       </div>
-
-      <!-- premium matches -->
-      <div style="padding: 20px 100px 16px 100px;">
-        <div class="photo-stack">
-          <div class="photo left">
-            <img src="assets/images/prof_image_two.jpg" alt="Left Photo">
-          </div>
-          <div class="photo center">
-            <img src="assets/images/prof_image_one.jpg" alt="Center Photo">
-          </div>
-          <div class="photo right">
-            <img src="assets/images/prof_image_three.jpg" alt="Right Photo">
-          </div>
-        </div>
-      </div>
-
-      <div class="ion-text-center">
-        <ion-button class="customButton" size="large" shape="round" color="secondary">Watch with Premium</ion-button>
-      </div>
-
 
       <!-- premium card -->
       <ion-card>
@@ -145,7 +146,7 @@
         </ul>
 
         <div class="ion-text-center">
-          <ion-button class="customButton" size="large" shape="round" color="secondary">Upgrade Now</ion-button>
+          <ion-button class="customButton" size="large" shape="round" color="warning">Upgrade Now</ion-button>
         </div>
 
       </ion-card>

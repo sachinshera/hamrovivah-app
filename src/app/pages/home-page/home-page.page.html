@@ -81,7 +81,7 @@
         <!-- sliding divs -->
         <div class="scroller-container">
           <div class="card1" *ngFor="let user of allMatches">
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
               <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
               <div>
                 {{getName(user.forms)}}
@@ -133,7 +133,7 @@
         <!-- sliding divs -->
         <div class="scroller-container">
           <div class="card1" *ngFor="let user of newMatches">
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
               <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
               <div>
                 {{getName(user.forms)}}
@@ -168,7 +168,7 @@
         <!-- sliding divs -->
         <div class="scroller-container">
           <div class="card1" *ngFor="let user of recentVisiors">
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column;" routerLink="/profile-page/{{user.id}}">
               <img [src]="user.proifleImage" width="172px" height="169px" style="border-radius: 16px;">
               <div>
                 {{getName(user.forms)}}
