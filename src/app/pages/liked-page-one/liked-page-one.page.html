@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <div class="my-profile">
+      <div class="my-profile-content">
+        <!-- back button -->
+        <ion-icon slot="icon-only" name="arrow-back-outline" (click)="onBack()"></ion-icon>
+      </div>
+    </div>
+    <div class="curved-div" *ngIf="!!likedUsers">
+      <div class="scrollable-content ion-padding">
+        <!-- profile picture and username -->
+        <ion-card class="user-card" *ngFor="let profileData of likedUsers">
+          <!-- Background Image -->
+          <div routerLink="/profile-page/{{profileData.id}}" class="card-background" [style.backgroundImage]="'url(' + profileData.proifleImage + ')'"></div>
+
+          <!-- User Details -->
+          <div class="details">
+            <div routerLink="/profile-page/{{profileData.id}}" class="left-bottom">
+              <div class="name">{{ getName(profileData.forms) }}</div>
+              <div class="age">{{ getAge(profileData.forms) }}</div>
+              <div class="profession">{{ getProfession(profileData.forms) }}</div>
+            </div>
+            <div class="right-bottom" (click)="likeAuser()">
+              <div class="heart-container-1" *ngIf="!this.liked">
+                <ion-icon name="heart" class="heart-icon-1"></ion-icon>
+              </div>
+              <div class="heart-container-2" *ngIf="this.liked">
+                <ion-icon name="heart" class="heart-icon-2"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

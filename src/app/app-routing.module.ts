@@ -131,7 +131,15 @@ const routes: Routes = [
   {
     path: 'profile-page/:id',
     loadChildren: () => import('./pages/profile-page/profile-page.module').then( m => m.ProfilePagePageModule)
+  },  {
+    path: 'liked-page-one',
+    loadChildren: () => import('./pages/liked-page-one/liked-page-one.module').then( m => m.LikedPageOnePageModule)
   },
+  {
+    path: 'liked-page-two',
+    loadChildren: () => import('./pages/liked-page-two/liked-page-two.module').then( m => m.LikedPageTwoPageModule)
+  },
+
 
 
 ];
