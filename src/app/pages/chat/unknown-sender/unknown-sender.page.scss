@@ -7,15 +7,21 @@
 .scrollable-content {
   overflow-y: auto; /* Enable vertical scrolling */
   overflow-x: hidden; /* Hide horizontal scrolling */
-  max-height: calc(100vh - 100px); /* Adjust the height as needed */
+  height: calc(100vh - 157px); /* Adjust the height as needed */
   padding-bottom: 100px;
+  padding-top: 16px;
 }
 .content{
   background-color: #FF7F50;
   overflow-y: auto;
-  max-height: 100vh;
-  // max-height: calc(100vh - ); /* Adjust the height as needed */
+  max-height: calc(100vh - 43px); /* Adjust the height as needed */
 }
+hr {
+  border: none; /* Remove default border */
+  height: 1px; /* Set the height of the horizontal line */
+  background-color: #ccc; /* Set the color of the horizontal line */
+}
+
 .my-profile{
   height: 100px;
   display: flex;

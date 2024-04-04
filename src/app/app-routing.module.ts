@@ -143,6 +143,10 @@ const routes: Routes = [
     path: 'manage-matches',
     loadChildren: () => import('./pages/manage-matches/manage-matches.module').then( m => m.ManageMatchesPageModule)
   },
+  {
+    path: 'unknown-sender',
+    loadChildren: () => import('./pages/chat/unknown-sender/unknown-sender.module').then( m => m.UnknownSenderPageModule)
+  },
 
 
 
