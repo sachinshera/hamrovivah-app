@@ -1,0 +1,130 @@
+.curved-div{
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: whitesmoke;
+  border-top: 0.5px solid #40E0D0;
+}
+.scrollable-content {
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal scrolling */
+  max-height: calc(100vh - 100px); /* Adjust the height as needed */
+  padding-bottom: 100px;
+}
+.content{
+  background-color: #FF7F50;
+  overflow-y: auto;
+  max-height: 100vh;
+  // max-height: calc(100vh - ); /* Adjust the height as needed */
+}
+.my-profile{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  padding-left: 24px;
+}
+.user-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 148px; /* Adjust card height */
+}
+
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: white;
+}
+
+.left-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-bottom {
+  display: flex;
+  align-items: flex-end;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.heart-icon-1 {
+  font-size: 14px;
+  color: white; /* Adjust color of heart icon */
+}
+.heart-container-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px; /* Adjust width of container */
+  height: 22px; /* Adjust height of container */
+  border-radius: 50%; /* Make the container circular */
+  background-color: #FF7F50; /* Orange background color */
+}
+.heart-icon-2 {
+  font-size: 14px;
+  color: #EB5757; /* Adjust color of heart icon */
+}
+.heart-container-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px; /* Adjust width of container */
+  height: 22px; /* Adjust height of container */
+  border-radius: 50%; /* Make the container circular */
+  background-color: white; /* Orange background color */
+}
+.about-head{
+  font-size: 12px;
+  font-weight: 500;
+  padding: 0 16px;
+}
+.about-des{
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0 16px;
+}
+ion-chip {
+  --color: black;
+}
+.button-container {
+  position: fixed;
+  bottom: 20px; /* Adjust this value to change the distance from the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+}
+
+.image-wrapper {
+  width: 23px; /* Adjust wrapper width */
+  height: 23px; /* Adjust wrapper height */
+  border-radius: 50%; /* Make the wrapper circular */
+  overflow: hidden; /* Ensure the image stays within the circle */
+  background-color: #FF7F50; /* Orange background color */
+  color: white;
+  margin-right: 10px; /* Adjust spacing between image and text */
+  padding: 5px;
+}
+.customBtn{
+  text-transform: none;
+}
