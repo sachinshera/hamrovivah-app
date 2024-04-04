@@ -1,13 +1,41 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>manage-matches</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">manage-matches</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="content">
+    <div class="my-profile">
+      <div class="my-profile-content">
+        <!-- back button -->
+        <ion-icon slot="icon-only" name="arrow-back-outline" (click)="onBack()"></ion-icon>
+      </div>
+    </div>
+    <div class="curved-div" *ngIf="!!likedUsers">
+      <div class="scrollable-content ion-padding">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" *ngFor="let profileData of likedUsers">
+              <!-- profile picture and username -->
+              <ion-card class="user-card">
+                <!-- Background Image -->
+                <div routerLink="/profile-page/{{profileData.id}}" class="card-background"
+                  [style.backgroundImage]="'url(' + profileData.proifleImage + ')'"></div>
+
+                <!-- User Details -->
+                <div class="details">
+                  <div routerLink="/profile-page/{{profileData.id}}" class="left-bottom">
+                    <div class="name">{{ getName(profileData.forms) }}</div>
+                  </div>
+                  <div class="right-bottom" (click)="likeAuser()">
+                    <div class="heart-container-1" *ngIf="!this.liked">
+                      <ion-icon name="heart" class="heart-icon-1"></ion-icon>
+                    </div>
+                    <div class="heart-container-2" *ngIf="this.liked">
+                      <ion-icon name="heart" class="heart-icon-2"></ion-icon>
+                    </div>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
 </ion-content>
