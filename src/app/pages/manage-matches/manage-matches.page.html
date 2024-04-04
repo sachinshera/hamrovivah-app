@@ -13,6 +13,10 @@
             <ion-col size="6" *ngFor="let profileData of likedUsers">
               <!-- profile picture and username -->
               <ion-card class="user-card">
+
+                  <div class="dots-button">
+                    <ion-icon name="ellipsis-vertical"></ion-icon>
+                  </div>
                 <!-- Background Image -->
                 <div routerLink="/profile-page/{{profileData.id}}" class="card-background"
                   [style.backgroundImage]="'url(' + profileData.proifleImage + ')'"></div>
@@ -21,14 +25,6 @@
                 <div class="details">
                   <div routerLink="/profile-page/{{profileData.id}}" class="left-bottom">
                     <div class="name">{{ getName(profileData.forms) }}</div>
-                  </div>
-                  <div class="right-bottom" (click)="likeAuser()">
-                    <div class="heart-container-1" *ngIf="!this.liked">
-                      <ion-icon name="heart" class="heart-icon-1"></ion-icon>
-                    </div>
-                    <div class="heart-container-2" *ngIf="this.liked">
-                      <ion-icon name="heart" class="heart-icon-2"></ion-icon>
-                    </div>
                   </div>
                 </div>
               </ion-card>

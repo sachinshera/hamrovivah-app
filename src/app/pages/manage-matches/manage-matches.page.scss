@@ -40,7 +40,14 @@
   background-size: cover;
   background-position: center;
 }
-
+.dots-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 16px;
+  color: white;
+  z-index: 999;
+}
 .details {
   position: absolute;
   bottom: 0;
@@ -68,32 +75,6 @@
   font-weight: bold;
 }
 
-.heart-icon-1 {
-  font-size: 14px;
-  color: white; /* Adjust color of heart icon */
-}
-.heart-container-1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 22px; /* Adjust width of container */
-  height: 22px; /* Adjust height of container */
-  border-radius: 50%; /* Make the container circular */
-  background-color: #FF7F50; /* Orange background color */
-}
-.heart-icon-2 {
-  font-size: 14px;
-  color: #EB5757; /* Adjust color of heart icon */
-}
-.heart-container-2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 22px; /* Adjust width of container */
-  height: 22px; /* Adjust height of container */
-  border-radius: 50%; /* Make the container circular */
-  background-color: white; /* Orange background color */
-}
 .about-head{
   font-size: 12px;
   font-weight: 500;
