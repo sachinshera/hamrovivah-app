@@ -139,6 +139,10 @@ const routes: Routes = [
     path: 'liked-page-two',
     loadChildren: () => import('./pages/liked-page-two/liked-page-two.module').then( m => m.LikedPageTwoPageModule)
   },
+  {
+    path: 'manage-matches',
+    loadChildren: () => import('./pages/manage-matches/manage-matches.module').then( m => m.ManageMatchesPageModule)
+  },
 
 
 
