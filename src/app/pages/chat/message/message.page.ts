@@ -18,7 +18,12 @@ export class MessagePage implements OnInit {
   last: any;
   mailId: any; // user email
   myUserName: any; // user name
-
+  sender = {
+    name: 'Hemraj Rijal',
+    age: '25Yrs',
+    profession: 'Engineer',
+    profilePic: 'assets/images/prof_image_one.jpg'
+  }
   constructor(private location: Location) {
     this.List = [
       {

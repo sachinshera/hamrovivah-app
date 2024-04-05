@@ -8,6 +8,18 @@
     </div>
     <div class="curved-div">
       <div class="scrollable-content ion-padding">
+
+        <ion-item lines="none">
+          <ion-avatar slot="start">
+            <img [src]="sender.profilePic" alt="Profile Pic">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ sender.name }}</h2>
+            <p>{{ sender.age }}, {{sender.profession}}</p>
+          </ion-label>
+        </ion-item>
+        <hr>
+
         <div class="chatlist" class="col-12" style="width:100%; margin: 0%;padding: 0%;">
 
           <div class="row container d-flex " style="width: 100%;padding: 0%;margin: 0%;">

@@ -147,6 +147,10 @@ const routes: Routes = [
     path: 'unknown-sender',
     loadChildren: () => import('./pages/chat/unknown-sender/unknown-sender.module').then( m => m.UnknownSenderPageModule)
   },
+  {
+    path: 'voice-call',
+    loadChildren: () => import('./pages/chat/voice-call/voice-call.module').then( m => m.VoiceCallPageModule)
+  },
 
 
 

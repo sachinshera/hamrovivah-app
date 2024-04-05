@@ -1,0 +1,76 @@
+ion-avatar.avatar {
+  margin: auto;
+  width: 141px;
+  height: 141px;
+}
+
+.call-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 40px;
+  background-color: whitesmoke;
+}
+.back-btn{
+  position: absolute;
+  top: 46px;
+  left:20px
+}
+.bottom-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Horizontally center the items */
+  align-items: flex-end; /* Align items to the bottom of the container */
+  position: absolute; /* Position the controls absolutely within the container */
+  bottom: 20px; /* Adjust as needed to add space from the bottom */
+  width: 100%; /* Take up the entire width of the container */
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  text-align: center;
+}
+.name-name{
+  font-weight: 600;
+  font-size: 16px;
+  margin: 8px;
+}
+.icon-class{
+  background-color: #ffd90057;
+  color: #959595;
+  border-radius: 50%;
+  width: 43px;
+  height: 42px;
+  padding: 10px;
+}
+.rotated-icon {
+  transform: rotate(135deg);
+}
+.success-call{
+  background-color: #56C568;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  padding: 18px;
+}
+.danger-call{
+  background-color: #EB5757;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  padding: 18px;
+}
+.name-sub{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}

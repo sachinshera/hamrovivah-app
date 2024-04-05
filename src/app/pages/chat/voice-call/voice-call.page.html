@@ -1,0 +1,64 @@
+<ion-content>
+  <div class="call-container">
+
+    <!-- back button -->
+    <div class="back-btn">
+      <ion-icon slot="icon-only" size="large" name="arrow-back-outline" (click)="onBack()"></ion-icon>
+    </div>
+
+    <!-- Avatar and name -->
+    <div class="avatar-container">
+      <ion-avatar class="avatar">
+        <img src="assets/images/prof_image_one.jpg" alt="Person">
+      </ion-avatar>
+      <div class="name">
+        <p class="name-name">Hemraj Rijal</p>
+
+        <p class="name-sub" *ngIf="!onCall">Calling...</p>
+        <p class="name-sub" *ngIf="onCall">01:40</p>
+      </div>
+    </div>
+
+    <!-- Bottom controls -->
+    <div class="bottom-controls">
+      <!-- Camera rotate button -->
+      <ion-button fill="clear" (click)="rotateCamera()">
+        <div class="icon-class">
+          <ion-icon size="large" name="camera-reverse-outline"></ion-icon>
+        </div>
+      </ion-button>
+
+      <!-- Mic on/off button -->
+      <ion-button fill="clear" (click)="toggleMic()">
+        <div class="icon-class">
+          <ion-icon size="large" [name]="micOn ? 'mic' : 'mic-off'"></ion-icon>
+        </div>
+      </ion-button>
+
+      <!-- Accept/Decline buttons -->
+      <ion-row class="accept-decline">
+
+        <div class="success-call" *ngIf="!onCall">
+          <ion-icon size="large" name="call-outline"></ion-icon>
+        </div>
+        <div class="danger-call" *ngIf="onCall">
+          <ion-icon size="large" name="call-outline" class="rotated-icon"></ion-icon>
+        </div>
+
+      </ion-row>
+
+      <!-- Video call button -->
+      <ion-button fill="clear" (click)="toggleVideoCall()">
+        <div class="icon-class">
+          <ion-icon size="large" [name]="videoCallOn ? 'videocam' : 'videocam-off'"></ion-icon>
+        </div>
+      </ion-button>
+
+      <ion-button fill="clear">
+        <div class="icon-class">
+          <ion-icon size="large" name="ellipsis-horizontal-outline"></ion-icon>
+        </div>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
