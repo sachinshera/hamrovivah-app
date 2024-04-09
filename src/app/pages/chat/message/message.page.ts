@@ -38,6 +38,62 @@ export class MessagePage implements OnInit {
           'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
         timestamp: new Date(),
       },
+      {
+        From: 'me',
+        message:
+          'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
+        timestamp: new Date(),
+      },
+      {
+        From: 'jack',
+        message:
+          'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
+        timestamp: new Date(),
+      },      {
+        From: 'me',
+        message:
+          'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
+        timestamp: new Date(),
+      },
+      {
+        From: 'jack',
+        message:
+          'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
+        timestamp: new Date(),
+      },      {
+        From: 'me',
+        message:
+          'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
+        timestamp: new Date(),
+      },
+      {
+        From: 'jack',
+        message:
+          'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
+        timestamp: new Date(),
+      },      {
+        From: 'me',
+        message:
+          'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
+        timestamp: new Date(),
+      },
+      {
+        From: 'jack',
+        message:
+          'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
+        timestamp: new Date(),
+      },      {
+        From: 'me',
+        message:
+          'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
+        timestamp: new Date(),
+      },
+      {
+        From: 'jack',
+        message:
+          'how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? how do you do? ',
+        timestamp: new Date(),
+      },
     ];
   }
 
